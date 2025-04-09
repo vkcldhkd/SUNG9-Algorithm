@@ -9,6 +9,8 @@
  Day1
  print(Day1.sumOfDigits())
  print(Day1.maxValue())
+ print(Day1.oxQuizScore())
  */
+
 
 

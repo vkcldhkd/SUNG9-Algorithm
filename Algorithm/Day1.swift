@@ -8,7 +8,9 @@
 import Foundation
 
 
-enum Day1 {
+enum Day1 { }
+
+extension Day1 {
     /*
      📅 오늘의 문제 (Day 1-1)
      🧩 문제 이름: 숫자의 합
@@ -32,7 +34,9 @@ enum Day1 {
             .reduce(0, +)
         return (numberLine, sum)
     }
-    
+}
+
+extension Day1 {
     /*
      📅 오늘의 문제 (Day 1-2)
      🧩 문제 이름: 최댓값
@@ -68,5 +72,66 @@ enum Day1 {
         }
         
         return (maxValue, index + 1)
+    }
+}
+
+
+extension Day1 {
+    /*
+     📅 오늘의 문제 (Day 3)
+     🧩 문제 이름: OX퀴즈
+     문제 링크: 백준 8958번 - OX퀴즈
+
+     난이도: 🟢 초급
+
+     주제: 문자열, 반복문, 조건문
+
+     📘 문제 설명
+     OX 퀴즈의 결과가 문자열로 주어짐.
+     O는 정답, X는 오답. O가 연속되면 점수가 누적 증가함.
+
+     O 하나당 1점
+
+     연속된 O는 이전 점수 + 1점 (누적)
+
+     X는 0점, 누적은 초기화됨
+     */
+    
+    static func oxQuizScore() -> (testCaseNum: Int, scoreArray: [Int]) {
+        var scoreArray: [Int] = []
+        let testCaseNum = Int(readLine()!)!
+        var caseArray: [String] = []
+        
+        for _ in 0 ..< testCaseNum {
+            caseArray.append(readLine()!)
+        }
+        
+        
+        caseArray.forEach { caseString in
+            var score = 0
+            
+            let indexCase = caseString
+                .map { String($0) }
+                
+            var accumulatedScore = 0
+            
+            for i in 0 ..< indexCase.count {
+                let currentChar = indexCase[i]
+                
+                if currentChar == "O" {
+                    score += 1
+                    if i > 0 && indexCase[i-1] == "O" {
+                        accumulatedScore += 1
+                        score += accumulatedScore
+                    } else {
+                        accumulatedScore = 0
+                    }
+                }
+            }
+                
+            scoreArray.append(score)
+        }
+
+        return (testCaseNum, scoreArray)
     }
 }
