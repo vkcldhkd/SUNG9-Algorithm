@@ -6,12 +6,9 @@
 //
 
 /*
- Day1-1
-
- let n = Int(readLine()!)!
- let numberString = readLine()!
-
- print(day1_1_sumOfDigits(num: n, readlineString: numberString))
+ Day1
+ print(Day1.sumOfDigits())
+ print(Day1.maxValue())
  */
 
-print(day1_2_maxValue())
+

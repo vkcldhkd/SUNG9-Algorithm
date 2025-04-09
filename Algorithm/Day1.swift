@@ -22,10 +22,15 @@ enum Day1 {
      N개의 숫자가 주어지고, 그 숫자들을 모두 더하는 간단한 문제
      첫째 줄에 숫자의 개수 N (1 ≤ N ≤ 100)이 주어진다. 둘째 줄에 숫자 N개가 공백없이 주어진다.
      */
-    static func sumOfDigits(from numberString: String) -> Int {
-        return numberString
+    static func sumOfDigits() -> (numberLine: Int, sumValue: Int) {
+        let numberLine = Int(readLine()!)!
+        let numberString = readLine()!
+        
+        
+        let sum = numberString
             .compactMap { Int(String($0)) }
             .reduce(0, +)
+        return (numberLine, sum)
     }
     
     /*
