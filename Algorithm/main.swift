@@ -20,6 +20,7 @@
  print(Day2.compareReversedNumbers())
  print(Day2.wordCount())
  print(Day2.calculateArea())
+ print(Day2.findMaxInMatrix())
  */
 
 

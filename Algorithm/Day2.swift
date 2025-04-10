@@ -185,3 +185,67 @@ extension Day2 {
             .reduce(0, +)
     }
 }
+
+extension Day2 {
+    /*
+     📅 오늘의 문제 (Day 2-6)
+     🧩 문제 이름: 최댓값
+     문제 링크: 백준 2566번 - 최댓값
+
+     난이도: 🟡 보통
+
+     주제: 2차원 배열, 조건문, 위치 추적
+
+     📘 문제 설명
+     9x9 크기의 표에 자연수들이 입력으로 주어진다.
+     이 중 가장 큰 값을 찾고, 그 값의 **행과 열 위치(1-based index)**를 출력하는 문제
+
+     ✅ 입력 형식
+     9줄에 걸쳐 각 줄마다 9개의 정수가 주어짐
+     총 81개 숫자 입력됨
+
+     ✅ 출력 형식
+     최댓값
+     최댓값이 위치한 행 번호와 열 번호 (모두 1부터 시작)
+     
+     ex)
+     3 23 85 34 17 74 25 52 65
+     10 7 39 42 88 52 14 72 63
+     87 42 18 78 53 45 18 84 53
+     34 28 64 85 12 16 75 36 55
+     21 77 45 35 28 75 90 76 1
+     25 87 65 15 28 11 37 28 74
+     65 27 75 41 7 89 78 64 39
+     47 47 70 45 23 65 3 41 44
+     87 13 82 38 31 12 29 29 80
+     */
+    
+    
+    static func findMaxInMatrix() -> (value: Int, (row: Int, col: Int)) {
+        let lineNum = 9
+        var inputs: [[Int]] = []
+        for _ in 0 ..< lineNum {
+            let input = readLine()!
+                .split(separator: " ")
+                .compactMap { Int($0) }
+            inputs.append(input)
+        }
+        guard inputs.count == lineNum else { return (0, (0,0)) }
+        
+        var row: Int = 0
+        var col: Int = 0
+        
+        guard let maxValue = inputs.compactMap ({ $0.max() }).max() else { return (0, (0,0)) }
+        
+        for i in 0 ..< inputs.count {
+            for j in 0 ..< inputs[i].count {
+                if inputs[i][j] == maxValue {
+                    row = i + 1
+                    col = j + 1
+                }
+            }
+        }
+        
+        return (maxValue, (row, col))
+    }
+}
