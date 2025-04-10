@@ -13,4 +13,15 @@
  */
 
 
+/*
+ Day2
+ print(Day2.normalizedAverageScore())
+ print(Day2.mostFrequentAlphabet())
+ print(Day2.compareReversedNumbers())
+ print(Day2.wordCount())
+ print(Day2.calculateArea())
+ */
+
+
+
 
