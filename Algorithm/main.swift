@@ -21,6 +21,7 @@
  print(Day2.wordCount())
  print(Day2.calculateArea())
  print(Day2.findMaxInMatrix())
+ print(Day2.sortMembersByAge())
  */
 
 

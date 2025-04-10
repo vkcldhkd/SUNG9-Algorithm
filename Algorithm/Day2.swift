@@ -249,3 +249,52 @@ extension Day2 {
         return (maxValue, (row, col))
     }
 }
+
+
+extension Day2 {
+    /*
+     📅 오늘의 문제 (Day 2-7)
+     🧩 문제 이름: 나이순 정렬
+     문제 링크: 백준 10814번 - 나이순 정렬
+
+     난이도: 🟡 보통
+
+     주제: 정렬, 안정 정렬(Stable Sort)
+
+     📘 문제 설명
+     회원 정보를 나이순으로 정렬하되,
+     나이가 같으면 먼저 가입한 사람이 앞에 오도록 정렬하는 문제
+
+     ✅ 입력 형식
+     첫 줄: 회원 수 N (1 ≤ N ≤ 100,000)
+     다음 N줄: "나이 이름" 형식의 문자열
+
+     ✅ 출력 형식
+     나이 이름을 정렬한 순서대로 출력
+     (나이는 숫자, 이름은 공백 없는 문자열)
+     
+     ex)
+     3
+     21 Junkyu
+     21 Dohyun
+     20 Sunyoung
+     */
+    
+    static func sortMembersByAge() -> [(age: Int, name: String)] {
+        let defaultValue = [(0,"")]
+        guard let peopleNumber = Int(readLine()!) else { return defaultValue }
+        var inputs: [(age: Int, name: String)] = []
+        for _ in 0 ..< peopleNumber {
+            let input = readLine()!
+            let inputSplit = input.split(separator: " ")
+            guard let age = inputSplit.first,
+                  let ageToInt = Int(age) else { return defaultValue }
+            
+            guard let name = inputSplit.last else { return defaultValue }
+            
+            inputs.append((ageToInt, String(name)))
+        }
+        inputs = inputs.sorted(by: { $0.age < $1.age })
+        return inputs
+    }
+}
