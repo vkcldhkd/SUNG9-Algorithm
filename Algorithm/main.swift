@@ -24,6 +24,12 @@
  print(Day2.sortMembersByAge())
  */
 
+/*
+ Day3
+ print(Day3.countCroatianAlphabets())
+ */
+
+print(Day3.sortUniqueWords())
 
 
 
