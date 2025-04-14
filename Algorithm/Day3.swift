@@ -121,3 +121,57 @@ extension Day3 {
         }
     }
 }
+
+
+extension Day3 {
+    /*
+     ✅ 오늘의 문제 (Day 3-3)
+     🧩 문제 이름: 블랙잭
+     🔗 백준 2798번 문제 링크
+
+     ✨ 문제 설명
+     N장의 카드 중에서 3장을 골라 합을 구한다.
+     합이 M을 넘지 않으면서, M에 최대한 가까운 합을 출력하라.
+
+     📥 입력 형식
+     첫 줄: 카드 개수 N (3 ≤ N ≤ 100), 목표값 M (10 ≤ M ≤ 300,000)
+
+     둘째 줄: 카드에 적힌 수 N개 (1 ≤ 각 수 ≤ 100,000)
+
+     📤 출력 형식
+     M을 넘지 않는 3장 조합의 최대 합
+
+     📌 예시 입력
+     5 21
+     5 6 7 8 9
+     📌 예시 출력
+     21
+     가능한 조합들 중, 5 + 7 + 9 = 21이 가장 M에 가까움
+     */
+    
+    static func findBestBlackjack() -> Int {
+        let input = readLine()!.split(separator: " ")
+        let cardCount = Int(input.first!)!
+        let target = Int(input.last!)!
+        
+        let cards = readLine()!
+            .split(separator: " ")
+            .compactMap { Int($0) }
+
+        var bestSum = 0
+
+        for i in 0 ..< cardCount {
+            for j in i+1 ..< cardCount {
+                for k in j+1 ..< cardCount {
+                    let total = cards[i] + cards[j] + cards[k]
+                    if total <= target {
+                        bestSum = max(bestSum, total)
+                    }
+                }
+            }
+        }
+
+        return bestSum
+    }
+
+}
