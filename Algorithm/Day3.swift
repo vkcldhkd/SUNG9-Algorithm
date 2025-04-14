@@ -175,3 +175,69 @@ extension Day3 {
     }
 
 }
+
+
+extension Day3 {
+    /*
+     ✅ 오늘의 문제 (Day 3-4)
+     🧩 문제 이름: 상하좌우 (좌표 시뮬레이션)
+     📘 문제 설명은 [프로그래머스 강의 예제 기반]
+
+     ✨ 문제 설명
+     N×N 크기의 정사각형 공간이 있다.
+     (1, 1)에서 시작하여 주어진 이동 명령에 따라 위치를 이동한 후
+     최종 좌표를 출력하라.
+
+     📥 입력 형식
+     첫 줄: 공간의 크기 N (1 ≤ N ≤ 100)
+
+     둘째 줄: 이동 계획서 (L, R, U, D로 구성된 문자열, 최대 100개)
+
+     📤 출력 형식
+     이동이 끝난 후 도착 지점의 좌표 (x, y)를 출력
+     (1-based 좌표, 공백 구분)
+
+     📌 이동 조건
+     L : 왼쪽으로 한 칸 (y - 1)
+
+     R : 오른쪽으로 한 칸 (y + 1)
+
+     U : 위로 한 칸 (x - 1)
+
+     D : 아래로 한 칸 (x + 1)
+
+     단, 공간 밖으로 나가는 이동은 무시한다
+
+     📌 예시 입력
+     5
+     R R R U D D
+     📌 예시 출력
+     3 4
+     */
+    
+    static func movePositionInGrid() -> (x: Int, y: Int) {
+        let defaultPosition: (x: Int, y: Int) = (1, 1)
+        
+        guard let space = Int(readLine()!),
+              space >= 1, space <= 100 else { return defaultPosition }
+        
+        let moveCommand = readLine()!
+            .split(separator: " ")
+            .map { $0.uppercased() }
+        guard moveCommand.count <= 100 else { return defaultPosition }
+        
+        var movePosition: (x: Int, y: Int) = (1, 1)
+        
+        moveCommand.forEach { command in
+            
+            switch command {
+            case "L": movePosition.y = max(movePosition.y - 1, 1)
+            case "R": movePosition.y = min(movePosition.y + 1, space)
+            case "U": movePosition.x = max(movePosition.x - 1, 1)
+            case "D": movePosition.x = min(movePosition.x + 1, space)
+            default: print("알수없는 문자열")
+            }
+        }
+        return movePosition
+    }
+}
