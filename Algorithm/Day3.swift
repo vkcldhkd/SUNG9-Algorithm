@@ -241,3 +241,40 @@ extension Day3 {
         return movePosition
     }
 }
+
+extension Day3 {
+    /*
+     ✅ 오늘의 문제 (Day 3-5)
+     🧩 문제 이름: 소트인사이드
+     🔗 백준 1427번 문제 링크
+
+     ✨ 문제 설명
+     숫자 N이 주어진다. 이 숫자를 내림차순으로 정렬한 결과를 출력하라.
+     단, 숫자의 각 자릿수를 기준으로 정렬한다.
+
+     📥 입력 형식
+     정수 N (1 ≤ N ≤ 1,000,000,000)
+
+     자릿수는 최대 10자리
+
+     📤 출력 형식
+     N의 각 자릿수를 내림차순으로 정렬한 숫자를 출력
+
+     📌 예시 입력
+     2143
+     📌 예시 출력
+     4321
+     */
+    static func sortDigitsDescending() -> String {
+        let input = readLine()!
+        
+        guard let inputToInt = Int(input),
+              inputToInt <= 10000000000 else { return "Invalid input" }
+        
+        let inputToArray = input
+            .compactMap { Int(String($0)) }
+            .sorted(by: { $0 > $1 })
+
+        return inputToArray.map { String($0) }.joined()
+    }
+}

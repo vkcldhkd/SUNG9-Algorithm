@@ -29,9 +29,11 @@
  print(Day3.countCroatianAlphabets())
  print(Day3.sortUniqueWords())
  print(Day3.findBestBlackjack())
+ print(Day3.movePositionInGrid())
  */
 
-print(Day3.movePositionInGrid())
+
+print(Day3.sortDigitsDescending())
 
 
 
