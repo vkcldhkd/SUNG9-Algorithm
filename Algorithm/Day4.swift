@@ -55,3 +55,81 @@ extension Day4 {
         return result
     }
 }
+
+extension Day4 {
+    /*
+     🧩 문제: 신규 아이디 추천 (카카오 기출 변형)
+     ✅ 설명
+     아이디 입력값이 주어질 때, 아래 조건에 맞게 아이디를 추천해주는 로직을 작성하시오.
+
+     ✅ 처리 조건 (순서대로 적용해야 함)
+     1) 모든 대문자를 소문자로 변환
+     2) 알파벳 소문자, 숫자, -, _, . 만 허용.
+     → 그 외 문자는 제거
+     3) .이 2번 이상 연속되면 하나로 치환
+     4) .이 처음이나 끝에 있다면 제거
+     5) 빈 문자열이라면 "a"를 대입
+     6) 길이가 16자 이상이면, 첫 15자만 남기고 나머지 제거
+     → 끝에 .이 남으면 제거
+     7) 길이가 2자 이하라면, 마지막 문자를 반복해서 3자가 될 때까지 붙임
+
+     ✅ 입력 예시
+     let id = "...User__Name--..!!"
+     ✅ 출력 예시
+     "user.name"
+     */
+    
+    static func recommendID() -> String {
+        var result: String = readLine()!
+        
+        // MARK: - 1
+        result = result.lowercased()
+        
+        // MARK: - 2
+        result = result.replacingOccurrences(
+            of: "[^0-9a-z-_.]",
+            with: "",
+            options: .regularExpression
+        )
+
+        
+        // MARK: - 3
+        while result.contains("..") {
+            if !result.contains("..") { break }
+            result = result.replacingOccurrences(of: "..", with: ".")
+        }
+        
+        
+        // MARK: - 4
+        if result.hasPrefix(".") {
+            result.remove(at: result.startIndex)
+        }
+        
+        if result.hasSuffix(".") {
+            result.removeLast()
+        }
+        
+        // MARK: - 5
+        if result.isEmpty {
+            result = "a"
+        }
+        
+        // MARK: - 6
+        if result.count >= 16 {
+            result = String(result.prefix(15))
+            if result.hasSuffix(".") {
+                result.removeLast()
+            }
+        }
+        
+        // MARK: - 7
+        if result.count <= 2 {
+            let count = result.count
+            for _ in 0 ..< (3 - count) {
+                result += String(result.last!)
+            }
+        }
+        
+        return result
+    }
+}

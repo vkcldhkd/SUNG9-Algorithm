@@ -35,6 +35,7 @@
 
 /*
  Day4
+ print(Day4.convertToDigit())
  */
 
-print(Day4.convertToDigit())
+print(Day4.recommendID())
