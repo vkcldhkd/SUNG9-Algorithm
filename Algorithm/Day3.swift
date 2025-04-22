@@ -278,3 +278,70 @@ extension Day3 {
         return inputToArray.map { String($0) }.joined()
     }
 }
+
+
+extension Day3 {
+    /*
+     ✅ 오늘의 문제 (Day 3-6)
+     🧩 문제 이름: 그룹 단어 체커
+     🔗 백준 1316번 문제 링크
+
+     ✨ 문제 설명
+     단어 N개가 주어진다.
+     그 중 **"그룹 단어"**의 개수를 세어라.
+
+     "그룹 단어"란 각 문자가 연속해서 나오는 경우만 허용되는 단어이다.
+
+     즉, 문자가 떨어져서 다시 등장하면 그룹 단어가 아님.
+
+     📥 입력 형식
+     첫 줄: 단어의 개수 N (1 ≤ N ≤ 100)
+     다음 N줄: 알파벳 소문자로 된 단어 (1 ≤ 길이 ≤ 100)
+
+     📤 출력 형식
+     그룹 단어의 개수 출력
+
+     📌 예시 입력
+     3
+     happy
+     new
+     year
+     📌 예시 출력
+     3
+     📌 예시 입력 2
+     4
+     aba
+     abab
+     abcabc
+     a
+     📌 예시 출력 2
+     1
+     'aba', 'abab', 'abcabc'는 'a'와 'b'가 중간에 끊겼다가 다시 나와서 그룹 단어 아님
+     'a'만 그룹 단어
+     */
+    static func countGroupWords() -> Int {
+        let wordCount = Int(readLine()!)!
+        var words:[String] = []
+        var groupWordCount: Int = 0
+        
+        for _ in 0 ..< wordCount {
+            words.append(readLine()!)
+        }
+        
+        words.forEach { word in
+            var previousString: String = ""
+            
+            if word.count == 1 {
+                groupWordCount += 1
+            } else {
+                word.map { String($0) }
+                    .forEach { char in
+                        if !previousString.contains(char) {
+                            previousString.append(char)
+                        }
+                    }
+            }
+        }
+        return  0
+    }
+}

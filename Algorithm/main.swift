@@ -30,10 +30,11 @@
  print(Day3.sortUniqueWords())
  print(Day3.findBestBlackjack())
  print(Day3.movePositionInGrid())
+ print(Day3.sortDigitsDescending())
  */
 
+/*
+ Day4
+ */
 
-print(Day3.sortDigitsDescending())
-
-
-
+print(Day4.convertToDigit())
