@@ -39,6 +39,7 @@
  print(Day4.recommendID())
  print(Day4.mostFrequentCharacter())
  print(Day4.extractAndSortNumbers())
+ print(Day4.removeDuplicatesAndSort())
  */
 
-print(Day4.removeDuplicatesAndSort())
+print(Day4.isPalindrome())

@@ -254,3 +254,55 @@ extension Day4 {
         
     }
 }
+
+
+extension Day4 {
+    /*
+     🧩 문제: 팰린드롬인지 확인하기
+     ✅ 설명
+     문자열이 주어졌을 때,
+     앞에서 읽으나 뒤에서 읽으나 같은지 확인하는 함수를 작성하시오.
+     (이걸 팰린드롬이라고 해)
+
+     ✅ 조건
+     - 대소문자 구분 없이 비교
+     - 알파벳과 숫자만 고려 (기호, 공백은 무시)
+     
+     ✅ 예시 1
+     let input = "A man, a plan, a canal: Panama"
+     → 출력: true
+     → 이유: amanaplanacanalpanama → 앞뒤 동일
+     
+     count: 21
+     center char: c (11)
+     
+     ✅ 예시 2
+     let input = "race a car"
+     → 출력: false
+     */
+    
+    static func isPalindrome() -> Bool {
+        let input = readLine()!
+        
+        if input.isEmpty { return true }
+        
+        var result = input
+            .lowercased()
+            .replacingOccurrences(
+            of: "[^0-9a-z]",
+            with: "",
+            options: .regularExpression
+        )
+        
+        while result.count > 1 {
+            if result.first == result.last {
+                result.removeFirst()
+                result.removeLast()
+            } else {
+                break
+            }
+        }
+        
+        return result.count <= 1
+    }
+}
