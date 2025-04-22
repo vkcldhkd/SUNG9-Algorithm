@@ -36,6 +36,8 @@
 /*
  Day4
  print(Day4.convertToDigit())
+ print(Day4.recommendID())
  */
 
-print(Day4.recommendID())
+print(Day4.mostFrequentCharacter())
+

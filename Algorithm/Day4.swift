@@ -133,3 +133,50 @@ extension Day4 {
         return result
     }
 }
+
+
+extension Day4 {
+    /*
+     🧩 문제: 가장 많이 등장한 문자 찾기
+     ✅ 설명
+     영어 소문자로만 이루어진 문자열이 주어졌을 때,
+     가장 많이 등장한 문자를 찾아 반환하세요.
+     (동점이 있을 경우, 알파벳 순으로 앞선 문자를 반환)
+
+     ✅ 입력 예시
+     let input = "helloapplebanana"
+     
+     ✅ 출력 예시
+     a
+     
+     "a": 4번 등장
+     "l": 3번 등장
+     "e": 2번 등장 …
+     */
+    
+    static func mostFrequentCharacter() -> String {
+        let input: String = readLine()!
+        
+        let charArray = input
+            .map { $0 }
+            .sorted()
+        
+        var countDict: [String: Int] = [:]
+        
+        Set(charArray).forEach { char in
+            let count = charArray.filter { $0 == char }.count
+            countDict[String(char)] = count
+        }
+        /*
+         아래의 코드로 더 간단하게 개선 가능
+         for char in input {
+             countDict[char, default: 0] += 1
+         }
+         */
+        
+        return countDict
+            .sorted { $0.value > $1.value || ($0.value == $1.value && $0.key < $1.key) }
+            .first!
+            .key
+    }
+}
