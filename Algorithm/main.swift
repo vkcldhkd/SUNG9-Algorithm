@@ -46,7 +46,8 @@
 
 /*
  Day5
+ print(Day5.canFormPalindrome())
  */
 
+print(Day5.longestPalindromeSubstring())
 
-print(Day5.canFormPalindrome())

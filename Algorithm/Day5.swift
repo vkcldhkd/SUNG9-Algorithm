@@ -37,10 +37,6 @@ extension Day5 {
      → 결과: `false`
      */
     static func canFormPalindrome() -> Bool {
-        func isPalindrome(_ s: String) -> Bool {
-            return s == String(s.reversed())
-        }
-        
         let a: String = readLine()!.lowercased()
         let b: String = readLine()!.lowercased()
         
@@ -57,6 +53,50 @@ extension Day5 {
                 
         return false
     }
+}
+
+extension Day5 {
+    /*
+     🧩 문제: 가장 긴 팰린드롬 부분 문자열 찾기
+     ✅ 설명
+     주어진 문자열 안에서
+     가장 긴 팰린드롬 부분 문자열을 찾아서 반환하세요.
+     
+     ✅ 예시
+     입력 1
+     "babad"
+     → 출력: "bab" 또는 "aba" (둘 다 정답)
+
+     입력 2
+     "cbbd"
+     → 출력: "bb"
+
+     입력 3
+     "abcd"
+     → 출력: "a" (길이 1짜리 중 아무거나)
+     */
     
+    static func longestPalindromeSubstring() -> String {
+        
+        let input: String = readLine()!
+        let inputToArray: [String] = input.map { String($0) }
+        var resultPalindrome: String = ""
+        
+        for i in 0 ..< inputToArray.count {
+            for j in i ..< inputToArray.count {
+                let temp = inputToArray[i...j]
+                let joinedString = temp.joined()
+                if isPalindrome(joinedString) && resultPalindrome.count < joinedString.count {
+                    resultPalindrome = joinedString
+                }
+            }
+        }
+        
+        
+        return resultPalindrome
+    }
     
+    static func isPalindrome(_ s: String) -> Bool {
+        return s == String(s.reversed())
+    }
 }
