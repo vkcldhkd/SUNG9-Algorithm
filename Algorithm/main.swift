@@ -47,7 +47,11 @@
 /*
  Day5
  print(Day5.canFormPalindrome())
+ print(Day5.longestPalindromeSubstring())
  */
 
-print(Day5.longestPalindromeSubstring())
+print(Day5.longestCommonPrefix(strings: ["interstellar", "internet", "interval"]))
+print(Day5.longestCommonPrefix(strings: ["dog", "racecar", "car"]))
+print(Day5.longestCommonPrefix(strings: ["flower", "flow", "flight"]))
+
 

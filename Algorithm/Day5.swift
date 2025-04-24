@@ -100,3 +100,49 @@ extension Day5 {
         return s == String(s.reversed())
     }
 }
+
+extension Day5 {
+    /*
+     🧩 문제: 가장 긴 공통 접두사 찾기 (Longest Common Prefix)
+     ✅ 설명
+     여러 개의 문자열이 주어질 때,
+     모든 문자열이 공통으로 가지고 있는 가장 긴 접두사를 찾아 반환하세요.
+     
+     ✅ 예시
+     입력 1
+     swift
+     복사
+     편집
+     ["flower", "flow", "flight"]
+     → 출력: "fl"
+
+     입력 2
+     swift
+     복사
+     편집
+     ["dog", "racecar", "car"]
+     → 출력: "" (공통 접두사 없음)
+
+     입력 3
+     swift
+     복사
+     편집
+     ["interstellar", "internet", "interval"]
+     → 출력: "inte"
+     */
+    
+    static func longestCommonPrefix(strings: [String]) -> String {
+        let firstString = strings.first!
+        let firstStringToArray = firstString.map { $0 }
+        
+        var result: String = ""
+        
+        for i in 0 ..< firstString.count {
+            let prefix = String(firstStringToArray[0...i])
+            if strings.filter ({ $0.hasPrefix(prefix) }).count == strings.count && result.count < prefix.count {
+                result = prefix
+            }
+        }
+        return result
+    }
+}
