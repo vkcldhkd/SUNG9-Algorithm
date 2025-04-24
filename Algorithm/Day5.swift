@@ -110,23 +110,14 @@ extension Day5 {
      
      ✅ 예시
      입력 1
-     swift
-     복사
-     편집
      ["flower", "flow", "flight"]
      → 출력: "fl"
 
      입력 2
-     swift
-     복사
-     편집
      ["dog", "racecar", "car"]
      → 출력: "" (공통 접두사 없음)
 
      입력 3
-     swift
-     복사
-     편집
      ["interstellar", "internet", "interval"]
      → 출력: "inte"
      */
@@ -160,9 +151,6 @@ extension Day5 {
      예: "eat" / "tea" / "ate" → 전부 애너그램
 
      ✅ 예시
-     swift
-     복사
-     편집
      Input: ["eat", "tea", "tan", "ate", "nat", "bat"]
 
      Output: [["eat", "tea", "ate"], ["tan", "nat"], ["bat"]]
@@ -183,3 +171,51 @@ extension Day5 {
         return result.map { $0.value }
     }
 }
+
+
+extension Day5 {
+    /*
+     🧩 문제: 가장 긴 부분 문자열 (Longest Substring Without Repeating Characters)
+     ✅ 설명
+     문자열 s가 주어졌을 때,
+     중복 문자가 없는 가장 긴 부분 문자열의 길이를 반환하세요.
+
+     ✅ 예시
+     입력 1
+     "abcabcbb"
+     → 출력: 3 ("abc")
+
+     입력 2
+     "bbbbb"
+     → 출력: 1 ("b")
+
+     입력 3
+     "pwwkew"
+     → 출력: 3 ("wke" 또는 "kew")
+
+     입력 4
+     ""
+     → 출력: 0
+     */
+    
+    static func lengthOfLongestSubstring() -> Int {
+        let input = readLine()!
+        
+        var seen: [Character: Int] = [:]
+        var start = 0
+        var maxLength = 0
+        
+        for (i, c) in input.enumerated() {
+            if let lastSeenIndex = seen[c],
+               lastSeenIndex >= start {
+                start = lastSeenIndex + 1
+            }
+            seen[c] = i
+            
+            maxLength = max(maxLength, i - start + 1)
+        }
+        
+        return maxLength
+    }
+}
+
