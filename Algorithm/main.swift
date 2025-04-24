@@ -41,8 +41,12 @@
  print(Day4.extractAndSortNumbers())
  print(Day4.removeDuplicatesAndSort())
  print(Day4.isPalindrome())
+ print(Day4.isMultipleOfThree())
+ */
+
+/*
+ Day5
  */
 
 
-print(Day4.isMultipleOfThree())
-
+print(Day5.canFormPalindrome())
