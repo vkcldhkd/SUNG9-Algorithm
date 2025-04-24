@@ -146,3 +146,40 @@ extension Day5 {
         return result
     }
 }
+
+
+extension Day5 {
+    /*
+     🧩 문제: 애너그램 그룹 만들기
+     ✅ 설명
+     문자열 배열이 주어졌을 때,
+     서로 애너그램인 문자열들끼리 묶어서 그룹화된 결과를 반환하세요.
+     
+     ✅ 애너그램이란?
+     애너그램은 문자들의 구성은 같지만 순서만 다른 문자열
+     예: "eat" / "tea" / "ate" → 전부 애너그램
+
+     ✅ 예시
+     swift
+     복사
+     편집
+     Input: ["eat", "tea", "tan", "ate", "nat", "bat"]
+
+     Output: [["eat", "tea", "ate"], ["tan", "nat"], ["bat"]]
+     순서는 상관 없음 (정렬은 안 해도 됨)
+     */
+    static func groupAnagrams(strings: [String]) -> [[String]] {
+        let temp = strings
+            .map { [$0: String($0.sorted()) ]}
+        
+        var result: [String: [String]] = [:]
+        
+        temp.forEach { kv in
+            kv.forEach { (key, value) in
+                result[value, default: []].append(key)
+            }
+        }
+        
+        return result.map { $0.value }
+    }
+}
