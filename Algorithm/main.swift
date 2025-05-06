@@ -52,9 +52,16 @@
  print(Day5.longestCommonPrefix(strings: ["dog", "racecar", "car"]))
  print(Day5.longestCommonPrefix(strings: ["flower", "flow", "flight"]))
  print(Day5.groupAnagrams(strings: ["eat", "tea", "tan", "ate", "nat", "bat"]))
+ print(Day5.lengthOfLongestSubstring())
+ print(Day5.minWindow())
  */
 
 
-print(Day5.lengthOfLongestSubstring())
+/*
+ Day 6
+ */
+
+print(Day6.fibonacci())
+
 
 

@@ -219,3 +219,66 @@ extension Day5 {
     }
 }
 
+extension Day5 {
+    /*
+     🧩 문제: 중복 문자 없는 가장 짧은 윈도우 (Minimum Window Substring)
+     ✅ 설명
+     두 문자열 s, t가 주어졌을 때,
+     s 안에서 t의 모든 문자를 포함하는 가장 짧은 부분 문자열을 찾아 반환하세요.
+     
+     ✅ 예시
+     입력 1
+     s = "ADOBECODEBANC", t = "ABC"
+     → 출력: "BANC"
+     
+     입력 2
+     s = "a", t = "a"
+     → 출력: "a"
+     
+     입력 3
+     s = "a", t = "aa"
+     → 출력: ""
+     테스트케이스 통과XXXX!! 수정필요
+     */
+    
+    static func minWindow() -> String {
+        func createWord(char: String, count: Int) -> String {
+            return String(repeating: char, count: count)
+        }
+        
+        func checkWord(word: String, tItems: [String]) -> Bool {
+            var check: [Bool] = []
+            tItems.forEach { item in
+                if word.contains(item) {
+                    check.append(true)
+                }
+            }
+            return check.count == tItems.count
+        }
+        
+        let s: String = readLine()!
+        let sArray = Array(s)
+        let t: String = readLine()!
+        
+        guard !t.isEmpty else { return "" }
+        guard t.count <= s.count else { return "" }
+        var windowArray: [String] = []
+        
+        var tCount: [String: Int] = [:]
+        for tChar in t {
+            tCount[String(tChar), default: 0] += 1
+        }
+        let tItems = tCount.map { createWord(char: $0.key, count: $0.value) }
+        
+        for i in 0 ..< s.count {
+            let window = String(sArray[i...s.count - 1 ])
+            if checkWord(word: window, tItems: tItems) {
+                windowArray.append(window)
+            }
+        }
+        
+        return windowArray
+            .sorted { $0.count < $1.count }
+            .first ?? ""
+    }
+}
