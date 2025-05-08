@@ -66,21 +66,23 @@
 
 /*
  Day 7
+ let log1: [String] = [
+     "dig1 8 1 5 1",
+     "let1 art can",
+     "dig2 3 6",
+     "let2 own kit dig",
+     "let3 art zero"
+ ]
+
+ let log2: [String] = [
+     "let1 art can",
+     "let2 art zero",
+     "let3 art apple"
+    ]
+
+ print(Day7.sortLogsByRule(logs: log1))
+ print(Day7.sortLogsByRule(logs: log2))
  */
 
-let log1: [String] = [
-    "dig1 8 1 5 1",
-    "let1 art can",
-    "dig2 3 6",
-    "let2 own kit dig",
-    "let3 art zero"
-]
 
-let log2: [String] = [
-    "let1 art can",
-    "let2 art zero",
-    "let3 art apple"
-   ]
-
-print(Day7.sortLogsByRule(logs: log1))
-print(Day7.sortLogsByRule(logs: log2))
+print(Day7.validPalindrome())
