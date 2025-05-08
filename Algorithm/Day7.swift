@@ -154,3 +154,45 @@ extension Day7 {
 //        return input.count <= 1 && removeCount <= 1
     }
 }
+
+
+extension Day7 {
+    /*
+     ✅ 문제: 가장 흔한 단어 (Most Common Word)
+     ❓문제 설명
+     문자열 paragraph가 주어지고,
+     문장에 등장한 단어 중에서 가장 많이 나온 단어를 찾아라.
+     단, **금지된 단어 목록 (banned)**은 제외하고 찾아야 한다.
+
+     📥 입력 예시
+     paragraph = "Bob hit a ball, the hit BALL flew far after it was hit."
+     banned = ["hit"]
+     📤 출력 예시
+     "ball"
+     "hit"은 3번 등장하지만 금지어라 제외되고
+     "ball"은 2번 등장 → 가장 흔한 단어가 됨
+
+     🔧 조건
+     대소문자는 무시 (전부 소문자로 바꿔야 함)
+     문장 부호(쉼표, 마침표 등)는 모두 무시
+     단어 단위는 공백 또는 구두점으로 분리
+     빈도 수가 같은 경우는 아무거나 반환해도 OK
+     */
+    static func mostCommonWord(paragraph: String, banned: [String]) -> String {
+        let resultParagraph = paragraph
+            .lowercased()
+            .replacingOccurrences(of: "[^a-zA-Z ]", with: "", options: .regularExpression)
+            .components(separatedBy: " ")
+            .filter { !$0.isEmpty }
+        
+        var countDict: [String: Int] = [:]
+        for word in resultParagraph {
+            if banned.filter ({ $0 == word }).count == 0 {
+                countDict[word, default: 0] += 1
+            }
+        }
+        
+        print("countDict: \(countDict)")
+        return countDict.sorted { $0.value > $1.value}.first?.key ?? ""
+    }
+}
