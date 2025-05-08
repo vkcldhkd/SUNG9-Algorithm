@@ -59,9 +59,11 @@
 
 /*
  Day 6
+ print(Day6.fibonacci())
  */
 
-print(Day6.fibonacci())
+print(Day6.createMaxNumber(array: [3, 30, 34, 5, 9]))
+
 
 
 

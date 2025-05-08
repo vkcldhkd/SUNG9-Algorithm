@@ -54,3 +54,28 @@ extension Day6 {
         return dict[createFName(index: input)] ?? 0
     }
 }
+
+extension Day6 {
+    /*
+     ✅ 문제: 가장 큰 수 만들기
+     정수 배열이 주어졌을 때, 배열의 모든 숫자를 문자열로 이어 붙여 가장 큰 수를 만들어 반환하시오.
+
+     ✳️ 입력 예시
+     [3, 30, 34, 5, 9]
+     ✳️ 출력 예시
+     "9534330"
+     ❗️조건
+     - 숫자는 0 이상 1000 이하
+     - 반환값은 문자열로
+     - 단, 결과가 "000"과 같이 모두 0일 경우 "0"으로 반환
+     */
+    
+    static func createMaxNumber(array: [Int]) -> String {
+        let result = array
+            .map { String($0) }
+            .sorted { $0 + $1 > $1 + $0 }
+            .joined()
+        
+        return result.first == "0" ? "0" : result
+    }
+}
