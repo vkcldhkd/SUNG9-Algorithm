@@ -196,3 +196,59 @@ extension Day7 {
         return countDict.sorted { $0.value > $1.value}.first?.key ?? ""
     }
 }
+
+
+extension Day7 {
+    /*
+     ✅ 문제: 올바른 괄호 (Valid Parentheses)
+     ❓ 문제 설명
+     문자열 s가 주어졌을 때,
+     괄호들이 올바르게 짝지어져 있는지 확인하는 함수를 작성하시오.
+
+     📥 입력 예시
+     s = "()[]{}"
+     📤 출력 예시
+     true
+     ❗️ 조건
+     - s는 (, ), {, }, [, ] 로만 구성되어 있음
+     - 올바른 괄호는 다음과 같은 조건을 만족해야 함
+     - 열리는 괄호는 반드시 닫히는 괄호로 짝지어져야 함
+     - 올바른 순서로 닫혀야 함
+     - 중첩 구조도 허용됨
+     */
+    
+    static func isValidParentheses() -> Bool {
+        let input = readLine()!.map { String($0) }
+        var stackArray: [String] = []
+
+        for str in input {
+            switch str {
+            case "(", "[", "{":
+                stackArray.append(str)
+            case ")":
+                if stackArray.last == "(" {
+                    stackArray.removeLast()
+                } else {
+                    return false
+                }
+            case "]":
+                if stackArray.last == "[" {
+                    stackArray.removeLast()
+                } else {
+                    return false
+                }
+            case "}":
+                if stackArray.last == "{" {
+                    stackArray.removeLast()
+                } else {
+                    return false
+                }
+            default:
+                continue
+            }
+        }
+
+        return stackArray.isEmpty
+    }
+
+}

@@ -83,15 +83,17 @@
  print(Day7.sortLogsByRule(logs: log1))
  print(Day7.sortLogsByRule(logs: log2))
  print(Day7.validPalindrome())
+ print(Day7.mostCommonWord(
+     paragraph: "Bob hit a ball, the hit BALL flew far after it was hit.",
+     banned: ["hit"]
+ ))
+
+ print(Day7.mostCommonWord(
+     paragraph: "Jack and Jill went up the hill to fetch a pail of water.",
+     banned: ["jack", "hill", "pail"]
+ ))
  */
 
-print(Day7.mostCommonWord(
-    paragraph: "Bob hit a ball, the hit BALL flew far after it was hit.",
-    banned: ["hit"]
-))
 
-print(Day7.mostCommonWord(
-    paragraph: "Jack and Jill went up the hill to fetch a pail of water.",
-    banned: ["jack", "hill", "pail"]
-))
 
+print(Day7.isValidParentheses())
