@@ -92,8 +92,15 @@
      paragraph: "Jack and Jill went up the hill to fetch a pail of water.",
      banned: ["jack", "hill", "pail"]
  ))
+ 
+ print(Day7.isValidParentheses())
  */
 
 
 
-print(Day7.isValidParentheses())
+
+print(Day7.evaluatePostfixExpression(["2", "1", "+", "3", "*"])) // 9
+print(Day7.evaluatePostfixExpression(["4", "13", "5", "/", "+"])) // 6
+print(Day7.evaluatePostfixExpression(["3", "4", "+", "2", "*", "7", "/"])) // 2
+print(Day7.evaluatePostfixExpression(["5", "1", "2", "+", "4", "*", "+", "3", "-"])) // 14
+print(Day7.evaluatePostfixExpression(["10", "6", "9", "3", "/", "-", "*"])) // 30

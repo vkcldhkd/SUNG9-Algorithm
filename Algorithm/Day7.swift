@@ -5,6 +5,8 @@
 //  Created by HYUN SUNG on 5/8/25.
 //
 
+import Foundation
+
 enum Day7 { }
 
 extension Day7 {
@@ -249,6 +251,108 @@ extension Day7 {
         }
 
         return stackArray.isEmpty
+    }
+}
+
+
+extension Day7 {
+    /*
+     🧠 문제: 후위 표기식 계산기
+     설명:
+     후위 표기식(Postfix Notation, Reverse Polish Notation)이 주어졌을 때, 그 결과를 계산하는 함수를 작성하시오.
+     예를 들어 "2 1 + 3 *"는 ((2 + 1) * 3) = 9가 됩니다.
+
+     🔧 입력 형식
+     문자열 배열 tokens가 주어집니다.
+     각 요소는 피연산자(정수) 또는 연산자('+', '-', '*', '/') 중 하나입니다.
+     let tokens = ["2", "1", "+", "3", "*"]
+     
+     🎯 출력 형식
+     계산 결과를 Int로 반환하세요.
+     ⛓️ 제약 사항
+     - 나눗셈은 정수 나눗셈이며, 결과의 소수점 이하는 버림 처리합니다.
+     - 피연산자 수는 1 이상 10,000 이하입니다.
+     */
+//    static func evaluatePostfixExpression(_ tokens: [String]) -> Int {
+//        func create(array: [String]) -> String {
+//            var result: String = ""
+//            for i in 0 ..< array.count {
+//                let indexToken = array[i]
+//                let isNumberToken = indexToken.last?.isNumber == true
+//                if isNumberToken {
+//                    result = "(\(result)\(indexToken))"
+//                    
+//                } else {
+//                    result.append("(\(indexToken))")
+//                }
+//            }
+//            return result
+//        }
+//        
+//        var tokens = tokens
+//        var resultArray: [String] = []
+//        
+//        print("tokens: \(tokens)")
+//        while tokens.count > 0 {
+//            if tokens.count == 0 { break }
+//            
+//            if let index = tokens.firstIndex (where: { $0 == "+" || $0 == "-" || $0 == "*" || $0 == "/" }) {
+//                print("index: \(index)")
+//                
+//                let indexString = tokens[index]
+//                tokens[index] = ""
+//                var beforeNumber: String = ""
+//                var afterNumber: String = ""
+//                
+//                if resultArray.count == 0 {
+//                    beforeNumber = tokens[index-2]
+//                    afterNumber = tokens[index-1]
+//                    resultArray.append("\(beforeNumber)\(indexString)\(afterNumber)")
+//                } else {
+//                    beforeNumber = tokens[index-1]
+//                    resultArray.append("\(indexString)\(beforeNumber)")
+//                }
+//                
+//                tokens.removeAll { token in
+//                    return token == "" || token == beforeNumber || token == afterNumber
+//                }
+//                print("removedTokens: \(tokens)")
+//            }
+//            
+//        }
+//        
+//        let createdResult: String = create(array: resultArray)
+//        let exp: NSExpression = NSExpression(format: createdResult)
+//        return exp.expressionValue(with:nil, context: nil) as? Int ?? 0
+//    }
+    static func evaluatePostfixExpression(_ tokens: [String]) -> Int {
+        var stack: [Int] = []
+
+        for token in tokens {
+            switch token {
+            case "+", "-", "*", "/":
+                let b = stack.removeLast()
+                let a = stack.removeLast()
+
+                let result: Int
+                switch token {
+                case "+": result = a + b
+                case "-": result = a - b
+                case "*": result = a * b
+                case "/": result = a / b
+                default: fatalError("Invalid operator")
+                }
+
+                stack.append(result)
+
+            default:
+                if let number = Int(token) {
+                    stack.append(number)
+                }
+            }
+        }
+
+        return stack.last ?? 0
     }
 
 }
