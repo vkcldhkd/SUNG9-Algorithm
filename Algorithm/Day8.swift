@@ -69,5 +69,39 @@ extension Day8 {
 
         return time
     }
+}
 
+extension Day8 {
+    /*
+     🧩 문제: 완주하지 못한 선수
+     설명:
+     마라톤에 참여한 선수들의 명단과 완주한 선수들의 명단이 주어질 때, 완주하지 못한 선수의 이름을 구하라.
+     동명이인이 있을 수 있다.
+     
+     🎯 출력 형식
+     완주하지 못한 선수의 이름을 String으로 반환
+
+     📘 입출력 예시
+     let participant = ["leo", "kiki", "eden"]
+     let completion = ["eden", "kiki"]
+     // 출력: "leo"
+     
+     let participant = ["marina", "josipa", "nikola", "vinko", "filipa"]
+     let completion = ["josipa", "filipa", "marina", "nikola"]
+     // 출력: "vinko"
+     
+     let participant = ["mislav", "stanko", "mislav", "ana"]
+     let completion = ["stanko", "ana", "mislav"]
+     // 출력: "mislav"
+     */
+    
+    static func findIncompleteRunner(
+        participant: [String],
+        completion: [String]
+    ) -> String {
+        var countDict: [String: Int] = [:]
+        participant.forEach { countDict[$0, default: 0] += 1 }
+        completion.forEach { countDict[$0, default: 0] -= 1 }
+        return countDict.filter { $0.value >= 1 }.first?.key ?? ""
+    }
 }
