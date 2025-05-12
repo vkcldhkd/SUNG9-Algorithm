@@ -94,13 +94,20 @@
  ))
  
  print(Day7.isValidParentheses())
+ print(Day7.evaluatePostfixExpression(["2", "1", "+", "3", "*"])) // 9
+ print(Day7.evaluatePostfixExpression(["4", "13", "5", "/", "+"])) // 6
+ print(Day7.evaluatePostfixExpression(["3", "4", "+", "2", "*", "7", "/"])) // 2
+ print(Day7.evaluatePostfixExpression(["5", "1", "2", "+", "4", "*", "+", "3", "-"])) // 14
+ print(Day7.evaluatePostfixExpression(["10", "6", "9", "3", "/", "-", "*"])) // 30
+ */
+
+/*
+ Day8
  */
 
 
+print(Day8.bridgeTruckCrossingTime(bridgeLength: 2, weight: 10, truckWeights: [7, 4, 5, 6])) // 8
+print(Day8.bridgeTruckCrossingTime(bridgeLength: 100, weight: 100, truckWeights: [10])) // 101
+print(Day8.bridgeTruckCrossingTime(bridgeLength: 100, weight: 100, truckWeights: [10, 10, 10, 10, 10, 10, 10, 10, 10, 10])) // 110
 
 
-print(Day7.evaluatePostfixExpression(["2", "1", "+", "3", "*"])) // 9
-print(Day7.evaluatePostfixExpression(["4", "13", "5", "/", "+"])) // 6
-print(Day7.evaluatePostfixExpression(["3", "4", "+", "2", "*", "7", "/"])) // 2
-print(Day7.evaluatePostfixExpression(["5", "1", "2", "+", "4", "*", "+", "3", "-"])) // 14
-print(Day7.evaluatePostfixExpression(["10", "6", "9", "3", "/", "-", "*"])) // 30
