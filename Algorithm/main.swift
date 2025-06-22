@@ -142,16 +142,17 @@
  print(Day9.longestPalindrome(input: "abccba")) // abccba
  print(Day9.longestPalindrome(input: "racecarxyz")) // racecar
  print(Day9.longestPalindrome(input: "xyzracecar")) // racecar
+ print(Day9.groupAnagrams(["bat", "tab", "cat", "act", "tac", "rat"]))
+ /*
+  [
+    ["bat", "tab"],
+    ["cat", "act", "tac"],
+    ["rat"]
+  ]
+  */
  */
 
-
-
-
-print(Day9.groupAnagrams(["bat", "tab", "cat", "act", "tac", "rat"]))
-/*
- [
-   ["bat", "tab"],
-   ["cat", "act", "tac"],
-   ["rat"]
- ]
- */
+print(Day9.compress("aaabbccccd")) // a3b2c4d
+print(Day9.compress("abcd")) // abcd
+print(Day9.compress("aabbcc")) // a2b2c2
+print(Day9.compress("aaa")) // a3

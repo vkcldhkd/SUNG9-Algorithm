@@ -234,5 +234,57 @@ extension Day9 {
         }
         return result.map { $0.value }
     }
+    
+    /*
+     ✅ 문제: 문자열 압축 (Run-Length Encoding)
+     🧾 설명
+     문자열 s가 주어졌을 때,
+     연속된 같은 문자를 하나로 압축하면서 그 횟수를 붙인 문자열을 리턴하시오.
+     단, 한 번만 등장한 문자는 숫자를 생략합니다.
+
+     🧠 예시
+     Input: "aaabbccccd"
+     Output: "a3b2c4d"
+    
+     Input: "abcd"
+     Output: "abcd"
+     
+     Input: "aabbcc"
+     Output: "a2b2c2"
+
+     Input: "aaa"
+     Output: "a3"
+     */
+    
+    static func compress(_ input: String) -> String {
+        func createString(
+            previousChar: Character,
+            count: Int
+        ) -> String {
+            let count: String = count > 1 ? "\(count)" : ""
+            return "\(previousChar)\(count)"
+        }
+        
+        guard !input.isEmpty else { return "" }
+
+        var result: [String] = []
+        var count = 0
+        var previousChar: Character = input.first!
+
+        for char in input {
+            if char == previousChar {
+                count += 1
+            } else {
+                result.append(createString(previousChar: previousChar, count: count))
+                previousChar = char
+                count = 1
+            }
+        }
+
+        // 마지막 문자 처리
+        result.append(createString(previousChar: previousChar, count: count))
+
+        return result.joined()
+    }
 }
 
