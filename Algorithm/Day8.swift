@@ -159,6 +159,7 @@ extension Day8 {
         requests: [Int],
         total: Int
     ) -> Int {
-        return 0 
+        
+        return 0
     }
 }

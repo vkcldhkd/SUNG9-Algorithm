@@ -109,13 +109,30 @@
  print(Day8.findIncompleteRunner(participant: ["leo", "kiki", "eden"], completion: ["eden", "kiki"])) // "leo"
  print(Day8.findIncompleteRunner(participant: ["marina", "josipa", "nikola", "vinko", "filipa"], completion: ["josipa", "filipa", "marina", "nikola"])) // "vinko"
  print(Day8.findIncompleteRunner(participant: ["mislav", "stanko", "mislav", "ana"], completion: ["stanko", "ana", "mislav"])) // "mislav"
+ print(Day8.makeLargestNumber([6, 10, 2])) // "6210"
+ print(Day8.makeLargestNumber([3, 30, 34, 5, 9])) // "9534330"
+ print(Day8.makeLargestNumber([0, 0, 0])) // "0"
  */
 
+/*
+ Day9
+ print(Day9.mode1(of: [1, 3, 1, 3, 2, 1])) // [1, 3, 1, 3, 2, 1] Output: 1
+ print(Day9.mode1(of: [4, 5, 4, 6, 5, 6])) // [4, 5, 4, 6, 5, 6] Output: 4
+ print(Day9.mode2(of: [1, 2, 3, 3, 3, 4])) // [1, 2, 3, 3, 3, 4] Output: 3
+ print(Day9.mode2(of: [1, 1, 2, 2])) // [4, 5, 4, 6, 5, 6] Output: -1
+ print(Day9.mode2(of: [1])) // [4, 5, 4, 6, 5, 6] Output: 1
+ */
 
+//print(Day9.mode3(nums: [1, 2, 2, 3, 3, 3], ranges: [[0, 2], [0, 5], [3, 5]]))
 
-print(Day8.makeLargestNumber([6, 10, 2])) // "6210"
-print(Day8.makeLargestNumber([3, 30, 34, 5, 9])) // "9534330"
-print(Day8.makeLargestNumber([0, 0, 0])) // "0"
-
-
-
+let nums = [1, 2, 2, 3, 3, 3, 4, 4]
+let ranges = [
+    [0, 2],   // [1, 2, 2]
+    [0, 5],   // [1, 2, 2, 3, 3, 3]
+    [3, 5],   // [3, 3, 3]
+    [6, 7],   // [4, 4]
+    [0, 4],   // [1, 2, 2, 3, 3]
+    [0, 7],   // 전체
+    [0, 0]    // [1]
+]
+print(Day9.mode3(nums: nums, ranges: ranges)) // [2, 3, 3, 4, 2, 3, 1]
