@@ -195,5 +195,44 @@ extension Day9 {
         }
         return result
     }
+    
+    /*
+     ✅ 문제: 애너그램 그룹 묶기
+     🧾 설명
+     문자열 배열 words가 주어질 때,
+     서로 애너그램인 단어끼리 묶어서 반환하시오.
+     단, 각 그룹 내 단어 순서는 상관없지만, 전체 그룹은 순서대로 정렬하지 않아도 됨.
+
+     🧠 예시
+     Input: ["bat", "tab", "cat", "act", "tac", "rat"]
+
+     Output:
+     [
+       ["bat", "tab"],
+       ["cat", "act", "tac"],
+       ["rat"]
+     ]
+     "bat"와 "tab"은 애너그램
+
+     "cat", "act", "tac"도 애너그램
+
+     "rat"은 독립
+
+     📌 제약 조건
+     words.count <= 10,000
+
+     words[i].count <= 100
+
+     모든 문자열은 소문자 알파벳으로 구성됨
+     */
+    static func groupAnagrams(_ words: [String]) -> [[String]] {
+        var result: [String: [String]] = [:]
+        
+        for word in words {
+            let sortedWord = String(word.sorted())
+            result[sortedWord, default: []].append(word)
+        }
+        return result.map { $0.value }
+    }
 }
 

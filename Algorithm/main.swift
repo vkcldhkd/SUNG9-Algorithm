@@ -136,12 +136,22 @@
  print(Day9.maxRepeatCount(input: "aaabbccccddeee")) // 4
  print(Day9.maxRepeatCount(input: "abcde")) // 1
  print(Day9.maxRepeatCount(input: "a")) // 1
+ print(Day9.longestPalindrome(input: "babad")) // bab or aba
+ print(Day9.longestPalindrome(input: "cbbd")) // bb
+ print(Day9.longestPalindrome(input: "a")) // a
+ print(Day9.longestPalindrome(input: "abccba")) // abccba
+ print(Day9.longestPalindrome(input: "racecarxyz")) // racecar
+ print(Day9.longestPalindrome(input: "xyzracecar")) // racecar
  */
 
-//print(Day9.longestPalindrome(input: "babad")) // bab or aba
-//print(Day9.longestPalindrome(input: "cbbd")) // bb
-//print(Day9.longestPalindrome(input: "a")) // a
-//print(Day9.longestPalindrome(input: "abccba")) // abccba
-print(Day9.longestPalindrome(input: "racecarxyz")) // racecar
-print(Day9.longestPalindrome(input: "xyzracecar")) // racecar
 
+
+
+print(Day9.groupAnagrams(["bat", "tab", "cat", "act", "tac", "rat"]))
+/*
+ [
+   ["bat", "tab"],
+   ["cat", "act", "tac"],
+   ["rat"]
+ ]
+ */
