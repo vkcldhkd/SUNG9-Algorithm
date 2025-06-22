@@ -113,5 +113,87 @@ extension Day9 {
         
         return modeArray
     }
+    
+    /*
+     ✅ 문제: 가장 긴 연속 문자 찾기
+     🧾 설명
+     영어 소문자로 이루어진 문자열 s가 주어질 때,
+     같은 문자가 연속으로 가장 많이 등장한 횟수를 구하시오.
+
+     🧠 입력 예시
+     Input: "aaabbccccddeee"
+     Output: 4
+     // 'c'가 연속으로 4번 등장함
+     
+     Input: "abcde"
+     Output: 1
+     // 모든 문자가 한 번씩만 등장
+
+     Input: "a"
+     Output: 1
+     
+     📌 제약 조건
+     문자열 길이: 1 <= s.count <= 100_000
+     문자열은 오직 소문자(a~z)로만 구성됨
+     */
+    
+    static func maxRepeatCount(input: String) -> Int {
+        var maxCount = 0
+        var currentCount = 1
+        var previousChar: Character? = nil
+
+        input.forEach { char in
+            if char == previousChar {
+                currentCount += 1
+            } else {
+                maxCount = max(maxCount, currentCount)
+                currentCount = 1
+            }
+            previousChar = char
+        }
+        maxCount = max(maxCount, currentCount) // 마지막 문자까지 고려
+        return maxCount
+    }
+    
+    /*
+     ✅ 문제: 가장 긴 부분 팰린드롬 찾기
+     🧾 설명
+     문자열 s가 주어질 때,
+     그 안에서 가장 긴 팰린드롬 부분 문자열을 찾아 반환하시오.
+
+     🧠 입력 예시
+     Input: "babad"
+     Output: "bab"  // 또는 "aba"도 정답
+
+     Input: "cbbd"
+     Output: "bb"
+     📌 조건
+     1 <= s.count <= 1,000
+
+     반환값은 원래 문자열 내의 부분 문자열이어야 함
+
+     복수의 해가 있을 경우 아무거나 반환 가능
+     */
+    
+    static func longestPalindrome(input: String) -> String {
+        func findPalindrome(str: String) -> Bool {
+            return str == String(str.reversed())
+        }
+        
+        var result = ""
+        
+        for i in 0 ..< input.count {
+            for j in i ..< input.count {
+                let start = input.index(input.startIndex, offsetBy: i)
+                let end = input.index(input.startIndex, offsetBy: j)
+                let substr = String(input[start...end])
+                
+                if findPalindrome(str: substr), substr.count > result.count {
+                    result = substr
+                }
+            }
+        }
+        return result
+    }
 }
 

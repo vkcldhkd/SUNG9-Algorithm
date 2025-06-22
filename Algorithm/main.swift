@@ -121,18 +121,27 @@
  print(Day9.mode2(of: [1, 2, 3, 3, 3, 4])) // [1, 2, 3, 3, 3, 4] Output: 3
  print(Day9.mode2(of: [1, 1, 2, 2])) // [4, 5, 4, 6, 5, 6] Output: -1
  print(Day9.mode2(of: [1])) // [4, 5, 4, 6, 5, 6] Output: 1
+ let nums = [1, 2, 2, 3, 3, 3, 4, 4]
+ let ranges = [
+     [0, 2],   // [1, 2, 2]
+     [0, 5],   // [1, 2, 2, 3, 3, 3]
+     [3, 5],   // [3, 3, 3]
+     [6, 7],   // [4, 4]
+     [0, 4],   // [1, 2, 2, 3, 3]
+     [0, 7],   // 전체
+     [0, 0]    // [1]
+ ]
+ print(Day9.mode3(nums: nums, ranges: ranges)) // [2, 3, 3, 4, 2, 3, 1]
+ print(Day9.mode3(nums: [1, 2, 2, 3, 3, 3], ranges: [[0, 2], [0, 5], [3, 5]]))
+ print(Day9.maxRepeatCount(input: "aaabbccccddeee")) // 4
+ print(Day9.maxRepeatCount(input: "abcde")) // 1
+ print(Day9.maxRepeatCount(input: "a")) // 1
  */
 
-//print(Day9.mode3(nums: [1, 2, 2, 3, 3, 3], ranges: [[0, 2], [0, 5], [3, 5]]))
+//print(Day9.longestPalindrome(input: "babad")) // bab or aba
+//print(Day9.longestPalindrome(input: "cbbd")) // bb
+//print(Day9.longestPalindrome(input: "a")) // a
+//print(Day9.longestPalindrome(input: "abccba")) // abccba
+print(Day9.longestPalindrome(input: "racecarxyz")) // racecar
+print(Day9.longestPalindrome(input: "xyzracecar")) // racecar
 
-let nums = [1, 2, 2, 3, 3, 3, 4, 4]
-let ranges = [
-    [0, 2],   // [1, 2, 2]
-    [0, 5],   // [1, 2, 2, 3, 3, 3]
-    [3, 5],   // [3, 3, 3]
-    [6, 7],   // [4, 4]
-    [0, 4],   // [1, 2, 2, 3, 3]
-    [0, 7],   // 전체
-    [0, 0]    // [1]
-]
-print(Day9.mode3(nums: nums, ranges: ranges)) // [2, 3, 3, 4, 2, 3, 1]
