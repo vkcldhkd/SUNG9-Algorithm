@@ -286,5 +286,129 @@ extension Day9 {
 
         return result.joined()
     }
+    
+    /*
+     🔸 문제: 문자열 뒤집기 (단어 기준)
+     문자열이 주어지면, 각 단어의 순서를 유지한 채 **각 단어 자체를 뒤집은 문자열**을 반환하세요.
+
+     📘 예시
+     input: "Hello World"
+     output: "olleH dlroW"
+
+     input: "Swift is fun"
+     output: "tfiwS si nuf"
+    */
+    
+    static func reverseWords(in input: String) -> String {
+        let inputArray = input.components(separatedBy: " ")
+            .map { String($0.reversed()) }
+        
+        return inputArray.joined(separator: " ")
+    }
+    
+    /*
+     🔸 문제: 문자열 배열이 주어졌을 때,
+        - 먼저 단어의 **길이순**으로 정렬하고,
+        - 길이가 같다면 **사전 순**으로 정렬된 배열을 반환하시오.
+
+     📘 예시
+     input: ["banana", "apple", "dog", "cat", "ant"]
+     output: ["ant", "cat", "dog", "apple", "banana"]
+     
+     input: ["zebra", "a", "aaa", "abc", "aa"]
+     output: ["a", "aa", "aaa", "abc", "zebra"]
+    */
+    
+    static func sortWords(_ words: [String]) -> [String] {
+        return words.sorted {
+            if $0.count == $1.count {
+                return $0 < $1
+            } else {
+                return $0.count < $1.count
+            }
+        }
+    }
+    
+    /*
+     🔸 문제: 중복된 단어가 포함된 문자열 배열이 주어졌을 때,
+        - 중복을 제거하고
+        - 길이 오름차순, 길이가 같으면 사전순 오름차순으로 정렬하세요.
+
+     📘 예시
+     input: ["apple", "banana", "apple", "dog", "banana", "cat", "ant"]
+     output: ["ant", "cat", "dog", "apple", "banana"]
+    */
+    
+    static func deduplicateAndSort(_ words: [String]) -> [String] {
+//        return Set<String>(words)
+//            .sorted {
+//                if $0.count == $1.count {
+//                    return $0 < $1
+//                } else {
+//                    return $0.count < $1.count
+//                }
+//            }
+        
+        return Set(words).sorted {
+            ($0.count, $0) < ($1.count, $1)
+        }
+    }
+    
+    /*
+     🔸 문제:
+     문자열 배열이 주어질 때, 그 중에서 회문(Palindrome)인 단어들만 추출해 반환하세요.
+     회문이란, 앞에서 읽으나 뒤에서 읽으나 같은 단어를 말합니다.
+
+     📘 예시
+     input: ["level", "world", "madam", "hello", "noon"]
+     output: ["level", "madam", "noon"]
+
+     input: ["apple", "banana", "civic"]
+     output: ["civic"]
+    */
+    static func filterPalindromes(_ words: [String]) -> [String] {
+        func checkPalindromes(word: String) -> Bool {
+            return word == String(word.reversed())
+        }
+        return words
+            .filter { checkPalindromes(word: $0) }
+    }
+    
+    /*
+    🔸 문제:
+    문자열이 주어졌을 때, 그 안에 포함된 가장 긴 회문(Palindrome) 부분 문자열을 찾아 반환하세요.
+
+    📘 예시
+    input: "babad"
+    output: "bab" 또는 "aba" (둘 다 가능)
+
+    input: "cbbd"
+    output: "bb"
+
+    input: "a"
+    output: "a"
+
+    input: "ac"
+    output: "a" 또는 "c"
+    */
+    static func longestPalindromeSubstring(_ input: String) -> String {
+        func checkPalindromes(word: String) -> Bool {
+            return word == String(word.reversed())
+        }
+        
+        var longWord = ""
+        for i in 0 ..< input.count {
+            for j in i ..< input.count {
+                let start = input.index(input.startIndex, offsetBy: i)
+                let end = input.index(input.startIndex, offsetBy: j)
+                let word = String(input[start...end])
+                if word.count > longWord.count && checkPalindromes(word: word) {
+                    longWord = word
+                }
+            }
+        }
+        
+        return longWord
+    }
 }
 

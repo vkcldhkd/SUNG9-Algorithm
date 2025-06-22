@@ -150,9 +150,23 @@
     ["rat"]
   ]
   */
+ print(Day9.compress("aaabbccccd")) // a3b2c4d
+ print(Day9.compress("abcd")) // abcd
+ print(Day9.compress("aabbcc")) // a2b2c2
+ print(Day9.compress("aaa")) // a3
+ print(Day9.reverseWords(in: "Hello World")) // "olleH dlroW"
+ print(Day9.reverseWords(in: "Swift is fun")) // "tfiwS si nuf"
+ print(Day9.sortWords(["banana", "apple", "dog", "cat", "ant"])) // ["dog", "cat", "ant", "apple", "banana"]
+ print(Day9.sortWords(["zebra", "a", "aaa", "abc", "aa"])) // ["a", "aa", "aaa", "abc", "zebra"]
+ print(Day9.deduplicateAndSort(["apple", "banana", "apple", "dog", "banana", "cat", "ant"])) // ["ant", "cat", "dog", "apple", "banana"]
+ print(Day9.filterPalindromes(["level", "world", "madam", "hello", "noon"])) // ["level", "madam", "noon"]
+ print(Day9.filterPalindromes(["apple", "banana", "civic"])) // ["civic"]
  */
 
-print(Day9.compress("aaabbccccd")) // a3b2c4d
-print(Day9.compress("abcd")) // abcd
-print(Day9.compress("aabbcc")) // a2b2c2
-print(Day9.compress("aaa")) // a3
+
+
+
+
+print(Day9.longestPalindromeSubstring("babad")) // "bab" 또는 "aba"
+print(Day9.longestPalindromeSubstring("cbbd")) // "bb" 
+
