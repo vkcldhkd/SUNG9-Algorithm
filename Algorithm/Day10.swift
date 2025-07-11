@@ -167,3 +167,43 @@ extension Day10 {
         return result
     }
 }
+
+extension Day10 {
+    /*
+     # ✅ 문제: 최대 연속 구간 합 구하기
+
+     정수 배열이 주어졌을 때, 연속된 구간의 합 중 **가장 큰 값**을 구하시오.
+     단, 구간은 비어있지 않아야 하며, 원소는 음수도 포함될 수 있다.
+
+     ---
+
+     ### ✳️ 입력 예시
+     ```swift
+     let numbers = [-2, 1, -3, 4, -1, 2, 1, -5, 4]
+     ```
+
+     ### ✳️ 출력 예시
+     ```swift
+     6
+     ```
+
+     (설명: [4, -1, 2, 1] 구간의 합이 최대)
+
+     ---
+
+     ### ❗️조건
+     - 배열 길이는 1 이상 100,000 이하
+     - 원소는 -10,000 이상 10,000 이하
+     */
+    static func maxSubarraySum(_ numbers: [Int]) -> Int {
+        var maxSum = numbers[0]
+        var currentSum = numbers[0]
+        
+        for i in 1..<numbers.count {
+            currentSum = max(numbers[i], currentSum + numbers[i])
+            maxSum = max(maxSum, currentSum)
+        }
+        
+        return maxSum
+    }
+}
