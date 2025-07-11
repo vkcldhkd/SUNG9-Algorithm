@@ -196,13 +196,17 @@
  print(Day10.minimumCoins(30)) // 3
  print(Day10.minimumCoins(500)) // 1
  print(Day10.minimumCoins(380)) // 7
+ 
+ print(Day10.binarySearch([1, 3, 5, 7, 9, 11], 7)) // 3
+ print(Day10.binarySearch([1, 2, 4, 6, 8, 10, 12], 5)) // -1
+ print(Day10.binarySearch([10, 20, 30, 40, 50], 10)) // 0
+ print(Day10.binarySearch([100, 200, 300, 400, 500], 500)) // 0
+ 
  */
 
 
-print(Day10.binarySearch([1, 3, 5, 7, 9, 11], 7)) // 3
-print(Day10.binarySearch([1, 2, 4, 6, 8, 10, 12], 5)) // -1
-print(Day10.binarySearch([10, 20, 30, 40, 50], 10)) // 0
-print(Day10.binarySearch([100, 200, 300, 400, 500], 500)) // 0
+
+print(Day10.lowerBound([1, 2, 2, 2, 3, 4, 5], 2)) // 0
 
 
 

@@ -460,5 +460,57 @@ extension Day10 {
         }
         return -1
     }
+}
+
+extension Day10 {
+    /*
+     # ✅ 문제: 가장 왼쪽의 타겟 인덱스 찾기
+
+     정렬된 정수 배열과 정수 target이 주어졌을 때,
+     배열 내에서 target이 **가장 처음 등장하는 인덱스**를 반환하시오.
+     target이 존재하지 않는다면 -1을 반환하시오.
+     이분 탐색 알고리즘(O(log n))을 사용해야 함.
+
+     ---
+
+     ### ✳️ 입력 예시
+     ```swift
+     let numbers = [1, 2, 2, 2, 3, 4, 5]
+     let target = 2
+     ```
+
+     ### ✳️ 출력 예시
+     ```swift
+     1
+     ```
+
+     ---
+
+     ### ❗️조건
+     - 배열은 오름차순으로 정렬되어 있음
+     - 배열 길이는 1 이상 100,000 이하
+     - 배열에는 중복된 값이 존재할 수 있음
+     - 시간복잡도는 반드시 O(log n) 이하여야 함
+     */
     
+    static func lowerBound(
+        _ numbers: [Int],
+        _ target: Int
+    ) -> Int {
+        var start = 0
+        var end = numbers.count - 1
+        var result = -1
+        while start <= end {
+            let mid = (start + end) / 2
+            if numbers[mid] == target {
+                result = end
+                end = mid - 1
+            } else if numbers[mid] < target {
+                start = mid + 1
+            } else {
+                end = mid - 1
+            }
+        }
+        return result
+    }
 }
