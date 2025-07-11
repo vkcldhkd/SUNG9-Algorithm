@@ -353,3 +353,59 @@ extension Day10 {
         return resultToInt == 0 ? "0" : result
     }
 }
+
+extension Day10 {
+    /*
+     # ✅ 문제: 최소 동전 개수 구하기
+
+     정수 N이 주어졌을 때,
+     동전 500원, 100원, 50원, 10원을 이용하여 N원을 거슬러 줄 때
+     **필요한 동전 개수의 최솟값**을 구하시오.
+
+     ---
+
+     ### ✳️ 입력 예시
+     ```swift
+     let amount = 1260
+     ```
+
+     ### ✳️ 출력 예시
+     ```swift
+     6
+     ```
+
+     (500원 2개 + 100원 2개 + 50원 1개 + 10원 1개)
+
+     ---
+
+     ### ❗️조건
+     - N은 1 이상 10,000 이하의 정수
+     - 동전 종류는 500, 100, 50, 10원만 사용 가능 (무한히 있음)
+     - 항상 거슬러 줄 수 있는 금액만 입력됨
+     */
+    
+    static func minimumCoins(_ amount: Int) -> Int {
+        func balance(amount: Int, type: Coins) -> (amount: Int, coinCount: Int) {
+            let coinCount = amount / type.rawValue
+            return (amount - coinCount * type.rawValue, coinCount)
+        }
+        
+        enum Coins: Int, CaseIterable {
+            case won500 = 500
+            case won100 = 100
+            case won50 = 50
+            case won10 = 10
+        }
+        
+        var amount = amount
+        var dict: [Coins: Int] = [:]
+        
+        for coin in Coins.allCases {
+            let result = balance(amount: amount, type: coin)
+            amount = result.amount
+            dict[coin] = result.coinCount
+        }
+
+        return dict.values.reduce(0, +)
+    }
+}
