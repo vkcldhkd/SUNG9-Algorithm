@@ -161,12 +161,15 @@
  print(Day9.deduplicateAndSort(["apple", "banana", "apple", "dog", "banana", "cat", "ant"])) // ["ant", "cat", "dog", "apple", "banana"]
  print(Day9.filterPalindromes(["level", "world", "madam", "hello", "noon"])) // ["level", "madam", "noon"]
  print(Day9.filterPalindromes(["apple", "banana", "civic"])) // ["civic"]
+ print(Day9.longestPalindromeSubstring("babad")) // "bab" 또는 "aba"
+ print(Day9.longestPalindromeSubstring("cbbd")) // "bb"
  */
 
 
+//print(Day10.minimumSumProduct([1, 1, 1, 6, 0], [2, 7, 8, 3, 1]))
+//print(Day10.minimumSumProduct([1, 1, 3], [10, 30, 20]))
+print(Day10.minimumSumProduct([1, 2, 3, 4], [5, 5, 5, 5]))
 
 
-
-print(Day9.longestPalindromeSubstring("babad")) // "bab" 또는 "aba"
-print(Day9.longestPalindromeSubstring("cbbd")) // "bb" 
+ 
 
