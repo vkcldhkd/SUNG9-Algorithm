@@ -118,3 +118,52 @@ extension Day10 {
         return output
     }
 }
+
+extension Day10 {
+    /*
+     # ✅ 문제: 구간 합 구하기
+
+     정수 배열과 여러 개의 구간 [i, j]가 주어졌을 때,
+     각 구간마다 i번째 원소부터 j번째 원소까지의 합을 구하시오.
+     모든 합은 0-based 인덱스를 기준으로 계산한다.
+
+     ---
+
+     ### ✳️ 입력 예시
+     ```swift
+     let numbers = [5, 4, 3, 2, 1]
+     let queries = [(0, 2), (1, 3), (0, 4)]
+     ```
+
+     ### ✳️ 출력 예시
+     ```swift
+     12
+     9
+     15
+     ```
+
+     ---
+
+     ### ❗️조건
+     - numbers의 길이는 1 이상 100,000 이하
+     - 각 원소는 -1,000 이상 1,000 이하의 정수
+     - 구간 쿼리는 최대 100,000개
+     - 각 쿼리는 (i, j) 형태로, 0 ≤ i ≤ j < numbers.count
+     */
+    
+    static func rangeSums(
+        _ numbers: [Int],
+        _ queries: [(Int, Int)]
+    ) -> [Int] {
+        var prefix = [0]
+        for num in numbers {
+            prefix.append(prefix.last! + num)
+        }
+        
+        var result: [Int] = []
+        for (start, end) in queries {
+            result.append(prefix[end+1] - prefix[start])
+        }
+        return result
+    }
+}
