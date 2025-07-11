@@ -173,10 +173,12 @@
  //print(Day10.minimumSumProduct([1, 2, 3, 4], [5, 5, 5, 5]))
  print(Day10.pokemonLookup(["Pikachu", "Bulbasaur", "Charmander", "Squirtle"], ["2", "Charmander", "Pikachu"]))
  print(Day10.rangeSums([5, 4, 3, 2, 1], [(0, 2), (1, 3), (0, 4)]))
+ print(Day10.maxSubarraySum([-2, 1, -3, 4, -1, 2, 1, -5, 4]))
  */
 
-print(Day10.maxSubarraySum([-2, 1, -3, 4, -1, 2, 1, -5, 4]))
 
-
- 
-
+print(Day10.maxKSubarraySum([1, 2, -1, 2, -3, 2, -5, 4], 2)) // 8
+print(Day10.maxKSubarraySum([1, 2, 3, -10, 4, 5, -2, 6], 2)) // 19
+print(Day10.maxKSubarraySum([-1, -2, -3, -4], 1)) // -1
+print(Day10.maxKSubarraySum([2, 1, -1, 3, -2, 2, 1], 3)) // 9
+print(Day10.maxKSubarraySum([5, -1, 5, -1, 5], 2)) // 14

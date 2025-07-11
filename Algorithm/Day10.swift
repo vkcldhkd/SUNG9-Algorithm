@@ -207,3 +207,66 @@ extension Day10 {
         return maxSum
     }
 }
+
+
+extension Day10 {
+    /*
+     # ✅ 문제: k개 구간의 최대 합
+
+     정수 배열과 정수 k가 주어졌을 때,
+     **서로 겹치지 않는 k개의 연속 구간**을 골라, 그 합의 최대값을 구하시오.
+     각 구간은 최소 하나 이상의 원소를 포함해야 한다.
+
+     ---
+
+     ### ✳️ 입력 예시
+     ```swift
+     let numbers = [1, 2, -1, 2, -3, 2, -5, 4]
+     let k = 2
+     ```
+
+     ### ✳️ 출력 예시
+     ```swift
+     8
+     ```
+
+     (설명: [1, 2, -1, 2] + [4] → 4 + 4 = 8)
+
+     ---
+
+     ### ❗️조건
+     - 배열 길이는 1 이상 100,000 이하
+     - 각 원소는 -10,000 이상 10,000 이하
+     - k는 1 이상 numbers.count 이하
+     */
+    static func maxKSubarraySum(
+        _ nums: [Int],
+        _ k: Int
+    ) -> Int {
+        let n = nums.count
+        if n == 0 || k == 0 { return 0 }
+
+        // local[i][j]: j개의 구간을 사용해서 i번째 요소에서 끝나는 최대합
+        var local = Array(repeating: Array(repeating: Int.min, count: k + 1), count: n + 1)
+        // global[i][j]: j개의 구간을 사용해서 0~i 구간 전체에서의 최대합
+        var global = Array(repeating: Array(repeating: Int.min, count: k + 1), count: n + 1)
+
+        // 초기값
+        for i in 0...n {
+            global[i][0] = 0
+            local[i][0] = 0
+        }
+
+        for i in 1...n {
+            for j in 1...min(i, k) {
+                // local: 이전에 j번째 구간을 이어서 오거나, 새로 시작하거나
+                local[i][j] = max(global[i - 1][j - 1], local[i - 1][j]) + nums[i - 1]
+                // global: 이전까지의 최대값 또는 지금 local로 만든 값 중 최대
+                global[i][j] = max(global[i - 1][j], local[i][j])
+            }
+        }
+
+        return global[n][k]
+    }
+
+}
