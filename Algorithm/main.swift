@@ -180,10 +180,15 @@
  print(Day10.maxKSubarraySum([-1, -2, -3, -4], 1)) // -1
  print(Day10.maxKSubarraySum([2, 1, -1, 3, -2, 2, 1], 3)) // 9
  print(Day10.maxKSubarraySum([5, -1, 5, -1, 5], 2)) // 14
- 
+
+ print(Day10.mostFrequentCharacter("abacabad")) // a
+ print(Day10.mostFrequentCharacter("zxyxxzyz")) // x
+ print(Day10.mostFrequentCharacter("ccccbbbbaaaa")) // a
  */
 
-print(Day10.mostFrequentCharacter("abacabad")) // a
-print(Day10.mostFrequentCharacter("zxyxxzyz")) // x
-print(Day10.mostFrequentCharacter("ccccbbbbaaaa")) // a
 
+print(Day10.largestNumber([3, 30, 34, 5, 9])) // 9534330
+print(Day10.largestNumber([10, 2])) // 210
+print(Day10.largestNumber([0, 0, 0])) // 0
+print(Day10.largestNumber([12, 121])) // 12121
+print(Day10.largestNumber([824, 938, 1399, 5607, 6973, 5703, 9609, 4398, 8247])) // 9609938824824769735703560743981399

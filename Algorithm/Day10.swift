@@ -311,3 +311,45 @@ extension Day10 {
             .max(by: { $0.value < $1.value })!.key
     }
 }
+
+extension Day10 {
+    /*
+     # ✅ 문제: 숫자 정렬 후 문자열 만들기
+
+     양의 정수 배열이 주어졌을 때,
+     각 숫자를 문자열처럼 이어붙여서 만들 수 있는 **가장 큰 수**를 문자열로 반환하시오.
+
+     ---
+
+     ### ✳️ 입력 예시
+     ```swift
+     let numbers = [3, 30, 34, 5, 9]
+     ```
+
+     ### ✳️ 출력 예시
+     ```swift
+     "9534330"
+     ```
+
+     ---
+
+     ### ❗️조건
+     - 배열 길이는 1 이상 100,000 이하
+     - 각 숫자는 0 이상 1,000 이하
+     - 결과가 `"000"`처럼 0으로만 구성되면 `"0"`을 반환해야 함
+     */
+    static func largestNumber(
+        _ numbers: [Int]
+    ) -> String {
+        let result = numbers
+            .map { String($0) }
+            .sorted { $0 + $1 > $1 + $0 }
+            .joined()
+        
+        guard let resultToInt = Int(result) else {
+            print("parse error : \(result)")
+            return result
+        }
+        return resultToInt == 0 ? "0" : result
+    }
+}
