@@ -268,5 +268,46 @@ extension Day10 {
 
         return global[n][k]
     }
+}
 
+
+extension Day10 {
+    /*
+     
+     # ✅ 문제: 가장 많이 등장한 문자
+
+     영어 소문자로만 이루어진 문자열이 주어졌을 때,
+     가장 많이 등장한 문자를 찾아 반환하시오.
+     만약 여러 개라면, 사전 순으로 가장 앞선 문자를 반환하시오.
+
+     ---
+
+     ### ✳️ 입력 예시
+     ```swift
+     let input = "abacabad"
+     ```
+
+     ### ✳️ 출력 예시
+     ```swift
+     a
+     ```
+
+     ---
+
+     ### ❗️조건
+     - 입력 문자열 길이는 1 이상 100,000 이하
+     - 문자열은 영어 소문자 (a~z)로만 구성됨
+     - 동일 횟수 문자가 여러 개라면 **사전 순으로 앞선 문자** 반환
+     */
+    
+    static func mostFrequentCharacter(
+        _ input: String
+    ) -> Character {
+        let chars = input.map { $0 }
+        var dict: [Character: Int] = [:]
+        for char in chars { dict[char, default: 0] += 1 }
+        return dict
+            .sorted(by: { $0.key < $1.key })
+            .max(by: { $0.value < $1.value })!.key
+    }
 }
