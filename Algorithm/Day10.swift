@@ -38,7 +38,10 @@ extension Day10 {
      - A는 **자유롭게 정렬 가능**
      - A[i] × B[i] 를 전부 더한 **합의 최소값을 반환**
      */
-    static func minimumSumProduct(_ A: [Int], _ B: [Int]) -> Int {
+    static func minimumSumProduct(
+        _ A: [Int],
+        _ B: [Int]
+    ) -> Int {
         let sortedA = A.sorted { $0 < $1 }
         let sortedB = B.sorted { $1 < $0 }
         let bSortedIndices = B.indices.sorted { B[$0] > B[$1] }
@@ -62,3 +65,56 @@ extension Day10 {
     }
 }
 
+extension Day10 {
+    /*
+     # ✅ 문제: 포켓몬 도감 역순 조회
+
+     포켓몬 도감에는 1번부터 N번까지의 포켓몬이 등록되어 있다.
+     이 포켓몬 도감은 이름으로 검색하면 번호를, 번호로 검색하면 이름을 반환하는 구조이다.
+     검색 요청이 들어올 때마다 알맞은 결과를 출력하시오.
+
+     ---
+
+     ### ✳️ 입력 예시
+     ```swift
+     let pokemons = ["Pikachu", "Bulbasaur", "Charmander", "Squirtle"]
+     let queries = ["2", "Charmander", "Pikachu"]
+     ```
+
+     ### ✳️ 출력 예시
+     ```swift
+     Bulbasaur
+     3
+     1
+     ```
+
+     ---
+
+     ### ❗️조건
+     - 포켓몬 개수 N은 1 이상 100,000 이하
+     - 포켓몬 이름은 영어로 최대 20자 이하, 중복 없음
+     - 검색 요청은 N개 이하이며, 이름 또는 번호(문자열)로 주어짐
+     - 입력으로 주어진 번호는 1번부터 시작하며, 출력도 그에 맞춰야 함
+     */
+    
+    static func pokemonLookup(
+        _ pokemons: [String],
+        _ queries: [String]
+    ) -> [String] {
+        var result: [String: Int] = [:]
+        for (index, name) in pokemons.enumerated() {
+            result[name] = index + 1
+        }
+        
+        var output: [String] = []
+        for query in queries {
+            if let index = Int(query) {
+                output.append(pokemons[index - 1])
+            } else if let index = result[query] {
+                output.append(String(index))
+            }
+        }
+        
+        return output
+    }
+}

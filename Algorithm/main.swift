@@ -166,10 +166,15 @@
  */
 
 
-//print(Day10.minimumSumProduct([1, 1, 1, 6, 0], [2, 7, 8, 3, 1]))
-//print(Day10.minimumSumProduct([1, 1, 3], [10, 30, 20]))
-print(Day10.minimumSumProduct([1, 2, 3, 4], [5, 5, 5, 5]))
-
+/*
+ Day10
+ //print(Day10.minimumSumProduct([1, 1, 1, 6, 0], [2, 7, 8, 3, 1]))
+ //print(Day10.minimumSumProduct([1, 1, 3], [10, 30, 20]))
+ //print(Day10.minimumSumProduct([1, 2, 3, 4], [5, 5, 5, 5]))
+ 
+ 
+ */
+print(Day10.pokemonLookup(["Pikachu", "Bulbasaur", "Charmander", "Squirtle"], ["2", "Charmander", "Pikachu"]))
 
  
 
