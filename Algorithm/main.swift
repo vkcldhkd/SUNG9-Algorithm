@@ -223,4 +223,8 @@
 
 
 
+print(Day11.canAttendAllMeetings([[0, 30], [5, 10], [15, 20]])) // false
+print(Day11.canAttendAllMeetings([[7, 10], [2, 4]])) // true
+print(Day11.canAttendAllMeetings([[1, 2], [2, 3], [3, 4]])) // true
+print(Day11.canAttendAllMeetings([[5, 10], [10, 15], [9, 12]])) // false
 

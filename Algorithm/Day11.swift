@@ -115,11 +115,19 @@ extension Day11 {
      - 앞 회의가 끝나는 시간과 다음 회의의 시작 시간 비교
      */
     
-    static func canAttendAllMeetings(
-        _ meetings: [[Int]]
-    ) -> Bool {
-        let sortedMettings = meetings.sorted { $0[0] < $1[0] }
-        print(sortedMettings)
+    static func canAttendAllMeetings(_ meetings: [[Int]]) -> Bool {
+        let sortedMeetings = meetings.sorted { $0[0] < $1[0] }
+
+        for i in 1 ..< sortedMeetings.count {
+            let prevEnd = sortedMeetings[i - 1][1]
+            let currentStart = sortedMeetings[i][0]
+
+            if currentStart < prevEnd {
+                return false
+            }
+        }
+
         return true
     }
+
 }
