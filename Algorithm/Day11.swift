@@ -129,5 +129,51 @@ extension Day11 {
 
         return true
     }
+}
 
+extension Day11 {
+    /*
+     # ✅ 문제: 중복 문자 제거
+
+     문자열이 주어졌을 때, **같은 문자가 연속해서 두 번 이상 등장하지 않도록**
+     중복된 문자를 제거한 문자열을 반환하시오.
+
+     ---
+
+     ### ✳️ 입력 예시
+     ```swift
+     let input = "aaabbbccdaa"
+     ```
+
+     ### ✳️ 출력 예시
+     ```swift
+     "abcda"
+     ```
+
+     ---
+
+     ### ❗️조건
+     - 입력 문자열 길이는 1 이상 100,000 이하
+     - 영문 소문자로만 구성됨
+     - 인접한 문자만 중복 제거 대상 (즉, `"ababa"` → `"ababa"` 유지)
+
+     ---
+
+     ### 💡 힌트
+     - 문자열을 순회하며 직전 문자와 비교
+     - 새 문자일 경우 결과에 추가
+     */
+    
+    static func removeAdjacentDuplicates(_ input: String) -> String {
+        var previous: Character?
+        var result = ""
+        
+        for char in input {
+            if previous != char {
+                result.append(char)
+                previous = char
+            }
+        }
+        return result
+    }
 }

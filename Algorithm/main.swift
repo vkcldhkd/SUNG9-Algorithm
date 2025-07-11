@@ -217,14 +217,21 @@
  print(Day11.maxProductSubarray([-2, 0, -1])) // 0
  print(Day11.maxProductSubarray([-2, 3, -4])) // 24
  print(Day11.maxProductSubarray([2, -5, -2, -4, 3])) // 240
+
  
+ print(Day11.canAttendAllMeetings([[0, 30], [5, 10], [15, 20]])) // false
+ print(Day11.canAttendAllMeetings([[7, 10], [2, 4]])) // true
+ print(Day11.canAttendAllMeetings([[1, 2], [2, 3], [3, 4]])) // true
+ print(Day11.canAttendAllMeetings([[5, 10], [10, 15], [9, 12]])) // false
  */
 
 
+print(Day11.removeAdjacentDuplicates("aaabbbccdaa")) // abcda
+print(Day11.removeAdjacentDuplicates("aabbccddeeff")) // abcdef
+print(Day11.removeAdjacentDuplicates("ababa")) // ababa
+print(Day11.removeAdjacentDuplicates("aaaaa")) // a
 
 
-print(Day11.canAttendAllMeetings([[0, 30], [5, 10], [15, 20]])) // false
-print(Day11.canAttendAllMeetings([[7, 10], [2, 4]])) // true
-print(Day11.canAttendAllMeetings([[1, 2], [2, 3], [3, 4]])) // true
-print(Day11.canAttendAllMeetings([[5, 10], [10, 15], [9, 12]])) // false
+
+
 
