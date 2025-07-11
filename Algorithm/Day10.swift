@@ -409,3 +409,56 @@ extension Day10 {
         return dict.values.reduce(0, +)
     }
 }
+
+extension Day10 {
+    /*
+     # ✅ 문제: 숫자 찾기 (이분 탐색)
+
+     정렬된 정수 배열과 정수 target이 주어졌을 때,
+     배열 내에서 target이 존재하는 인덱스를 반환하시오.
+     존재하지 않는다면 -1을 반환하시오.
+     이때 반드시 **이분 탐색(O(log n))** 알고리즘을 사용해야 함.
+
+     ---
+
+     ### ✳️ 입력 예시
+     ```swift
+     let numbers = [1, 3, 5, 7, 9, 11]
+     let target = 7
+     ```
+
+     ### ✳️ 출력 예시
+     ```swift
+     3
+     ```
+
+     ---
+
+     ### ❗️조건
+     - 배열은 오름차순으로 정렬되어 있음
+     - 배열의 길이는 1 이상 100,000 이하
+     - target은 -1,000,000 이상 1,000,000 이하의 정수
+     - 시간복잡도는 반드시 O(log n) 이하여야 함
+     */
+    
+    static func binarySearch(
+        _ numbers: [Int],
+        _ target: Int
+    ) -> Int {
+        var start = 0
+        var end = numbers.count - 1
+        while start <= end {
+            let mid = (start + end) / 2
+
+            if numbers[mid] == target {
+                return mid
+            } else if numbers[mid] < target {
+                start = mid + 1
+            } else {
+                end = mid - 1
+            }
+        }
+        return -1
+    }
+    
+}

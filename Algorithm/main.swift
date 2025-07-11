@@ -190,13 +190,19 @@
  print(Day10.largestNumber([0, 0, 0])) // 0
  print(Day10.largestNumber([12, 121])) // 12121
  print(Day10.largestNumber([824, 938, 1399, 5607, 6973, 5703, 9609, 4398, 8247])) // 9609938824824769735703560743981399
- 
+
+ print(Day10.minimumCoins(1260)) // 6
+ print(Day10.minimumCoins(770)) // 6
+ print(Day10.minimumCoins(30)) // 3
+ print(Day10.minimumCoins(500)) // 1
+ print(Day10.minimumCoins(380)) // 7
  */
 
-print(Day10.minimumCoins(1260)) // 6
-print(Day10.minimumCoins(770)) // 6
-print(Day10.minimumCoins(30)) // 3
-print(Day10.minimumCoins(500)) // 1
-print(Day10.minimumCoins(380)) // 7
+
+print(Day10.binarySearch([1, 3, 5, 7, 9, 11], 7)) // 3
+print(Day10.binarySearch([1, 2, 4, 6, 8, 10, 12], 5)) // -1
+print(Day10.binarySearch([10, 20, 30, 40, 50], 10)) // 0
+print(Day10.binarySearch([100, 200, 300, 400, 500], 500)) // 0
+
 
 
