@@ -338,3 +338,177 @@ extension Day11 {
         return count
     }
 }
+
+extension Day11 {
+    /*
+     # ✅ 문제: 합이 K가 되는 조합의 개수
+
+     정수 배열이 주어졌을 때, **서로 다른 세 수의 합이 특정 정수 K가 되는 경우의 수**를 구하시오.
+
+     ---
+
+     ### ✳️ 입력 예시
+     ```swift
+     let numbers = [1, 2, 3, 4, 5]
+     let target = 9
+     ```
+
+     ### ✳️ 출력 예시
+     ```swift
+     2
+     ```
+
+     (조합: `[1, 3, 5]`, `[2, 3, 4]` → 총 2개)
+
+     ---
+
+     ### ❗️조건
+     - 배열 길이: 3 이상 20 이하
+     - 배열의 값은 -1,000 이상 1,000 이하
+     - target은 -3,000 이상 3,000 이하
+     - 세 수의 인덱스는 서로 달라야 함
+     - 조합 순서는 고려하지 않음
+     */
+    
+    static func countTripletsThatSumTo(
+        _ numbers: [Int],
+        _ target: Int
+    ) -> Int {
+        guard numbers.count >= 3,
+              numbers.count <= 20 else { return 0 }
+        
+        var count = 0
+        for i in 0 ..< numbers.count {
+            for j in i+1 ..< numbers.count {
+                for k in j+1 ..< numbers.count {
+                    if numbers[i] + numbers[j] + numbers[k] == target {
+                        count += 1
+                    }
+                }
+            }
+        }
+        
+        return count
+    }
+}
+
+extension Day11 {
+    /*
+     # ✅ 문제: 가장 가까운 두 수의 차이
+
+     정수 배열이 주어졌을 때, **배열 내에서 두 수의 차이가 가장 작은 값을 반환**하시오.
+
+     ---
+
+     ### ✳️ 입력 예시
+     ```swift
+     let numbers = [4, 9, 1, 32, 13]
+     ```
+
+     ### ✳️ 출력 예시
+     ```swift
+     3
+     ```
+
+     (1과 4의 차이가 가장 작음)
+
+     ---
+
+     ### ❗️조건
+     - 배열 길이: 2 이상 1000 이하
+     - 배열의 값은 -1,000,000 이상 1,000,000 이하
+     - 두 수는 서로 달라야 하며, 중복된 숫자는 무시함
+     */
+    
+    static func minimumDifferenceBetweenTwoNumbers(_ numbers: [Int]) -> Int {
+        guard numbers.count >= 2,
+              numbers.count <= 1000 else { return 0 }
+        
+        let sortedNumbers = numbers.sorted()
+        var minValue = Int.max
+
+        for i in 1..<sortedNumbers.count {
+            let diff = sortedNumbers[i] - sortedNumbers[i - 1]
+            minValue = min(minValue, diff)
+        }
+
+        return minValue
+    }
+}
+
+
+extension Day11 {
+    /*
+     # ✅ 문제: 곱해서 K가 되는 쌍의 개수
+
+     정수 배열과 정수 K가 주어졌을 때, **두 수의 곱이 K가 되는 쌍의 개수**를 구하시오.
+
+     ---
+
+     ### ✳️ 입력 예시 1
+     ```swift
+     let numbers = [1, 2, 3, 4, 6]
+     let k = 6
+     ```
+
+     ### ✳️ 출력 예시 1
+     ```swift
+     2
+     ```
+     (쌍: `[1, 6]`, `[2, 3]`)
+
+     ---
+
+     ### ✳️ 입력 예시 2
+     ```swift
+     let numbers = [-2, -3, 6, 1, -1]
+     let k = 6
+     ```
+
+     ### ✳️ 출력 예시 2
+     ```swift
+     2
+     ```
+     (쌍: `[-2, -3]`, `[6, 1]`)
+
+     ---
+
+     ### ✳️ 입력 예시 3
+     ```swift
+     let numbers = [0, 0, 1]
+     let k = 0
+     ```
+
+     ### ✳️ 출력 예시 3
+     ```swift
+     1
+     ```
+     (쌍: `[0, 0]`)
+
+     ---
+
+     ### ❗️조건
+     - 배열 길이: 2 이상 1000 이하
+     - 배열의 원소는 -1,000,000 이상 1,000,000 이하
+     - 정답은 쌍의 개수이며, (a, b)와 (b, a)는 **같은 쌍**으로 간주
+     - 같은 인덱스는 사용할 수 없음
+     */
+    
+    static func countPairsWithProductK(
+        _ numbers: [Int],
+        _ k: Int
+    ) -> Int {
+        guard numbers.count >= 2,
+              numbers.count <= 1000 else { return 0 }
+        
+        var count = 0
+        for i in 0 ..< numbers.count {
+            for j in i+1 ..< numbers.count {
+                if numbers[i] * numbers[j] == k {
+                    count += 1
+                }
+            }
+        }
+        return count
+    }
+}

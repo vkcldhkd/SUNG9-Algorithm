@@ -239,13 +239,29 @@
  print(Day11.isValidParentheses("(())()")) // true
  print(Day11.isValidParentheses("(()(")) // false
  print(Day11.isValidParentheses("(((((((((((((((((((((((())))))))))))))))))))))))")) // true
+
+ print(Day11.countZeroSumTriplets([-2, 3, 0, 2, -5])) // 2
+ print(Day11.countZeroSumTriplets([-3, -2, -1, 0, 1, 2, 3])) // 5
+ print(Day11.countZeroSumTriplets([-1, 1, -1, 1])) // 0
  
+ print(Day11.countTripletsThatSumTo([1, 2, 3, 4, 5], 9)) // 2
+ print(Day11.countTripletsThatSumTo([0, -1, 2, -3, 1], 0)) // 2
+ print(Day11.countTripletsThatSumTo([1, 1, 1, 1], 3)) // 4
+ 
+ print(Day11.minimumDifferenceBetweenTwoNumbers([4, 9, 1, 32, 13])) // 3
+ print(Day11.minimumDifferenceBetweenTwoNumbers([-10, -20, -30, -40])) // 10
+ print(Day11.minimumDifferenceBetweenTwoNumbers([1, 1000000])) // 999999
+ 
+ print(Day11.countPairsWithProductK([1, 2, 3, 4, 6], 6)) // 2
+ print(Day11.countPairsWithProductK([-2, -3, 6, 1, -1], 6)) // 2
+ print(Day11.countPairsWithProductK([2, 3, 6, 1], 6)) // 2
+ print(Day11.countPairsWithProductK([2, 2, 3, 3], 6)) // 4
  */
 
 
-print(Day11.countZeroSumTriplets([-2, 3, 0, 2, -5])) // 2
-print(Day11.countZeroSumTriplets([-3, -2, -1, 0, 1, 2, 3])) // 5
-print(Day11.countZeroSumTriplets([-1, 1, -1, 1])) // 0
+
+
+
 
 
 
