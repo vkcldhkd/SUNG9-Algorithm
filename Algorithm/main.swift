@@ -223,15 +223,15 @@
  print(Day11.canAttendAllMeetings([[7, 10], [2, 4]])) // true
  print(Day11.canAttendAllMeetings([[1, 2], [2, 3], [3, 4]])) // true
  print(Day11.canAttendAllMeetings([[5, 10], [10, 15], [9, 12]])) // false
+ 
+ print(Day11.removeAdjacentDuplicates("aaabbbccdaa")) // abcda
+ print(Day11.removeAdjacentDuplicates("aabbccddeeff")) // abcdef
+ print(Day11.removeAdjacentDuplicates("ababa")) // ababa
+ print(Day11.removeAdjacentDuplicates("aaaaa")) // a
  */
 
-
-print(Day11.removeAdjacentDuplicates("aaabbbccdaa")) // abcda
-print(Day11.removeAdjacentDuplicates("aabbccddeeff")) // abcdef
-print(Day11.removeAdjacentDuplicates("ababa")) // ababa
-print(Day11.removeAdjacentDuplicates("aaaaa")) // a
-
-
-
-
+print(Day11.minimumDifference([4, 9, 1, 32, 13])) // 3
+print(Day11.minimumDifference([10, 8, 1, 4])) // 2
+print(Day11.minimumDifference([-10, -8, -20, -15])) // 2
+print(Day11.minimumDifference([3, 3, 3, 3])) // 0
 
