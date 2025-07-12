@@ -337,10 +337,15 @@
 
 /*
  Day12
+ 
+ print(Day12.maxUniqueCountInFixedWindow([1, 2, 1, 3, 4, 2, 3], 4)) // 4
+ print(Day12.maxUniqueCountInFixedWindow([1, 1, 1, 1], 2)) // 1
+ print(Day12.maxUniqueCountInFixedWindow([1, 2, 3, 4, 5], 3)) // 3
  */
 
+print(Day12.maxFrequencyInFixedWindow([1, 2, 2, 3, 1, 2], 3)) // 2
+print(Day12.maxFrequencyInFixedWindow([4, 4, 4, 4], 2)) // 2
+print(Day12.maxFrequencyInFixedWindow([1, 2, 3, 4, 5], 2)) // 1
 
 
-print(Day12.maxUniqueCountInFixedWindow([1, 2, 1, 3, 4, 2, 3], 4)) // 4
-print(Day12.maxUniqueCountInFixedWindow([1, 1, 1, 1], 2)) // 1
-print(Day12.maxUniqueCountInFixedWindow([1, 2, 3, 4, 5], 3)) // 3
+
