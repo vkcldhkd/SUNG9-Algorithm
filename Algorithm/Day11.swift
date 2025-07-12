@@ -772,3 +772,103 @@ extension Day11 {
         return result
     }
 }
+
+extension Day11 {
+    /*
+     # ✅ 문제: 구간 내 두 숫자의 등장 횟수 비교
+
+     정수 배열과 여러 개의 구간 쿼리, 그리고 두 개의 숫자 A, B가 주어질 때
+     각 쿼리마다 주어진 구간 내에서 A가 B보다 많이 등장한 경우의 개수를 구하시오.
+
+     ---
+
+     ### ✳️ 입력 예시 1
+     ```swift
+     let numbers = [1, 2, 1, 3, 1, 2, 2]
+     let a = 1
+     let b = 2
+     let queries = [(0, 3), (1, 5), (0, 6)]
+     ```
+
+     ### ✳️ 출력 예시 1
+     ```swift
+     true
+     false
+     false
+     ```
+
+     ---
+
+     ### ✳️ 입력 예시 2
+     ```swift
+     let numbers = [4, 4, 4, 4]
+     let a = 4
+     let b = 5
+     let queries = [(0, 3), (1, 2)]
+     ```
+
+     ### ✳️ 출력 예시 2
+     ```swift
+     true
+     true
+     ```
+
+     ---
+
+     ### ✳️ 입력 예시 3
+     ```swift
+     let numbers = [1, 2, 3, 4, 5]
+     let a = 6
+     let b = 3
+     let queries = [(0, 4)]
+     ```
+
+     ### ✳️ 출력 예시 3
+     ```swift
+     false
+     ```
+
+     ---
+
+     ### ❗️조건
+     - 배열 길이: 1 이상 100,000 이하
+     - 쿼리 개수: 1 이상 10,000 이하
+     - 각 쿼리는 (start, end) 인덱스로 주어짐 (0 ≤ start ≤ end < 배열 길이)
+     - A, B는 -1,000,000 이상 1,000,000 이하
+     */
+    
+    static func isACountMoreThanB(
+        _ numbers: [Int],
+        _ a: Int,
+        _ b: Int,
+        _ queries: [(Int, Int)]
+    ) -> [Bool] {
+        guard numbers.count >= 1,
+              numbers.count <= 100_000 else { return [] }
+        
+        guard queries.count >= 1,
+              queries.count <= 10_000 else { return [] }
+        
+        guard a >= -1_000_000, a <= 1_000_000 else { return [] }
+        guard b >= -1_000_000, b <= 1_000_000 else { return [] }
+        
+        var prefixA = [0]
+        var prefixB = [0]
+        
+        for num in numbers {
+            let isA = num == a ? 1 : 0
+            let isB = num == b ? 1 : 0
+            
+            prefixA.append(prefixA.last! + isA)
+            prefixB.append(prefixB.last! + isB)
+        }
+
+        var result: [Bool] = []
+        for (start, end) in queries {
+            let resultA = prefixA[end + 1] - prefixA[start]
+            let resultB = prefixB[end + 1] - prefixB[start]
+            result.append(resultA > resultB)
+        }
+        return result
+    }
+}
