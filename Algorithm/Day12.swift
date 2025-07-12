@@ -378,3 +378,90 @@ extension Day12 {
         return maxEvenValue
     }
 }
+
+extension Day12 {
+    /*
+     # ✅ 문제: 고정 구간 내 음수 개수의 최댓값
+
+     정수 배열과 정수 K가 주어졌을 때,
+     길이가 K인 **모든 연속 부분 배열(subarray)**에 대해
+     그 구간 내 음수의 개수 중 **최댓값**을 구하시오.
+
+     ---
+
+     ### ✳️ 입력 예시 1
+     ```swift
+     let numbers = [-1, 2, -3, 4, -5, -6]
+     let k = 3
+     ```
+
+     ### ✳️ 출력 예시 1
+     ```swift
+     2
+     ```
+     (→ 구간 [-3, 4, -5] → 음수 2개)
+
+     ---
+
+     ### ✳️ 입력 예시 2
+     ```swift
+     let numbers = [1, 2, 3, -1, -2]
+     let k = 2
+     ```
+
+     ### ✳️ 출력 예시 2
+     ```swift
+     1
+     ```
+
+     ---
+
+     ### ✳️ 입력 예시 3
+     ```swift
+     let numbers = [-1, -2, -3, -4, -5]
+     let k = 4
+     ```
+
+     ### ✳️ 출력 예시 3
+     ```swift
+     4
+     ```
+
+     ---
+
+     ### ❗️조건
+     - 배열 길이: 1 이상 100,000 이하
+     - K: 1 이상 배열 길이 이하
+     - 음수는 0 미만의 수를 의미함
+     */
+    
+    static func maxNegativeCountInFixedWindow(
+        _ numbers: [Int],
+        _ k: Int
+    ) -> Int {
+        guard numbers.count >= 1,
+              numbers.count <= 100_000 else { return 0 }
+        
+        guard k >= 1, k <= numbers.count else { return 0 }
+
+        var currentNegativeCount = numbers[0 ..< k].filter { $0 < 0 }.count
+        var maxNegativeCount = currentNegativeCount
+
+        for i in k ..< numbers.count {
+            let outNum = numbers[i - k]
+            let inNum = numbers[i]
+            
+            if outNum < 0 {
+                currentNegativeCount -= 1
+            }
+            if inNum < 0 {
+                currentNegativeCount += 1
+            }
+            
+            maxNegativeCount = max(maxNegativeCount, currentNegativeCount)
+        }
+
+        return maxNegativeCount
+    }
+
+}
