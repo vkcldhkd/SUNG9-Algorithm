@@ -1027,3 +1027,83 @@ extension Day11 {
         return avgSum
     }
 }
+
+extension Day11 {
+    /*
+     # ✅ 문제: 최대값이 등장하는 횟수
+
+     정수 배열과 정수 K가 주어졌을 때,
+     길이가 K인 연속된 부분 배열(subarray)들 중에서
+     **가장 큰 합을 갖는 구간이 몇 개 존재하는지** 구하시오.
+
+     ---
+
+     ### ✳️ 입력 예시 1
+     ```swift
+     let numbers = [1, 2, 3, 2, 1]
+     let k = 2
+     ```
+
+     ### ✳️ 출력 예시 1
+     ```swift
+     1
+     ```
+     (→ 합이 5인 구간 [2, 3] 하나)
+
+     ---
+
+     ### ✳️ 입력 예시 2
+     ```swift
+     let numbers = [1, 1, 1, 1]
+     let k = 2
+     ```
+
+     ### ✳️ 출력 예시 2
+     ```swift
+     3
+     ```
+     (→ 모두 합 2)
+
+     ---
+
+     ### ✳️ 입력 예시 3
+     ```swift
+     let numbers = [2, 1, 2, 1, 2]
+     let k = 2
+     ```
+
+     ### ✳️ 출력 예시 3
+     ```swift
+     2
+     ```
+     (→ 합이 3인 구간 [2,1], [1,2])
+
+     ---
+
+     ### ❗️조건
+     - 배열 길이: 1 이상 100,000 이하
+     - K: 1 이상 배열 길이 이하
+     */
+    
+    static func countMaxSumWindows(
+        _ numbers: [Int],
+        _ k: Int
+    ) -> Int {
+        guard numbers.count >= 1,
+              numbers.count <= 100_000 else { return 0 }
+        
+        guard k >= 1, k <= numbers.count else { return 0 }
+        
+        var windowSum = numbers[0 ..< k].reduce(0, +)
+        var result: [Int] = []
+        result.append(windowSum)
+        
+        for i in k ..< numbers.count {
+            windowSum += numbers[i] - numbers[i-k]
+            result.append(windowSum)
+        }
+        
+        let resultMaxValue = result.max() ?? 0
+        return result.filter { $0 == resultMaxValue }.count
+    }
+}
