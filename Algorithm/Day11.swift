@@ -1198,3 +1198,86 @@ extension Day11 {
         return maxCount
     }
 }
+
+extension Day11 {
+    /*
+     # ✅ 문제: 고정 구간 최소합의 시작 위치 찾기
+
+     정수 배열과 정수 K가 주어졌을 때,
+     길이가 K인 연속된 부분 배열(subarray) 중에서
+     **합이 가장 작은 구간의 시작 인덱스**를 구하시오.
+     (여러 개일 경우 가장 앞에 있는 인덱스를 반환)
+
+     ---
+
+     ### ✳️ 입력 예시 1
+     ```swift
+     let numbers = [7, 1, 3, 4, 9, 2]
+     let k = 2
+     ```
+
+     ### ✳️ 출력 예시 1
+     ```swift
+     1
+     ```
+     (→ [1,3]의 합이 4로 최소)
+
+     ---
+
+     ### ✳️ 입력 예시 2
+     ```swift
+     let numbers = [5, 4, 3, 2, 1]
+     let k = 3
+     ```
+
+     ### ✳️ 출력 예시 2
+     ```swift
+     2
+     ```
+     (→ [3,2,1]의 합이 6으로 최소)
+
+     ---
+
+     ### ✳️ 입력 예시 3
+     ```swift
+     let numbers = [1, 2, 1, 2, 1]
+     let k = 2
+     ```
+
+     ### ✳️ 출력 예시 3
+     ```swift
+     0
+     ```
+     (→ [1,2], [2,1], [1,2], [2,1] → 최소합은 3, 가장 앞은 인덱스 0)
+
+     ---
+
+     ### ❗️조건
+     - 배열 길이: 1 이상 100,000 이하
+     - K: 1 이상 배열 길이 이하
+     */
+    static func minSumWindowStartIndex(
+        _ numbers: [Int],
+        _ k: Int
+    ) -> Int {
+        guard numbers.count >= 1,
+              numbers.count <= 100_000 else { return 0 }
+        
+        guard k >= 1, k <= numbers.count else { return 0 }
+        
+        var minIndex = 0
+        var windowSum = numbers[0 ..< k].reduce(0, +)
+        var minSum = windowSum
+        
+        for i in k ..< numbers.count {
+            // 슬라이딩 윈도우 이동
+            windowSum += numbers[i] - numbers[i - k]
+
+            if windowSum < minSum {
+                minSum = windowSum
+                minIndex = i - k + 1
+            }
+        }
+        return minIndex
+    }
+}
