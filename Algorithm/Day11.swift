@@ -225,3 +225,69 @@ extension Day11 {
         return minValue
     }
 }
+
+extension Day11 {
+    /*
+     # ✅ 문제: 올바른 괄호
+     문자열이 주어졌을 때, 괄호가 올바르게 열리고 닫히는지를 확인하시오.
+
+     ---
+
+     ### ✳️ 입력 예시
+     ```swift
+     let input = "()()"
+     ```
+
+     ### ✳️ 출력 예시
+     ```swift
+     true
+     ```
+
+     ---
+
+     ### ✳️ 입력 예시 2
+     ```swift
+     let input = "(())()"
+     ```
+
+     ### ✳️ 출력 예시 2
+     ```swift
+     true
+     ```
+
+     ---
+
+     ### ✳️ 입력 예시 3
+     ```swift
+     let input = "(()("
+     ```
+
+     ### ✳️ 출력 예시 3
+     ```swift
+     false
+     ```
+
+     ---
+
+     ### ❗️조건
+     - 문자열은 `(`, `)` 문자만 포함
+     - 길이는 1 이상 100,000 이하
+     */
+    
+    static func isValidParentheses(_ input: String) -> Bool {
+        var validCount = 0
+        
+        for char in input {
+            if validCount == 0 && char == ")" {
+                return false
+            }
+            
+            if char == "(" {
+                validCount += 1
+            } else if char == ")" {
+                validCount -= 1
+            }
+        }
+        return validCount == 0
+    }
+}
