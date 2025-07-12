@@ -256,8 +256,16 @@
  print(Day11.countPairsWithProductK([-2, -3, 6, 1, -1], 6)) // 2
  print(Day11.countPairsWithProductK([2, 3, 6, 1], 6)) // 2
  print(Day11.countPairsWithProductK([2, 2, 3, 3], 6)) // 4
+ 
+ print(Day11.rangeSums([1, 2, 3, 4, 5], [(0, 2), (1, 3), (2, 4)])) // 6, 9, 12
+ print(Day11.rangeSums([10, -2, 5, 7, -3], [(0, 4), (1, 2), (3, 4)])) // 17, 3, 4
+ 
  */
 
+
+print(Day11.countEvenInRanges([1, 2, 3, 4, 5, 6], [(0, 3), (1, 5), (2, 2)])) // 2, 3, 0
+print(Day11.countEvenInRanges([2, 4, 6, 8], [(0, 3), (1, 2)])) // 4, 2
+print(Day11.countEvenInRanges([1, 3, 5, 7], [(0, 2), (1, 3)])) // 0, 0
 
 
 

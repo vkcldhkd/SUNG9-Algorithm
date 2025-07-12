@@ -512,3 +512,173 @@ extension Day11 {
         return count
     }
 }
+
+extension Day11 {
+    /*
+     # ✅ 문제: 구간 합 구하기 (누적합 기초)
+
+     정수 배열과 여러 개의 구간 쿼리가 주어질 때, 각 구간의 합을 계산하시오.
+
+     ---
+
+     ### ✳️ 입력 예시 1
+     ```swift
+     let numbers = [1, 2, 3, 4, 5]
+     let queries = [(0, 2), (1, 3), (2, 4)]
+     ```
+
+     ### ✳️ 출력 예시 1
+     ```swift
+     6
+     9
+     12
+     ```
+
+     ---
+
+     ### ✳️ 입력 예시 2
+     ```swift
+     let numbers = [10, -2, 5, 7, -3]
+     let queries = [(0, 4), (1, 2), (3, 4)]
+     ```
+
+     ### ✳️ 출력 예시 2
+     ```swift
+     17
+     3
+     4
+     ```
+
+     ---
+
+     ### ✳️ 입력 예시 3
+     ```swift
+     let numbers = [1]
+     let queries = [(0, 0)]
+     ```
+
+     ### ✳️ 출력 예시 3
+     ```swift
+     1
+     ```
+
+     ---
+
+     ### ❗️조건
+     - 배열 길이: 1 이상 100,000 이하
+     - 쿼리 개수: 1 이상 10,000 이하
+     - 각 쿼리는 (start, end) 인덱스로 주어짐 (0 ≤ start ≤ end < 배열 길이)
+     - 음수도 포함될 수 있음
+     */
+    
+    static func rangeSums(
+        _ numbers: [Int],
+        _ queries: [(Int, Int)]
+    ) -> [Int] {
+        guard numbers.count >= 1,
+              numbers.count <= 100000 else { return [] }
+        
+        guard queries.count >= 1,
+              queries.count <= 10000 else { return [] }
+        
+        var prefix = [0]
+        for num in numbers {
+            prefix.append(prefix.last! + num)
+        }
+        
+        var result: [Int] = []
+        for (start, end) in queries {
+            result.append(prefix[end+1] - prefix[start])
+        }
+        
+        return result
+    }
+}
+
+extension Day11 {
+    /*
+     # ✅ 문제: 구간 내 짝수 개수 세기
+
+     정수 배열과 여러 개의 구간 쿼리가 주어질 때, 각 구간에 포함된 **짝수의 개수**를 계산하시오.
+
+     ---
+
+     ### ✳️ 입력 예시 1
+     ```swift
+     let numbers = [1, 2, 3, 4, 5, 6]
+     let queries = [(0, 3), (1, 5), (2, 2)]
+     ```
+
+     ### ✳️ 출력 예시 1
+     ```swift
+     2
+     3
+     0
+     ```
+
+     ---
+
+     ### ✳️ 입력 예시 2
+     ```swift
+     let numbers = [2, 4, 6, 8]
+     let queries = [(0, 3), (1, 2)]
+     ```
+
+     ### ✳️ 출력 예시 2
+     ```swift
+     4
+     2
+     ```
+
+     ---
+
+     ### ✳️ 입력 예시 3
+     ```swift
+     let numbers = [1, 3, 5, 7]
+     let queries = [(0, 2), (1, 3)]
+     ```
+
+     ### ✳️ 출력 예시 3
+     ```swift
+     0
+     0
+     ```
+
+     ---
+
+     ### ❗️조건
+     - 배열 길이: 1 이상 100,000 이하
+     - 쿼리 개수: 1 이상 10,000 이하
+     - 각 쿼리는 (start, end) 인덱스로 주어짐 (0 ≤ start ≤ end < 배열 길이)
+     */
+    
+    static func countEvenInRanges(
+        _ numbers: [Int],
+        _ queries: [(Int, Int)]
+    ) -> [Int] {
+        guard numbers.count >= 1,
+              numbers.count <= 100000 else { return [] }
+        
+        guard queries.count >= 1,
+              queries.count <= 10000 else { return [] }
+        
+        
+//        return queries
+//            .map { numbers[$0.0...$0.1].filter { $0 % 2 == 0 }.count }
+        
+        
+        // 짝수 여부를 누적합 배열로
+        var prefix = [0]
+        for num in numbers {
+            let isEven = num % 2 == 0 ? 1 : 0
+            prefix.append(prefix.last! + isEven)
+        }
+
+        // 각 구간에 대한 결과 계산
+        var result: [Int] = []
+        for (start, end) in queries {
+            result.append(prefix[end + 1] - prefix[start])
+        }
+        return result
+    }
+}
