@@ -287,3 +287,94 @@ extension Day12 {
         return maxValue
     }
 }
+
+extension Day12 {
+    /*
+     # ✅ 문제: 고정 구간 내 연속 짝수 개수의 최댓값
+
+     정수 배열과 정수 K가 주어졌을 때,
+     길이가 K인 **모든 연속 부분 배열(subarray)**에 대해
+     그 구간 내에서 연속으로 등장하는 **짝수의 최댓값**을 구하시오.
+
+     ---
+
+     ### ✳️ 입력 예시 1
+     ```swift
+     let numbers = [2, 4, 1, 6, 8, 5]
+     let k = 4
+     ```
+
+     ### ✳️ 출력 예시 1
+     ```swift
+     2
+     ```
+     (→ 구간 [1,6,8,5] → 짝수 6,8 → 연속 2개)
+
+     ---
+
+     ### ✳️ 입력 예시 2
+     ```swift
+     let numbers = [1, 3, 5, 7, 2, 4]
+     let k = 3
+     ```
+
+     ### ✳️ 출력 예시 2
+     ```swift
+     2
+     ```
+     (→ 구간 [7,2,4] → 짝수 2,4 → 연속 2개)
+
+     ---
+
+     ### ✳️ 입력 예시 3
+     ```swift
+     let numbers = [1, 2, 4, 6, 8, 1]
+     let k = 5
+     ```
+
+     ### ✳️ 출력 예시 3
+     ```swift
+     4
+     ```
+     (→ 구간 [2,4,6,8,1] → 짝수 2,4,6,8 → 연속 4개)
+
+     ---
+
+     ### ❗️조건
+     - 배열 길이: 1 이상 100,000 이하
+     - K: 1 이상 배열 길이 이하
+     */
+    
+    static func maxConsecutiveEvensInFixedWindow(
+        _ numbers: [Int],
+        _ k: Int
+    ) -> Int {
+        func getEvenValue(numbers: [Int]) -> Int {
+            var evenValue = 0
+            for num in numbers {
+                if num % 2 == 0 {
+                    evenValue += 1
+                } else {
+                    evenValue = 0
+                }
+            }
+            return evenValue
+        }
+        
+        guard numbers.count >= 1,
+              numbers.count <= 100_000 else { return 0 }
+        
+        guard k >= 1, k <= numbers.count else { return 0 }
+    
+        var windowValue = numbers[0 ..< k]
+        var maxEvenValue = getEvenValue(numbers: Array(windowValue))
+    
+        for i in k ..< numbers.count {
+            _ = windowValue.removeFirst()
+            windowValue.append(numbers[i])
+            maxEvenValue = max(maxEvenValue, getEvenValue(numbers: Array(windowValue)))
+        }
+        
+        return maxEvenValue
+    }
+}
