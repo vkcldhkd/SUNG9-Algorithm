@@ -1107,3 +1107,94 @@ extension Day11 {
         return result.filter { $0 == resultMaxValue }.count
     }
 }
+
+extension Day11 {
+    /*
+     # ✅ 문제: 고정 구간 내 최대 홀수 개수
+
+     정수 배열과 정수 K가 주어졌을 때,
+     길이가 K인 연속된 부분 배열(subarray) 중에서
+     **홀수의 개수가 가장 많은 구간**에서 그 개수를 구하시오.
+
+     ---
+
+     ### ✳️ 입력 예시 1
+     ```swift
+     let numbers = [1, 2, 3, 4, 5]
+     let k = 3
+     ```
+
+     ### ✳️ 출력 예시 1
+     ```swift
+     2
+     ```
+     (→ [1, 2, 3], [2, 3, 4], [3, 4, 5] 중 [1,2,3]과 [3,4,5] 에서 2개의 홀수)
+
+     ---
+
+     ### ✳️ 입력 예시 2
+     ```swift
+     let numbers = [2, 4, 6, 8, 10]
+     let k = 2
+     ```
+
+     ### ✳️ 출력 예시 2
+     ```swift
+     0
+     ```
+     (→ 모든 구간이 짝수만 포함)
+
+     ---
+
+     ### ✳️ 입력 예시 3
+     ```swift
+     let numbers = [1, 3, 5, 7, 9]
+     let k = 3
+     ```
+
+     ### ✳️ 출력 예시 3
+     ```swift
+     3
+     ```
+     (→ 모든 숫자가 홀수 → 모든 구간의 홀수 개수는 3)
+
+     ---
+
+     ### ❗️조건
+     - 배열 길이: 1 이상 100,000 이하
+     - K: 1 이상 배열 길이 이하
+     */
+    static func maxOddCountInFixedWindow(
+        _ numbers: [Int],
+        _ k: Int
+    ) -> Int {
+        func isOdd(number: Int) -> Bool {
+            return number % 2 != 0
+        }
+        
+        func getOddCount(numbers: [Int]) -> Int {
+            return numbers.filter { isOdd(number: $0) }.count
+        }
+        
+        guard numbers.count >= 1,
+              numbers.count <= 100_000 else { return 0 }
+        
+        guard k >= 1, k <= numbers.count else { return 0 }
+        
+        var count = getOddCount(numbers: Array(numbers[0 ..< k]))
+        var maxCount = count
+        
+        for i in k ..< numbers.count {
+            if isOdd(number: numbers[i-k]) {
+                count -= 1
+            }
+            
+            if isOdd(number: numbers[i]) {
+                count += 1
+            }
+            maxCount = max(maxCount, count)
+        }
+        
+        return maxCount
+    }
+}
