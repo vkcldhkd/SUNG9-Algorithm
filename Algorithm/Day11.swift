@@ -949,3 +949,81 @@ extension Day11 {
     }
 }
 
+extension Day11 {
+    /*
+     # ✅ 문제: 고정 길이 구간의 최대 평균
+
+     정수 배열과 정수 K가 주어졌을 때,
+     길이가 K인 연속된 부분 배열(subarray) 중 평균이 **가장 큰 값**을 구하시오.
+     (소수점 아래는 버리지 않고 실수 그대로 반환)
+
+     ---
+
+     ### ✳️ 입력 예시 1
+     ```swift
+     let numbers = [1, 12, -5, -6, 50, 3]
+     let k = 4
+     ```
+
+     ### ✳️ 출력 예시 1
+     ```swift
+     12.75
+     ```
+
+     ---
+
+     ### ✳️ 입력 예시 2
+     ```swift
+     let numbers = [5, 5, 5, 5]
+     let k = 2
+     ```
+
+     ### ✳️ 출력 예시 2
+     ```swift
+     5.0
+     ```
+
+     ---
+
+     ### ✳️ 입력 예시 3
+     ```swift
+     let numbers = [-1, -12, -5, -6, -50, -3]
+     let k = 3
+     ```
+
+     ### ✳️ 출력 예시 3
+     ```swift
+     -6.0
+     ```
+
+     ---
+
+     ### ❗️조건
+     - 배열 길이: 1 이상 100,000 이하
+     - K: 1 이상 배열 길이 이하
+     - 정답은 소수점 아래까지 출력 (Double로 반환)
+     */
+    static func maxAverageOfFixedWindow(
+        _ numbers: [Int],
+        _ k: Int
+    ) -> Double {
+        
+        func toDouble(value: Int, k: Int) -> Double {
+            return Double(value) / Double(k)
+        }
+        
+        guard numbers.count >= 1,
+              numbers.count <= 100_000 else { return 0 }
+        
+        guard k >= 1, k <= numbers.count else { return 0 }
+        
+        var windowSum = numbers[0 ..< k].reduce(0, +)
+        var avgSum = toDouble(value: windowSum, k: k)
+        for i in k ..< numbers.count {
+            windowSum += numbers[i] - numbers[i - k]
+            avgSum = max(avgSum, toDouble(value: windowSum, k: k))
+        }
+        
+        return avgSum
+    }
+}

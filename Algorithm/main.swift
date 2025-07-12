@@ -302,8 +302,24 @@
      3,
      [(0, 4)]
  )) // false
+ 
+ print(Day11.maxSumOfFixedWindow([1, 2, 3, 4, 5], 2)) // 9
+ print(Day11.maxSumOfFixedWindow([5, 4, -1, 7, 8], 3)) // 14
+ print(Day11.maxSumOfFixedWindow([-2, -3, -1, -5], 2)) // -4
  */
 
-print(Day11.maxSumOfFixedWindow([1, 2, 3, 4, 5], 2)) // 9
-print(Day11.maxSumOfFixedWindow([5, 4, -1, 7, 8], 3)) // 14
-print(Day11.maxSumOfFixedWindow([-2, -3, -1, -5], 2)) // -4
+
+print(Day11.maxAverageOfFixedWindow(
+    [1, 12, -5, -6, 50, 3],
+    4
+)) // 12.75
+
+print(Day11.maxAverageOfFixedWindow(
+    [5, 5, 5, 5],
+    2
+)) // 5.0
+
+print(Day11.maxAverageOfFixedWindow(
+    [-1, -12, -5, -6, -50, -3],
+    3
+)) // -6.0
