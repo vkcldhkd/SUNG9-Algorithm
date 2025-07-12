@@ -463,5 +463,98 @@ extension Day12 {
 
         return maxNegativeCount
     }
+}
 
+extension Day12 {
+    /*
+     # ✅ 문제: 고정 구간 내 짝수 개수의 최솟값
+
+     정수 배열과 정수 K가 주어졌을 때,
+     길이가 K인 **모든 연속 부분 배열(subarray)**에 대해
+     그 구간 내 짝수의 개수 중 **최솟값**을 구하시오.
+
+     ---
+
+     ### ✳️ 입력 예시 1
+     ```swift
+     let numbers = [1, 2, 3, 4, 5]
+     let k = 3
+     ```
+
+     ### ✳️ 출력 예시 1
+     ```swift
+     1
+     ```
+     (→ 구간 [1, 2, 3] 또는 [3, 4, 5] 등에서 짝수 하나)
+
+     ---
+
+     ### ✳️ 입력 예시 2
+     ```swift
+     let numbers = [2, 4, 6, 8, 10]
+     let k = 2
+     ```
+
+     ### ✳️ 출력 예시 2
+     ```swift
+     2
+     ```
+     (→ 모든 구간이 짝수 2개)
+
+     ---
+
+     ### ✳️ 입력 예시 3
+     ```swift
+     let numbers = [1, 3, 5, 7]
+     let k = 2
+     ```
+
+     ### ✳️ 출력 예시 3
+     ```swift
+     0
+     ```
+     (→ 모두 홀수)
+
+     ---
+
+     ### ❗️조건
+     - 배열 길이: 1 이상 100,000 이하
+     - K: 1 이상 배열 길이 이하
+     */
+    static func minEvenCountInFixedWindow(
+        _ numbers: [Int],
+        _ k: Int
+    ) -> Int {
+        func isEven(num: Int) -> Bool {
+            return num % 2 == 0
+        }
+        
+        guard numbers.count >= 1,
+              numbers.count <= 100_000 else { return 0 }
+        
+        guard k >= 1, k <= numbers.count else { return 0 }
+        
+        var currentEvenCount = 0
+        
+        for i in 0 ..< k {
+            if isEven(num: numbers[i]) {
+                currentEvenCount += 1
+            }
+        }
+        var minEvenCount = currentEvenCount
+
+        for i in k ..< numbers.count {
+            if isEven(num: numbers[i-k]) {
+                currentEvenCount -= 1
+            }
+            
+            if isEven(num: numbers[i]) {
+                currentEvenCount += 1
+            }
+            
+            minEvenCount = min(minEvenCount, currentEvenCount)
+        }
+        
+        return minEvenCount
+    }
 }
