@@ -291,3 +291,50 @@ extension Day11 {
         return validCount == 0
     }
 }
+
+extension Day11 {
+    /*
+     # ✅ 문제: 삼총사 (Three Sum to Zero)
+
+     정수 배열이 주어졌을 때, **서로 다른 세 명을 골랐을 때 세 수의 합이 0이 되는 경우의 수**를 구하시오.
+
+     ---
+
+     ### ✳️ 입력 예시
+     ```swift
+     let numbers = [-2, 3, 0, 2, -5]
+     ```
+
+     ### ✳️ 출력 예시
+     ```swift
+     2
+     ```
+
+     (조합: `[-2, 0, 2]`, `[3, -2, -1]` 등)
+
+     ---
+
+     ### ❗️조건
+     - 배열 길이: 3 이상 13 이하
+     - 배열의 값은 -1,000 이상 1,000 이하
+     - 세 수의 인덱스는 서로 달라야 함
+     - 순서는 고려하지 않음
+     */
+    static func countZeroSumTriplets(_ numbers: [Int]) -> Int {
+        guard numbers.count >= 3,
+              numbers.count <= 13 else { return 0 }
+        
+        var count = 0
+        for i in 0 ..< numbers.count {
+            for j in i+1 ..< numbers.count {
+                for k in j+1 ..< numbers.count {
+                    if numbers[i] + numbers[j] + numbers[k] == 0 {
+                        count += 1
+                    }
+                }
+            }
+        }
+        
+        return count
+    }
+}
