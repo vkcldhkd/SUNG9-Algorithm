@@ -872,3 +872,80 @@ extension Day11 {
         return result
     }
 }
+
+extension Day11 {
+    /*
+     # ✅ 문제: 고정 길이 구간의 최대 합
+
+     정수 배열과 정수 K가 주어졌을 때,
+     길이가 K인 연속된 부분 배열(subarray) 중 **합이 가장 큰 값**을 구하시오.
+
+     ---
+
+     ### ✳️ 입력 예시 1
+     ```swift
+     let numbers = [1, 2, 3, 4, 5]
+     let k = 2
+     ```
+
+     ### ✳️ 출력 예시 1
+     ```swift
+     9
+     ```
+
+     ---
+
+     ### ✳️ 입력 예시 2
+     ```swift
+     let numbers = [5, 4, -1, 7, 8]
+     let k = 3
+     ```
+
+     ### ✳️ 출력 예시 2
+     ```swift
+     20
+     ```
+
+     ---
+
+     ### ✳️ 입력 예시 3
+     ```swift
+     let numbers = [-2, -3, -1, -5]
+     let k = 2
+     ```
+
+     ### ✳️ 출력 예시 3
+     ```swift
+     -4
+     ```
+
+     ---
+
+     ### ❗️조건
+     - 배열 길이: 1 이상 100,000 이하
+     - K: 1 이상 배열 길이 이하
+     */
+    
+    static func maxSumOfFixedWindow(
+        _ numbers: [Int],
+        _ k: Int
+    ) -> Int {
+        guard numbers.count >= 1,
+              numbers.count <= 100_000 else { return 0 }
+        
+        guard k >= 1, k <= numbers.count else { return 0 }
+        
+        var windowSum = numbers[0 ..< k]
+            .reduce(0, +)
+        
+        var maxSum = windowSum
+        
+        for i in k ..< numbers.count {
+            windowSum += numbers[i] - numbers[i - k]
+            maxSum = max(maxSum, windowSum)
+        }
+        
+        return maxSum
+    }
+}
+

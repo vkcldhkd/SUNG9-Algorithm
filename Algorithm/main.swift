@@ -281,27 +281,29 @@
      2,
      [(0, 4), (1, 2)]
  )) // 0, 0
+ 
+ print(Day11.isACountMoreThanB(
+     [1, 2, 1, 3, 1, 2, 2],
+     1,
+     2,
+     [(0, 3), (1, 5), (0, 6)]
+ )) // true, false, false
+
+ print(Day11.isACountMoreThanB(
+     [4, 4, 4, 4],
+     4,
+     5,
+     [(0, 3), (1, 2)]
+ )) // true, true
+
+ print(Day11.isACountMoreThanB(
+     [1, 2, 3, 4, 5],
+     6,
+     3,
+     [(0, 4)]
+ )) // false
  */
 
-
-
-print(Day11.isACountMoreThanB(
-    [1, 2, 1, 3, 1, 2, 2],
-    1,
-    2,
-    [(0, 3), (1, 5), (0, 6)]
-)) // true, false, false
-
-print(Day11.isACountMoreThanB(
-    [4, 4, 4, 4],
-    4,
-    5,
-    [(0, 3), (1, 2)]
-)) // true, true
-
-print(Day11.isACountMoreThanB(
-    [1, 2, 3, 4, 5],
-    6,
-    3,
-    [(0, 4)]
-)) // false
+print(Day11.maxSumOfFixedWindow([1, 2, 3, 4, 5], 2)) // 9
+print(Day11.maxSumOfFixedWindow([5, 4, -1, 7, 8], 3)) // 14
+print(Day11.maxSumOfFixedWindow([-2, -3, -1, -5], 2)) // -4
