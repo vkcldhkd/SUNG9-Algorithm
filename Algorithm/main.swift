@@ -357,10 +357,16 @@
  print(Day12.maxNegativeCountInFixedWindow([-1, 2, -3, 4, -5, -6], 3)) // 2
  print(Day12.maxNegativeCountInFixedWindow([1, 2, 3, -1, -2], 2)) // 2
  print(Day12.maxNegativeCountInFixedWindow([-1, -2, -3, -4, -5], 4)) // 4
+ 
+ print(Day12.minEvenCountInFixedWindow([1, 2, 3, 4, 5], 3)) // 1
+ print(Day12.minEvenCountInFixedWindow([2, 4, 6, 8, 10], 2)) // 2
+ print(Day12.minEvenCountInFixedWindow([1, 3, 5, 7], 2)) // 0
+ 
+ print(Day12.maxAbsEvenOddDiffInFixedWindow([1, 2, 3, 4, 5], 3)) // 1
+ print(Day12.maxAbsEvenOddDiffInFixedWindow([2, 4, 6, 8, 10], 2)) // 2
+ print(Day12.maxAbsEvenOddDiffInFixedWindow([1, 3, 5, 7], 2)) // 2
  */
 
-
-print(Day12.minEvenCountInFixedWindow([1, 2, 3, 4, 5], 3)) // 1
-print(Day12.minEvenCountInFixedWindow([2, 4, 6, 8, 10], 2)) // 2
-print(Day12.minEvenCountInFixedWindow([1, 3, 5, 7], 2)) // 0
-
+print(Day12.hasPivotIndex([1, 7, 3, 6, 5, 6])) // true
+print(Day12.hasPivotIndex([1, 2, 3])) // false
+print(Day12.hasPivotIndex([2, 1, -1])) // true

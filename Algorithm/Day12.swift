@@ -558,3 +558,156 @@ extension Day12 {
         return minEvenCount
     }
 }
+
+extension Day12 {
+    /*
+     # ✅ 문제: 고정 구간 내 홀짝 차이의 절댓값 최댓값
+
+     정수 배열과 정수 K가 주어졌을 때,
+     길이가 K인 **모든 연속 부분 배열(subarray)**에 대해
+     (짝수 개수 - 홀수 개수)의 **절댓값** 중 최댓값을 구하시오.
+
+     ---
+
+     ### ✳️ 입력 예시 1
+     ```swift
+     let numbers = [1, 2, 3, 4, 5]
+     let k = 3
+     ```
+
+     ### ✳️ 출력 예시 1
+     ```swift
+     1
+     ```
+     (→ 예: [2, 3, 4] → 짝수 2개, 홀수 1개 → |2-1| = 1)
+
+     ---
+
+     ### ✳️ 입력 예시 2
+     ```swift
+     let numbers = [2, 4, 6, 8, 10]
+     let k = 2
+     ```
+
+     ### ✳️ 출력 예시 2
+     ```swift
+     2
+     ```
+     (→ 모든 구간이 짝수만 있음 → |2-0| = 2)
+
+     ---
+
+     ### ✳️ 입력 예시 3
+     ```swift
+     let numbers = [1, 3, 5, 7]
+     let k = 2
+     ```
+
+     ### ✳️ 출력 예시 3
+     ```swift
+     2
+     ```
+     (→ 모든 구간이 홀수만 있음 → |0-2| = 2)
+
+     ---
+
+     ### ❗️조건
+     - 배열 길이: 1 이상 100,000 이하
+     - K: 1 이상 배열 길이 이하
+     */
+    
+    static func maxAbsEvenOddDiffInFixedWindow(
+        _ numbers: [Int],
+        _ k: Int
+    ) -> Int {
+        func isEven(num: Int) -> Bool {
+            return num % 2 == 0
+        }
+        
+        guard numbers.count >= 1,
+              numbers.count <= 100_000 else { return 0 }
+        
+        guard k >= 1, k <= numbers.count else { return 0 }
+        
+        let windowValue = numbers[0 ..< k]
+        var currentEvenCount = windowValue.filter { isEven(num: $0) }.count
+        var currentOddCount = windowValue.count - currentEvenCount
+        var maxDiff = abs(currentEvenCount - currentOddCount)
+        
+        for i in k ..< numbers.count {
+            if isEven(num: numbers[i-k]) {
+                currentEvenCount -= 1
+            } else {
+                currentOddCount -= 1
+            }
+            
+            if isEven(num: numbers[i]) {
+                currentEvenCount += 1
+            }
+            maxDiff = max(maxDiff, abs(currentEvenCount - currentOddCount))
+        }
+        
+        return maxDiff
+    }
+}
+
+extension Day12 {
+    /*
+     ✅ 문제: 정수 배열의 균형점 찾기
+     하나의 정수 배열이 주어졌을 때, 배열을 왼쪽과 오른쪽으로 나누었을 때
+     양쪽 구간의 합이 같은 **"균형점"**이 존재하는지 판단하시오.
+
+     균형점은 인덱스를 기준으로 왼쪽과 오른쪽을 나눈다. 단, 현재 인덱스는 어느 쪽에도 포함되지 않는다.
+
+     ✳️ 입력 예시 1
+     ```swift
+     let numbers = [1, 7, 3, 6, 5, 6]
+     ```
+     ✳️ 출력 예시 1
+     ```swift
+     true
+     ```
+
+     ✳️ 입력 예시 2
+     ```swift
+     let numbers = [1, 2, 3]
+     ```
+     ✳️ 출력 예시 2
+     ```swift
+     false
+     ```
+
+     ✳️ 입력 예시 3
+     ```swift
+     let numbers = [2, 1, -1]
+     ```
+     ✳️ 출력 예시 3
+     ```swift
+     true
+     ```
+
+     ❗️조건
+     - 배열 길이: 1 이상 100,000 이하
+     - 배열의 원소: -100,000 이상 100,000 이하
+     - 시간 복잡도는 O(n) 이하로 통과해야 함
+     */
+    static func hasPivotIndex(_ numbers: [Int]) -> Bool {
+        
+        guard numbers.count > 1,
+              numbers.count <= 100_000 else { return false }
+        
+        let prefixSum = numbers.reduce(0, +)
+        var leftSum = 0
+        for i in 0 ..< numbers.count {
+            let rightSum = prefixSum - leftSum - numbers[i]
+            if leftSum == rightSum {
+                print("pivotIndex: \(i)")
+                return true
+            }
+            
+            leftSum += numbers[i]
+        }
+        
+        return false
+    }
+}
