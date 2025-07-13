@@ -711,3 +711,47 @@ extension Day12 {
         return false
     }
 }
+
+extension Day12 {
+    /*
+     # ✅ 문제:
+     정수 배열 A가 주어졌을 때, 배열에 존재하지 않는 가장 작은 양의 정수(1보다 크거나 같은 수) 를 구하는 함수를 작성하세요.
+
+     ---
+
+     ✳️ 예시
+     A = [1, 3, 6, 4, 1, 2]
+     → 배열에 1, 2, 3, 4, 6이 있음 → 5가 없음
+     → 결과: 5
+
+     A = [1, 2, 3]
+     → 4가 없음
+     → 결과: 4
+
+     A = [-1, -3]
+     → 양의 정수가 없음 → 가장 작은 양의 정수는 1
+     → 결과: 1
+
+     ---
+
+     ❗️조건
+     N: 배열 A의 길이 → 1 이상 100,000 이하
+     배열 A의 각 요소는 -1,000,000 이상 1,000,000 이하의 정수
+     */
+    
+    static func missingInteger(
+        _ numbers: [Int]
+    ) -> Int {
+        guard numbers.count > 1,
+              numbers.count <= 100_000 else { return 0 }
+        
+        let numberToSet = Set(numbers)
+        var missNumber = 1
+        
+        while numberToSet.contains(missNumber) {
+            missNumber += 1
+        }
+        
+        return missNumber
+    }
+}
