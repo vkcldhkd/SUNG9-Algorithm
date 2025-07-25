@@ -120,21 +120,31 @@ extension Day13 {
     static func lengthOfLongestSubstringKDistinct(
         _ s: String,
         _ k: Int
-    ) -> Int {
-        var charSet = Set<Character>()
+    ) -> Int { // 슬라이딩 윈도우 개념 더 익혀야할듯...
+        guard k > 0 else { return 0 }
         let chars = Array(s)
         var left = 0
         var maxLength = 0
+        var freq: [Character: Int] = [:]  // 각 문자 등장 횟수
 
-        for right in 0 ..< chars.count {
-            while charSet.contains(chars[right]) {
-                charSet.remove(chars[left])
+        for right in 0..<chars.count {
+            let char = chars[right]
+            freq[char, default: 0] += 1
+
+            // 윈도우 내 서로 다른 문자 개수가 k 초과되면 left 이동
+            while freq.keys.count > k {
+                let leftChar = chars[left]
+                freq[leftChar]! -= 1
+                if freq[leftChar]! == 0 {
+                    freq.removeValue(forKey: leftChar)
+                }
                 left += 1
             }
-            charSet.insert(chars[right])
+
             maxLength = max(maxLength, right - left + 1)
         }
-        
-        return 0
+
+        return maxLength
     }
+
 }

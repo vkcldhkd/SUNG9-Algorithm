@@ -386,7 +386,7 @@
  print(Day13.lengthOfLongestSubstring("pwwkew")) // 3
  */
 
-
+print(Day13.lengthOfLongestSubstringKDistinct("eceba", 2))
 
 
 
