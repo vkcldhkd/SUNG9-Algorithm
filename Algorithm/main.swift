@@ -369,10 +369,16 @@
  print(Day12.hasPivotIndex([1, 7, 3, 6, 5, 6])) // true
  print(Day12.hasPivotIndex([1, 2, 3])) // false
  print(Day12.hasPivotIndex([2, 1, -1])) // true
+ 
+ print(Day12.missingInteger([1, 3, 6, 4, 1, 2])) // 5
+ print(Day12.missingInteger([1, 2, 3])) // 4
+ print(Day12.missingInteger([-1, -3])) // 1
  */
 
+//print(Day13.findMissingPositive([1, 3, 6, 4, 1, 2])) // 5
+print(Day13.findMissingPositive([1, 2, 3])) // 4
+print(Day13.findMissingPositive([-1, -3])) // 1
 
-print(Day12.missingInteger([1, 3, 6, 4, 1, 2])) // 5
-print(Day12.missingInteger([1, 2, 3])) // 4
-print(Day12.missingInteger([-1, -3])) // 1
+
+
 
