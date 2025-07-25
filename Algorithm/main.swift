@@ -398,9 +398,14 @@
  print(Day13.countSubarraysLessThanTarget([1, 2, 3], 5)) // 4
  print(Day13.countSubarraysLessThanTarget([1, 1, 1], 3)) // 5
  print(Day13.countSubarraysLessThanTarget([2, 1, 1, 3], 4)) // 6
+
+ print(Day13.windowSums([1, 2, 3, 4, 5], 3)) // [6, 9, 12]
+ print(Day13.windowSums([10, 20, 30, 40], 2)) // [30, 50, 70]
+ print(Day13.windowSums([7, 8, 9], 1)) // [7, 8, 9]
  
  */
 
-print(Day13.windowSums([1, 2, 3, 4, 5], 3)) // [6, 9, 12]
-print(Day13.windowSums([10, 20, 30, 40], 2)) // [30, 50, 70]
-print(Day13.windowSums([7, 8, 9], 1)) // [7, 8, 9]
+print(Day13.maxSumSubarrayWithIndex([1, 4, 2, 10, 23, 3, 1, 0, 20], 4)) // (39, 1)
+print(Day13.maxSumSubarrayWithIndex([2,3], 2)) // (39, 1)
+print(Day13.maxSumSubarrayWithIndex([5, -1, 2, 6, -2, 4], 3)) // (9, 2)
+

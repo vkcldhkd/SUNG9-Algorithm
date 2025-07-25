@@ -343,3 +343,55 @@ extension Day13 {
         return result
     }
 }
+
+
+extension Day13 {
+    /*
+     # ✅ 문제: Maximum Sum of Subarray of Size K with Index
+
+     정수 배열 `nums`와 정수 `k`가 주어질 때,
+     합이 가장 큰 **길이 `k`인 연속 부분 배열(subarray)**의 합과 **해당 구간의 시작 인덱스**를 반환하세요.
+
+     ---
+
+     ### ✳️ 입력 예시
+     Input: nums = [1, 4, 2, 10, 23, 3, 1, 0, 20], k = 4
+     Output: (39, 1)
+     // 최대 합: [4, 2, 10, 23] → 합 = 39, 시작 인덱스 = 1
+
+     Input: nums = [2, 3], k = 2
+     Output: (5, 0)
+
+     Input: nums = [5, -1, 2, 6, -2, 4], k = 3
+     Output: (9, 2) // [2, 6, -2]
+
+     ---
+
+     ### ❗️조건
+
+     - 배열 길이: `k <= nums.count <= 100,000`
+     - 각 원소 범위: `-10^4 <= nums[i] <= 10^4`
+     - 시간복잡도는 `O(N)` 이내로 해결해야 합니다.
+     */
+    
+    static func maxSumSubarrayWithIndex(
+        _ nums: [Int],
+        _ k: Int
+    ) -> (sum: Int, startIndex: Int) {
+        
+        var windowSum = nums[0 ..< k].reduce(0, +)
+        var maxSum = windowSum
+        var startIndex = 0
+        
+        for i in k ..< nums.count {
+            windowSum += nums[i] - nums[i-k]
+            
+            if windowSum > maxSum {
+                maxSum = windowSum
+                startIndex = i - k + 1
+            }
+        }
+        
+        return (maxSum, startIndex)
+    }
+}
