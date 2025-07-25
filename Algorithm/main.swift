@@ -375,9 +375,20 @@
  print(Day12.missingInteger([-1, -3])) // 1
  */
 
-//print(Day13.findMissingPositive([1, 3, 6, 4, 1, 2])) // 5
-print(Day13.findMissingPositive([1, 2, 3])) // 4
-print(Day13.findMissingPositive([-1, -3])) // 1
+/*
+ Day13
+ print(Day13.findMissingPositive([1, 3, 6, 4, 1, 2])) // 5
+ print(Day13.findMissingPositive([1, 2, 3])) // 4
+ print(Day13.findMissingPositive([-1, -3])) // 1
+
+ print(Day13.lengthOfLongestSubstring("abcabcbb")) // 3
+ print(Day13.lengthOfLongestSubstring("bbbbb")) // 1
+ print(Day13.lengthOfLongestSubstring("pwwkew")) // 3
+ */
+
+
+
+
 
 
 
