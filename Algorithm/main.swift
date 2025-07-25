@@ -394,11 +394,13 @@
  print(Day13.minSubArrayLen(7, [2, 3, 1, 2, 4, 3])) // 2
  print(Day13.minSubArrayLen(15, [1, 2, 3, 4, 5])) // 5
  print(Day13.minSubArrayLen(100, [1, 1, 1, 1])) // 0
+
+ print(Day13.countSubarraysLessThanTarget([1, 2, 3], 5)) // 4
+ print(Day13.countSubarraysLessThanTarget([1, 1, 1], 3)) // 5
+ print(Day13.countSubarraysLessThanTarget([2, 1, 1, 3], 4)) // 6
  
  */
 
-print(Day13.countSubarraysLessThanTarget([1, 2, 3], 5)) // 4
-print(Day13.countSubarraysLessThanTarget([1, 1, 1], 3)) // 5
-print(Day13.countSubarraysLessThanTarget([2, 1, 1, 3], 4)) // 6
-
-
+print(Day13.windowSums([1, 2, 3, 4, 5], 3)) // [6, 9, 12]
+print(Day13.windowSums([10, 20, 30, 40], 2)) // [30, 50, 70]
+print(Day13.windowSums([7, 8, 9], 1)) // [7, 8, 9]

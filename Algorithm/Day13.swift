@@ -297,5 +297,49 @@ extension Day13 {
 
         return count
     }
+}
 
+extension Day13 {
+    /*
+     # ✅ 문제: Fixed-Size Window Sum
+     
+     정수 배열 `nums`와 정수 `k`가 주어질 때,
+     **길이가 정확히 `k`인 모든 연속된 부분 배열(subarray)의 합을 차례대로 출력**하세요.
+     
+     ---
+     
+     ### ✳️ 입력 예시
+     Input: nums = [1, 2, 3, 4, 5], k = 3
+     Output: [6, 9, 12]
+     
+     Input: nums = [10, 20, 30, 40], k = 2
+     Output: [30, 50, 70]
+     
+     Input: nums = [7, 8, 9], k = 1
+     Output: [7, 8, 9]
+     
+     ---
+     
+     ### ❗️조건
+     
+     - 배열 길이: `k <= nums.count <= 100,000`
+     - 각 원소 범위: `-10^4 <= nums[i] <= 10^4`
+     - 시간복잡도는 `O(N)` 이내여야 합니다.
+     */
+    
+    static func windowSums(
+        _ nums: [Int],
+        _ k: Int
+    ) -> [Int] {
+        guard k <= nums.count else { return [] }
+        var windowSum = nums[0 ..< k].reduce(0, +)
+        var result: [Int] = []
+        result.append(windowSum)
+        for i in k ..< nums.count {
+            windowSum += nums[i] - nums[i-k]
+            result.append(windowSum)
+        }
+        
+        return result
+    }
 }
