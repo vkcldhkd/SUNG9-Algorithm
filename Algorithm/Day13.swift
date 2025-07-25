@@ -230,7 +230,7 @@ extension Day13 {
         var sum = 0
         var minLength = Int.max
         
-        for right in 0..<nums.count {
+        for right in 0 ..< nums.count {
             sum += nums[right]
             
             while sum >= target {
@@ -242,4 +242,60 @@ extension Day13 {
 
         return minLength == Int.max ? 0 : minLength
     }
+}
+
+
+extension Day13 {
+    /*
+     # ✅ 문제: Count Subarrays with Sum Less Than Target
+
+     정수 배열 `nums`와 정수 `target`이 주어질 때,
+     합이 `target` 미만인 **모든 연속된 부분 배열(subarray)**의 개수를 구하세요.
+
+     ---
+
+     ### ✳️ 입력 예시
+     Input: nums = [1, 2, 3], target = 5
+     Output: 4
+     // 가능한 구간: [1], [2], [1,2], [3]
+
+     Input: nums = [1, 1, 1], target = 3
+     Output: 5
+     // 모든 구간이 조건 만족
+
+     Input: nums = [2, 1, 1, 3], target = 4
+     Output: 6
+     // [2], [1], [1], [2,1], [1,1], [1,1]
+     ---
+
+     ### ❗️조건
+
+     - 배열 길이: `1 <= nums.count <= 50,000`
+     - 원소 값: `1 <= nums[i] <= 10^4`
+     - 시간복잡도는 `O(N)` 또는 `O(N log N)` 이내여야 합니다.
+     */
+    
+    static func countSubarraysLessThanTarget(
+        _ nums: [Int],
+        _ target: Int
+    ) -> Int {
+        var left = 0
+        var sum = 0
+        var count = 0
+
+        for right in 0..<nums.count {
+            sum += nums[right]
+
+            while sum >= target {
+                sum -= nums[left]
+                left += 1
+            }
+
+            // 현재 윈도우에서 만들 수 있는 모든 부분 배열 개수는 (right - left + 1)
+            count += (right - left + 1)
+        }
+
+        return count
+    }
+
 }
