@@ -191,3 +191,55 @@ extension Day13 {
         return maxValue
     }
 }
+
+
+extension Day13 {
+    /*
+     # ✅ 문제: Minimum Size Subarray Sum
+
+     양의 정수 배열 `nums`와 양의 정수 `target`이 주어질 때,
+     합이 `target` 이상이 되는 가장 짧은 연속 부분 배열의 길이를 구하세요.
+     만약 그러한 부분 배열이 없다면 0을 반환하세요.
+
+     ---
+
+     ### ✳️ 입력 예시
+     Input: target = 7, nums = [2, 3, 1, 2, 4, 3]
+     Output: 2  // [4, 3]
+
+     Input: target = 15, nums = [1, 2, 3, 4, 5]
+     Output: 5  // [1,2,3,4,5]
+
+     Input: target = 100, nums = [1, 1, 1, 1]
+     Output: 0  // 조건을 만족하는 구간 없음
+
+     ---
+
+     ### ❗️조건
+
+     - 배열 길이: `1 <= nums.count <= 100,000`
+     - 원소 값: `1 <= nums[i] <= 10^4`
+     - 시간복잡도는 `O(N)` 이내로 해결해야 합니다.
+     */
+    
+    static func minSubArrayLen(
+        _ target: Int,
+        _ nums: [Int]
+    ) -> Int {
+        var left = 0
+        var sum = 0
+        var minLength = Int.max
+        
+        for right in 0..<nums.count {
+            sum += nums[right]
+            
+            while sum >= target {
+                minLength = min(minLength, right - left + 1)
+                sum -= nums[left]
+                left += 1
+            }
+        }
+
+        return minLength == Int.max ? 0 : minLength
+    }
+}

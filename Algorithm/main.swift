@@ -386,12 +386,16 @@
  print(Day13.lengthOfLongestSubstring("pwwkew")) // 3
  
  print(Day13.lengthOfLongestSubstringKDistinct("eceba", 2))
- 
+
+ print(Day13.maxSumSubarrayOfSizeK([2, 1, 5, 1, 3, 2], 3)) // 9
+ print(Day13.maxSumSubarrayOfSizeK([1, 9, -1, -2, 7, 3], 2)) // 10
+ print(Day13.maxSumSubarrayOfSizeK([5, 2, 1, 8, 3, 2], 3)) // 13
  */
 
-print(Day13.maxSumSubarrayOfSizeK([2, 1, 5, 1, 3, 2], 3)) // 9
-print(Day13.maxSumSubarrayOfSizeK([1, 9, -1, -2, 7, 3], 2)) // 10
-print(Day13.maxSumSubarrayOfSizeK([5, 2, 1, 8, 3, 2], 3)) // 13
+print(Day13.minSubArrayLen(7, [2, 3, 1, 2, 4, 3])) // 2
+print(Day13.minSubArrayLen(15, [1, 2, 3, 4, 5])) // 5
+print(Day13.minSubArrayLen(100, [1, 1, 1, 1])) // 0
+
 
 
 
