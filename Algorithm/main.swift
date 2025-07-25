@@ -384,9 +384,14 @@
  print(Day13.lengthOfLongestSubstring("abcabcbb")) // 3
  print(Day13.lengthOfLongestSubstring("bbbbb")) // 1
  print(Day13.lengthOfLongestSubstring("pwwkew")) // 3
+ 
+ print(Day13.lengthOfLongestSubstringKDistinct("eceba", 2))
+ 
  */
 
-print(Day13.lengthOfLongestSubstringKDistinct("eceba", 2))
+print(Day13.maxSumSubarrayOfSizeK([2, 1, 5, 1, 3, 2], 3)) // 9
+print(Day13.maxSumSubarrayOfSizeK([1, 9, -1, -2, 7, 3], 2)) // 10
+print(Day13.maxSumSubarrayOfSizeK([5, 2, 1, 8, 3, 2], 3)) // 13
 
 
 

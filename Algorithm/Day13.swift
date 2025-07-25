@@ -146,5 +146,48 @@ extension Day13 {
 
         return maxLength
     }
+}
 
+extension Day13 {
+    /*
+     # ✅ 문제: Maximum Sum of Subarray of Size K
+
+     정수 배열 `nums`와 정수 `k`가 주어질 때, **길이가 k인 연속 부분 배열의 합의 최댓값**을 구하세요.
+
+     ---
+
+     ### ✳️ 입력 예시
+     Input: nums = [2, 1, 5, 1, 3, 2], k = 3
+     Output: 9   // 부분 배열 [5, 1, 3]의 합이 최댓값
+
+     Input: nums = [1, 9, -1, -2, 7, 3], k = 2
+     Output: 10  // [7, 3]
+
+     Input: nums = [5, 2, 1, 8, 3, 2], k = 3
+     Output: 13  // [8, 3, 2]
+
+     ---
+
+     ### ❗️조건
+
+     - 배열 길이: `k <= nums.count <= 100,000`
+     - 원소 범위: `-10^4 <= nums[i] <= 10^4`
+     - 시간복잡도는 `O(N)` 이내로 해결해야 합니다.
+     */
+    
+    static func maxSumSubarrayOfSizeK(
+        _ nums: [Int],
+        _ k: Int
+    ) -> Int {
+        
+        var windowSum = nums[0...k-1].reduce(0, +)
+        var maxValue = windowSum
+        
+        for i in k ..< nums.count {
+            windowSum += nums[i] - nums [i-k]
+            maxValue = max(maxValue, windowSum)
+        }
+        
+        return maxValue
+    }
 }
