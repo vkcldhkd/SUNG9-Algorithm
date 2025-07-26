@@ -406,12 +406,17 @@
  print(Day13.maxSumSubarrayWithIndex([1, 4, 2, 10, 23, 3, 1, 0, 20], 4)) // (39, 1)
  print(Day13.maxSumSubarrayWithIndex([2,3], 2)) // (39, 1)
  print(Day13.maxSumSubarrayWithIndex([5, -1, 2, 6, -2, 4], 3)) // (9, 2)
+
+ print(Day13.longestSubarraySumLEQ([1, 2, 1, 0, 1, 1, 0], 4)) // 4
+ print(Day13.longestSubarraySumLEQ([1, 2, 3, 4, 5], 11)) // 4
+ print(Day13.longestSubarraySumLEQ([5, 1, 3, 5, 2, 1, 1, 1], 8)) // 4
  
  */
 
 
-print(Day13.longestSubarraySumLEQ([1, 2, 1, 0, 1, 1, 0], 4)) // 4
-print(Day13.longestSubarraySumLEQ([1, 2, 3, 4, 5], 11)) // 4
-print(Day13.longestSubarraySumLEQ([5, 1, 3, 5, 2, 1, 1, 1], 8)) // 4
+print(Day13.longestOnesWithKFlips([1, 1, 0, 0, 1, 1, 1, 0], 2)) // 7
+print(Day13.longestOnesWithKFlips([0, 0, 1, 1, 1, 0, 0], 1)) // 4
+print(Day13.longestOnesWithKFlips([1, 1, 1, 1], 0)) // 4
+
 
 

@@ -457,3 +457,69 @@ extension Day13 {
         return maxLength
     }
 }
+
+extension Day13 {
+    /*
+     # ✅ 문제: Longest Subarray with At Most K Zeros
+
+     정수 배열 `nums`는 0과 1로만 이루어져 있습니다.
+     `nums`에서 최대 `k`개의 0을 1로 바꿀 수 있을 때,
+     **모두 1로만 이루어진 가장 긴 연속 부분 배열의 길이**를 구하세요.
+
+     ---
+
+     ### ✳️ 입력 예시
+
+     ```swift
+     Input: nums = [1, 1, 0, 0, 1, 1, 1, 0], k = 2
+     Output: 7
+     // 0을 2개까지 1로 바꿀 수 있으므로 [1,1,0,0,1,1,1] → 길이 7
+     ```
+
+     ```swift
+     Input: nums = [0, 0, 1, 1, 1, 0, 0], k = 1
+     Output: 4
+     // [1,1,1,0] 또는 [0,1,1,1]
+     ```
+
+     ```swift
+     Input: nums = [1, 1, 1, 1], k = 0
+     Output: 4
+     // 이미 모두 1
+     ```
+
+     ---
+
+     ### ❗️조건
+
+     - 배열 길이: `1 <= nums.count <= 100,000`
+     - 원소 값: `0 또는 1`
+     - 시간복잡도: `O(N)` 이내로 해결해야 합니다.
+     */
+    
+    static func longestOnesWithKFlips(
+        _ nums: [Int],
+        _ k: Int
+    ) -> Int {
+        var left = 0
+        var zeroCount = 0
+        var maxLength = 0
+        
+        for right in 0 ..< nums.count {
+            if nums[right] == 0 {
+                zeroCount += 1
+            }
+            
+            while zeroCount > k {
+                if nums[left] == 0 {
+                    zeroCount -= 1
+                }
+                left += 1
+            }
+            
+            maxLength = max(maxLength, right - left  + 1)
+        }
+        
+        return maxLength
+    }
+}
