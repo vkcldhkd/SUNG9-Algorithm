@@ -395,3 +395,65 @@ extension Day13 {
         return (maxSum, startIndex)
     }
 }
+
+extension Day13 {
+    /*
+     # ✅ 문제: Longest Subarray with Sum Less Than or Equal to Target
+
+     정수 배열 `nums`와 정수 `target`이 주어질 때,
+     **합이 `target` 이하인 가장 긴 연속 부분 배열(subarray)의 길이**를 구하세요.
+
+     ---
+
+     ### ✳️ 입력 예시
+
+     ```swift
+     Input: nums = [1, 2, 1, 0, 1, 1, 0], target = 4
+     Output: 5
+     // 가장 긴 구간: [1, 0, 1, 1, 0]
+     ```
+
+     ```swift
+     Input: nums = [1, 2, 3, 4, 5], target = 11
+     Output: 4
+     // 가장 긴 구간: [1, 2, 3, 4]
+     ```
+
+     ```swift
+     Input: nums = [5, 1, 3, 5, 2, 1, 1, 1], target = 8
+     Output: 4
+     // 가장 긴 구간: [2, 1, 1, 1]
+     ```
+
+     ---
+
+     ### ❗️조건
+
+     - 배열 길이: `1 <= nums.count <= 100,000`
+     - 원소 값: `0 <= nums[i] <= 10^4`
+     - 시간복잡도는 `O(N)` 이내로 해결해야 합니다.
+     */
+    static func longestSubarraySumLEQ(
+        _ nums: [Int],
+        _ target: Int
+    ) -> Int {
+        var left = 0
+        var windowSum = 0
+        var maxLength = 0
+
+        for right in 0..<nums.count {
+            windowSum += nums[right]
+
+            // 조건 위반 시 → 왼쪽을 옮겨서 조건을 만족시킴
+            while windowSum > target && left <= right {
+                windowSum -= nums[left]
+                left += 1
+            }
+
+            // 조건 만족 → 현재 윈도우 길이로 max 갱신
+            maxLength = max(maxLength, right - left + 1)
+        }
+
+        return maxLength
+    }
+}
