@@ -431,13 +431,17 @@
  print(Day14.lengthOfLongestSubstringKDistinct("eceba", 2)) // 3
  print(Day14.lengthOfLongestSubstringKDistinct("aa", 1)) // 2
  print(Day14.lengthOfLongestSubstringKDistinct("aabbcc", 1)) // 2
- 
+
+ print(Day14.lengthOfLongestSubstring("abcabcbb")) // 3
+ print(Day14.lengthOfLongestSubstring("bbbbb")) // 1
+ print(Day14.lengthOfLongestSubstring("pwwkew")) // 3
  */
 
+print(Day14.characterReplacement("ABAB", 2)) // 4
+print(Day14.characterReplacement("AABABBA", 1)) // 4
+print(Day14.characterReplacement("ABCDE", 1)) // 2
 
-print(Day14.lengthOfLongestSubstring("abcabcbb")) // 3
-print(Day14.lengthOfLongestSubstring("bbbbb")) // 1
-print(Day14.lengthOfLongestSubstring("pwwkew")) // 3
+
 
 
 

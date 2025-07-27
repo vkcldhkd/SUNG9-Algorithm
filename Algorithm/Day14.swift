@@ -196,3 +196,67 @@ extension Day14 {
         return maxLength
     }
 }
+
+extension Day14 {
+    /*
+     # ✅ 문제: Longest Repeating Character Replacement
+
+     문자열 `s`가 주어졌을 때,
+     하나의 문자를 선택해서 최대 `k`번까지 다른 문자로 바꿀 수 있다면
+     **같은 문자가 연속되는 가장 긴 부분 문자열의 길이**는 얼마일까요?
+
+     ---
+
+     ### ✳️ 입력 예시
+
+     ```swift
+     Input: s = "ABAB", k = 2
+     Output: 4  // "ABAB" 전체를 B로 바꿀 수 있음
+     ```
+
+     ```swift
+     Input: s = "AABABBA", k = 1
+     Output: 4  // "AABA" 또는 "BABB" 중 하나
+     ```
+
+     ```swift
+     Input: s = "ABCDE", k = 1
+     Output: 2
+     ```
+
+     ---
+
+     ### ❗️조건
+
+     - 1 <= s.count <= 10^5
+     - s는 대문자 알파벳으로만 구성
+     - 주어진 `k`번 이하로 문자 교체가 가능해야 함
+     */
+    
+    static func characterReplacement(
+        _ s: String,
+        _ k: Int
+    ) -> Int {
+        var left = 0
+        var maxLength = 0
+        var maxFreq = 0
+        
+        let sToArray = Array(s)
+        var freqDict: [Character: Int] = [:]
+        
+        
+        for right in 0 ..< sToArray.count {
+            let rightValue = sToArray[right]
+            freqDict[rightValue, default: 0] += 1
+            maxFreq = max(maxFreq, freqDict[rightValue]!)
+            
+            while (right - left + 1) - maxFreq > k {
+                let leftChar = sToArray[left]
+                freqDict[leftChar]! -= 1
+                left += 1
+            }
+            maxLength = max(maxLength, right - left + 1)
+        }
+        return maxLength
+    }
+}
