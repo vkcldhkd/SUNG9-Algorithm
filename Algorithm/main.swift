@@ -410,13 +410,17 @@
  print(Day13.longestSubarraySumLEQ([1, 2, 1, 0, 1, 1, 0], 4)) // 4
  print(Day13.longestSubarraySumLEQ([1, 2, 3, 4, 5], 11)) // 4
  print(Day13.longestSubarraySumLEQ([5, 1, 3, 5, 2, 1, 1, 1], 8)) // 4
+
+ print(Day13.longestOnesWithKFlips([1, 1, 0, 0, 1, 1, 1, 0], 2)) // 7
+ print(Day13.longestOnesWithKFlips([0, 0, 1, 1, 1, 0, 0], 1)) // 4
+ print(Day13.longestOnesWithKFlips([1, 1, 1, 1], 0)) // 4
  
  */
 
+print(Day13.findMaxAverage([1, 12, -5, -6, 50, 3], 4)) // 12.75
+print(Day13.findMaxAverage([5], 1)) // 5
+print(Day13.findMaxAverage([0, 4, 0, 3, 2], 2)) // 3.5
 
-print(Day13.longestOnesWithKFlips([1, 1, 0, 0, 1, 1, 1, 0], 2)) // 7
-print(Day13.longestOnesWithKFlips([0, 0, 1, 1, 1, 0, 0], 1)) // 4
-print(Day13.longestOnesWithKFlips([1, 1, 1, 1], 0)) // 4
 
 
 

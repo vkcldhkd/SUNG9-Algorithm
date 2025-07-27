@@ -523,3 +523,55 @@ extension Day13 {
         return maxLength
     }
 }
+
+extension Day13 {
+    /*
+     # ✅ 문제: Max Average of Subarray of Size K
+
+     정수 배열 `nums`와 정수 `k`가 주어질 때,
+     길이가 정확히 `k`인 연속 부분 배열(subarray) 중에서 **평균값이 가장 큰 값을 반환**하세요.
+
+     ---
+
+     ### ✳️ 입력 예시
+
+     ```swift
+     Input: nums = [1, 12, -5, -6, 50, 3], k = 4
+     Output: 12.75
+     // [12, -5, -6, 50]의 평균 = (12 + -5 + -6 + 50) / 4 = 51 / 4 = 12.75
+     ```
+
+     ```swift
+     Input: nums = [5], k = 1
+     Output: 5.0
+     ```
+
+     ```swift
+     Input: nums = [0, 4, 0, 3, 2], k = 2
+     Output: 2.5
+     ```
+
+     ---
+
+     ### ❗️조건
+
+     - 배열 길이: `k <= nums.count <= 100,000`
+     - 원소 값: `-10^4 <= nums[i] <= 10^4`
+     - 시간복잡도는 `O(N)` 이내여야 합니다.
+     */
+    static func findMaxAverage(
+        _ nums: [Int],
+        _ k: Int
+    ) -> Double {
+        guard k <= nums.count else { return 0.0 }
+        
+        var windowSum = nums[0 ..< k].reduce(0, +)
+        var maxValue = Double(windowSum) / Double(k)
+        
+        for i in k ..< nums.count {
+            windowSum += nums[i] - nums[i-k]
+            maxValue = max(maxValue, Double(windowSum) / Double(k))
+        }
+        return maxValue
+    }
+}
