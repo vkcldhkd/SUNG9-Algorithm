@@ -414,12 +414,22 @@
  print(Day13.longestOnesWithKFlips([1, 1, 0, 0, 1, 1, 1, 0], 2)) // 7
  print(Day13.longestOnesWithKFlips([0, 0, 1, 1, 1, 0, 0], 1)) // 4
  print(Day13.longestOnesWithKFlips([1, 1, 1, 1], 0)) // 4
- 
+
+ print(Day13.findMaxAverage([1, 12, -5, -6, 50, 3], 4)) // 12.75
+ print(Day13.findMaxAverage([5], 1)) // 5
+ print(Day13.findMaxAverage([0, 4, 0, 3, 2], 2)) // 2.5
  */
 
-print(Day13.findMaxAverage([1, 12, -5, -6, 50, 3], 4)) // 12.75
-print(Day13.findMaxAverage([5], 1)) // 5
-print(Day13.findMaxAverage([0, 4, 0, 3, 2], 2)) // 3.5
+
+/*
+ Day14
+ */
+
+print(Day14.numSubarrayProductLessThanK([10, 5, 2, 6], 100)) // 8
+print(Day14.numSubarrayProductLessThanK([1, 2, 3], 0)) // 0
+print(Day14.numSubarrayProductLessThanK([1, 1, 1], 2)) // 6
+
+
 
 
 
