@@ -70,3 +70,71 @@ extension Day14 {
         return count
     }
 }
+
+extension Day14 {
+    /*
+     # ✅ 문제: Longest Substring with At Most K Distinct Characters
+
+     문자열 `s`와 정수 `k`가 주어질 때,
+     **서로 다른 문자가 최대 `k`개 이하인 가장 긴 부분 문자열(substring)**의 길이를 구하세요.
+
+     ---
+
+     ### ✳️ 입력 예시
+
+     ```swift
+     Input: s = "eceba", k = 2
+     Output: 3
+     // 가능한 부분 문자열: "ece"
+     ```
+
+     ```swift
+     Input: s = "aa", k = 1
+     Output: 2
+     // 가능한 부분 문자열: "aa"
+     ```
+
+     ```swift
+     Input: s = "aabbcc", k = 1
+     Output: 2
+     // 가능한 부분 문자열: "aa", "bb", 또는 "cc"
+     ```
+
+     ---
+
+     ### ❗️조건
+
+     - 문자열 길이: `1 <= s.count <= 100,000`
+     - 문자열은 소문자 알파벳(a~z)로만 구성
+     - 시간복잡도는 `O(N)` 이내여야 합니다.
+     */
+    
+    static func lengthOfLongestSubstringKDistinct(
+        _ s: String,
+        _ k: Int
+    ) -> Int {
+        guard k > 0 else { return 0 }
+        let chars = Array(s)
+        var left = 0
+        var maxLength = 0
+        var freq: [Character: Int] = [:]
+
+        for right in 0..<chars.count {
+            let char = chars[right]
+            freq[char, default: 0] += 1
+
+            while freq.keys.count > k {
+                let leftChar = chars[left]
+                freq[leftChar]! -= 1
+                if freq[leftChar]! == 0 {
+                    freq.removeValue(forKey: leftChar)
+                }
+                left += 1
+            }
+
+            maxLength = max(maxLength, right - left + 1)
+        }
+
+        return maxLength
+    }
+}

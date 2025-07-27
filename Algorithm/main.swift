@@ -423,11 +423,20 @@
 
 /*
  Day14
+ 
+ print(Day14.numSubarrayProductLessThanK([10, 5, 2, 6], 100)) // 8
+ print(Day14.numSubarrayProductLessThanK([1, 2, 3], 0)) // 0
+ print(Day14.numSubarrayProductLessThanK([1, 1, 1], 2)) // 6
+
+ print(Day14.lengthOfLongestSubstringKDistinct("eceba", 2)) // 3
+ print(Day14.lengthOfLongestSubstringKDistinct("aa", 1)) // 2
+ print(Day14.lengthOfLongestSubstringKDistinct("aabbcc", 1)) // 2
+ 
  */
 
-print(Day14.numSubarrayProductLessThanK([10, 5, 2, 6], 100)) // 8
-print(Day14.numSubarrayProductLessThanK([1, 2, 3], 0)) // 0
-print(Day14.numSubarrayProductLessThanK([1, 1, 1], 2)) // 6
+
+
+
 
 
 
