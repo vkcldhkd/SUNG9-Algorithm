@@ -138,3 +138,61 @@ extension Day14 {
         return maxLength
     }
 }
+
+
+extension Day14 {
+    /*
+     # ✅ 문제: Longest Substring Without Repeating Characters
+
+     문자열 `s`가 주어졌을 때, **중복되지 않는 문자가 포함된 가장 긴 부분 문자열**의 길이를 구하세요.
+
+     이때 부분 문자열은 **연속된 문자**로 구성되어야 하며,
+     대소문자를 구분하고 공백도 하나의 문자로 간주합니다.
+
+     ---
+
+     ### ✳️ 입력 예시
+
+     ```swift
+     Input: s = "abcabcbb"
+     Output: 3  // "abc"
+     ```
+
+     ```swift
+     Input: s = "bbbbb"
+     Output: 1  // "b"
+     ```
+
+     ```swift
+     Input: s = "pwwkew"
+     Output: 3  // "wke"
+     ```
+
+     ---
+
+     ### ❗️조건
+
+     - 1 <= s.count <= 10^5
+     - 문자열은 ASCII 문자로만 구성
+     - 중복 문자 없이 가장 긴 부분 문자열의 길이를 구하세요
+     */
+    static func lengthOfLongestSubstring(_ s: String) -> Int {
+        var charSet: Set<Character> = Set()
+        let sToArray = Array(s)
+        var left = 0
+        var maxLength = 0
+        
+        for right in 0 ..< sToArray.count {
+            let rightValue = sToArray[right]
+            while charSet.contains(rightValue) {
+                charSet.remove(sToArray[left])
+                left += 1
+            }
+            
+            charSet.insert(rightValue)
+            maxLength = max(maxLength, right - left + 1)
+        }
+        
+        return maxLength
+    }
+}

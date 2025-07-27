@@ -435,7 +435,9 @@
  */
 
 
-
+print(Day14.lengthOfLongestSubstring("abcabcbb")) // 3
+print(Day14.lengthOfLongestSubstring("bbbbb")) // 1
+print(Day14.lengthOfLongestSubstring("pwwkew")) // 3
 
 
 
