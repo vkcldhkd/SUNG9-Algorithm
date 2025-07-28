@@ -501,3 +501,61 @@ extension Day14 {
         return maxValues
     }
 }
+
+extension Day14 {
+    /*
+     # ✅ 문제: 최소 윈도우 길이 합 조건 만족
+
+     정수 배열 `nums`와 정수 `target`이 주어졌을 때,
+     **연속된 부분 배열(subarray) 중 합이 `target` 이상이 되는 가장 짧은 길이를 반환**하세요.
+     해당하는 부분 배열이 없으면 0을 반환하세요.
+
+     ---
+
+     ### ✳️ 입력 예시
+
+     ```swift
+     Input: nums = [2,3,1,2,4,3], target = 7
+     Output: 2
+     // [4,3]의 합이 7이고 길이 2가 최소
+     ```
+
+     ```swift
+     Input: nums = [1,1,1,1,1,1,1], target = 11
+     Output: 0
+     ```
+
+     ```swift
+     Input: nums = [1,4,4], target = 4
+     Output: 1
+     ```
+
+     ---
+
+     ### ❗️조건
+
+     - 1 <= nums.count <= 10⁵
+     - 1 <= nums[i] <= 10⁴
+     - 1 <= target <= 10⁹
+     */
+    static func minSubArrayLen(
+        _ target: Int,
+        _ nums: [Int]
+    ) -> Int {
+        var left = 0
+        var sum = 0
+        var minLength = Int.max
+        
+        for right in 0 ..< nums.count {
+            sum += nums[right]
+            
+            while sum >= target {
+                minLength = min(minLength, right - left + 1)
+                sum -= nums[left]
+                left += 1
+            }
+        }
+        return minLength == Int.max ? 0 : minLength
+        
+    }
+}
