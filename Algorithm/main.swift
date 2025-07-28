@@ -453,6 +453,10 @@
  print(Day14.numberOfSubarrays([2,2,2,1,2,2,1,2,2,2,1,2], 3)) // 8
  */
 
+print(Day14.maxSlidingWindow([1,3,-1,-3,5,3,6,7], 3)) // [3,3,5,5,6,7]
+print(Day14.maxSlidingWindow([9, 11], 2)) // [11]
+print(Day14.maxSlidingWindow([4, -2], 2)) // [4]
+
 
 
 

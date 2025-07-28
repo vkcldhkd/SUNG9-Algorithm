@@ -445,3 +445,59 @@ extension Day14 {
         return result
     }
 }
+
+extension Day14 {
+    /*
+     # ✅ 문제: Sliding Window Maximum
+
+     정수 배열 `nums`와 정수 `k`가 주어졌을 때,
+     **길이가 k인 모든 연속된 윈도우에서의 최대값을 배열로 반환**하세요.
+
+     이 문제는 슬라이딩 윈도우 + 자료구조를 함께 사용하는 문제입니다.
+
+     ---
+
+     ### ✳️ 입력 예시
+
+     ```swift
+     Input: nums = [1,3,-1,-3,5,3,6,7], k = 3
+     Output: [3,3,5,5,6,7]
+     // 윈도우: [1,3,-1], [3,-1,-3], [-1,-3,5], ...
+     ```
+
+     ```swift
+     Input: nums = [9, 11], k = 2
+     Output: [11]
+     ```
+
+     ```swift
+     Input: nums = [4, -2], k = 2
+     Output: [4]
+     ```
+
+     ---
+
+     ### ❗️조건
+
+     - 1 <= nums.count <= 10^5
+     - -10^4 <= nums[i] <= 10^4
+     - 1 <= k <= nums.count
+     */
+    static func maxSlidingWindow(
+        _ nums: [Int],
+        _ k: Int
+    ) -> [Int] {
+        // 시간복잡도 개선 필요
+        var window = nums[0 ..< k]
+        var maxValues = [window.max()!]
+        
+        for right in k ..< nums.count {
+            let rightValue = nums[right]
+            _ = window.removeFirst()
+            window.append(rightValue)
+            maxValues.append(window.max()!)
+        }
+        
+        return maxValues
+    }
+}
