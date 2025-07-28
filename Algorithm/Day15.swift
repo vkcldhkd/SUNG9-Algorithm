@@ -127,3 +127,70 @@ extension Day15 {
         return count
     }
 }
+
+extension Day15 {
+    /*
+     # ✅ 문제: 동일한 원소 개수를 포함하는 부분 배열의 개수
+
+     정수 배열 nums, 정수 target, 정수 k가 주어졌을 때,
+     target이 정확히 k번 등장하는 모든 연속 부분 배열의 개수를 구하세요.
+
+     ---
+
+     ### ✳️ 입력 예시
+
+     ```swift
+     Input: nums = [1, 2, 1, 2, 1], target = 1, k = 2
+     Output: 4
+     // 가능한 조합:
+     [1,2,1] (0~2)
+     [1,2,1,2] (0~3)
+     [2,1,2,1] (1~4)
+     [1,2,1] (2~4)
+     ```
+
+     ```swift
+     Input: nums = [1, 1, 1, 1], target = 1, k = 3
+     Output: 2
+     // [1,1,1] (index 0~2), [1,1,1] (index 1~3)
+     ```
+
+     ```swift
+     Input: nums = [2, 3, 4], target = 3, k = 1
+     Output: 4
+     // 가능한 조합: [2,3], [2,3,4], [3], [3,4]
+     ```
+
+     ---
+
+     ### ❗️조건
+
+     - 1 <= nums.count <= 10⁵
+     - 0 <= nums[i], k <= 10⁴
+     */
+    static func subarraysWithKOccurrences(
+        _ nums: [Int],
+        _ target: Int,
+        _ k: Int
+    ) -> Int {
+        var countDict: [Int: Int] = [0: 1]  // count 0은 항상 하나 있다고 가정
+        var targetCount = 0
+        var result = 0
+
+        for num in nums {
+            if num == target {
+                targetCount += 1
+            }
+
+            // countMap에 (targetCount - k) 값이 있다면, 그것만큼 정답이 됨
+            if let count = countDict[targetCount - k] {
+                result += count
+            }
+
+            countDict[targetCount, default: 0] += 1
+        }
+
+        return result
+    }
+
+}
