@@ -439,12 +439,17 @@
  print(Day14.characterReplacement("ABAB", 2)) // 4
  print(Day14.characterReplacement("AABABBA", 1)) // 4
  print(Day14.characterReplacement("ABCDE", 1)) // 2
+ 
+ print(Day14.longestOnes([1,1,1,0,0,0,1,1,1,1,0], 2)) // 6
+ print(Day14.longestOnes([0,0,1,1,1,0,0], 0)) // 3
+ print(Day14.longestOnes([1,0,1,0,1], 1)) // 3
  */
 
 
-print(Day14.longestOnes([1,1,1,0,0,0,1,1,1,1,0], 2)) // 6
-print(Day14.longestOnes([0,0,1,1,1,0,0], 0)) // 3
-print(Day14.longestOnes([1,0,1,0,1], 1)) // 3
+print(Day14.longestOnesIII([1,1,0,0,1,1,1,0,1], 2)) // 7
+print(Day14.longestOnesIII([0,0,0,1], 1)) // 2
+print(Day14.longestOnesIII([1,1,1,1], 0)) // 4
+
 
 
 

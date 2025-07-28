@@ -325,3 +325,66 @@ extension Day14 {
         return maxLength
     }
 }
+
+extension Day14 {
+    /*
+     # ✅ 문제: Max Consecutive Ones III
+
+     0과 1로 구성된 배열이 주어졌을 때,
+     **최대 K개의 0을 1로 바꿔서 만들 수 있는 가장 긴 1의 연속 길이**를 구하세요.
+
+     ---
+
+     ### ✳️ 입력 예시
+
+     ```swift
+     Input: nums = [1,1,0,0,1,1,1,0,1], k = 2
+     Output: 7  // [1,1,0,0,1,1,1] → 0을 2번 바꿔서 1로 만들 수 있음
+     ```
+
+     ```swift
+     Input: nums = [0,0,0,1], k = 1
+     Output: 2  // [0,1] 또는 [1,0]
+     ```
+
+     ```swift
+     Input: nums = [1,1,1,1], k = 0
+     Output: 4  // 이미 모두 1이므로 최대 길이 = 전체 길이
+     ```
+
+     ---
+
+     ### ❗️조건
+
+     - 1 <= nums.count <= 10^5
+     - nums[i]는 0 또는 1
+     - 최대 k개의 0을 1로 바꿀 수 있음
+     */
+    static func longestOnesIII(
+        _ nums: [Int],
+        _ k: Int
+    ) -> Int {
+        var left = 0
+        var zeroCount = 0
+        var maxLength = 0
+        
+        for right in 0 ..< nums.count {
+            let rightValue = nums[right]
+            if rightValue == 0 {
+                zeroCount += 1
+            }
+            
+            while zeroCount > k {
+                let leftValue = nums[left]
+                if leftValue == 0 {
+                    zeroCount -= 1
+                }
+                left += 1
+            }
+            
+            maxLength = max(maxLength, right - left + 1)
+        }
+        
+        return maxLength
+    }
+}
