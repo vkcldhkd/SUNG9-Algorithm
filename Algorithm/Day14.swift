@@ -388,3 +388,60 @@ extension Day14 {
         return maxLength
     }
 }
+
+extension Day14 {
+    /*
+     # ✅ 문제: Count Number of Nice Subarrays
+
+     정수 배열 `nums`와 정수 `k`가 주어졌을 때,
+     **정확히 k개의 홀수를 포함하는 연속된 부분 배열(subarray)의 개수**를 구하세요.
+
+     ---
+
+     ### ✳️ 입력 예시
+
+     ```swift
+     Input: nums = [1,1,2,1,1], k = 3
+     Output: 2
+     // 두 가지 구간: [1,1,2,1], [1,2,1,1]
+     ```
+
+     ```swift
+     Input: nums = [2,4,6], k = 1
+     Output: 0
+     // 홀수가 하나도 없어서 만족하는 구간 없음
+     ```
+
+     ```swift
+     Input: nums = [2,2,2,1,2,2,1,2,2,2,1,2], k = 3
+     Output: 3
+     ```
+
+     ---
+
+     ### ❗️조건
+
+     - 1 <= nums.count <= 10^5
+     - 1 <= nums[i] <= 10^5
+     - 1 <= k <= nums.count
+     */
+    
+    static func numberOfSubarrays(
+        _ nums: [Int],
+        _ k: Int
+    ) -> Int {
+        var prefixCount: [Int: Int] = [0: 1]
+        var prefixOdd = 0
+        var result = 0
+        
+        for num in nums {
+            if num % 2 == 1 {
+                prefixOdd += 1
+            }
+            
+            result += prefixCount[prefixOdd - k, default: 0]
+            prefixCount[prefixOdd, default: 0] += 1
+        }
+        return result
+    }
+}

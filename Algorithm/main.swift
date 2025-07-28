@@ -443,12 +443,20 @@
  print(Day14.longestOnes([1,1,1,0,0,0,1,1,1,1,0], 2)) // 6
  print(Day14.longestOnes([0,0,1,1,1,0,0], 0)) // 3
  print(Day14.longestOnes([1,0,1,0,1], 1)) // 3
+ 
+ print(Day14.longestOnesIII([1,1,0,0,1,1,1,0,1], 2)) // 7
+ print(Day14.longestOnesIII([0,0,0,1], 1)) // 2
+ print(Day14.longestOnesIII([1,1,1,1], 0)) // 4
+ 
+ print(Day14.numberOfSubarrays([1,1,2,1,1], 3)) // 2
+ print(Day14.numberOfSubarrays([2,4,6], 1)) // 0
+ print(Day14.numberOfSubarrays([2,2,2,1,2,2,1,2,2,2,1,2], 3)) // 8
  */
 
 
-print(Day14.longestOnesIII([1,1,0,0,1,1,1,0,1], 2)) // 7
-print(Day14.longestOnesIII([0,0,0,1], 1)) // 2
-print(Day14.longestOnesIII([1,1,1,1], 0)) // 4
+
+
+
 
 
 
