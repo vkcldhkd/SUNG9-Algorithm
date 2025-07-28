@@ -455,15 +455,20 @@
  print(Day14.maxSlidingWindow([1,3,-1,-3,5,3,6,7], 3)) // [3,3,5,5,6,7]
  print(Day14.maxSlidingWindow([9, 11], 2)) // [11]
  print(Day14.maxSlidingWindow([4, -2], 2)) // [4]
- 
+
+ print(Day14.minSubArrayLen(7, [2,3,1,2,4,3])) // 2
+ print(Day14.minSubArrayLen(11, [1,1,1,1,1,1,1])) // 0
+ print(Day14.minSubArrayLen(4, [1,4,4])) // 1
  */
 
-print(Day14.minSubArrayLen(7, [2,3,1,2,4,3])) // 2
-print(Day14.minSubArrayLen(11, [1,1,1,1,1,1,1])) // 0
-print(Day14.minSubArrayLen(4, [1,4,4])) // 1
+/*
+ Day15
+ */
 
 
-
+print(Day15.minSubArrayLen(7, [1, 1, 1, 1, 7])) // 1
+print(Day15.minSubArrayLen(8, [2, 3, 1, 2, 4, 3])) // 3
+print(Day15.minSubArrayLen(11, [1, 2, 3, 4, 5])) // 3
 
 
 
