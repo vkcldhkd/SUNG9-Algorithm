@@ -260,3 +260,68 @@ extension Day14 {
         return maxLength
     }
 }
+
+extension Day14 {
+    /*
+     # ✅ 문제: Longest Subarray with At Most K Zeroes
+
+     0과 1로 구성된 배열이 주어졌을 때,
+     최대 K개의 0을 1로 바꿀 수 있다면
+     **모두 1로 구성된 가장 긴 부분 배열의 길이**를 구하세요.
+
+     ---
+
+     ### ✳️ 입력 예시
+
+     ```swift
+     Input: nums = [1,1,1,0,0,0,1,1,1,1,0], k = 2
+     Output: 6  // [0,0] → [1,1]로 바꾸면 [1,1,1,1,1,1]
+     ```
+
+     ```swift
+     Input: nums = [0,0,1,1,1,0,0], k = 0
+     Output: 3  // 연속된 1의 최대 길이
+     ```
+
+     ```swift
+     Input: nums = [1,0,1,0,1], k = 1
+     Output: 4  // [1,0,1,0] → 한 개만 바꿔도 "1 1 1 0"
+     ```
+
+     ---
+
+     ### ❗️조건
+
+     - 1 <= nums.count <= 10^5
+     - nums[i]는 0 또는 1
+     - 최대 k개의 0을 1로 바꿀 수 있음
+     */
+    
+    static func longestOnes(
+        _ nums: [Int],
+        _ k: Int
+    ) -> Int {
+        var left = 0
+        var maxLength = 0
+        var zeroCount = 0
+        
+        for right in 0 ..< nums.count {
+            let rightValue = nums[right]
+            
+            if rightValue == 0 {
+                zeroCount += 1
+            }
+            
+            while zeroCount > k {
+                let leftValue = nums[left]
+                if leftValue == 0 {
+                    zeroCount -= 1
+                }
+                left += 1
+            }
+            maxLength = max(maxLength, right - left + 1)
+        }
+        
+        return maxLength
+    }
+}
