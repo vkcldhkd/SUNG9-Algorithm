@@ -67,3 +67,63 @@ extension Day15 {
         return minLength == Int.max ? 0 : minLength
     }
 }
+
+
+extension Day15 {
+    /*
+     # ✅ 문제: 고정 합을 가진 부분 배열의 개수
+
+     정수 배열 `nums`와 정수 `target`이 주어졌을 때,
+     **합이 정확히 target이 되는 연속 부분 배열(subarray)의 개수**를 구하세요.
+
+     ---
+
+     ### ✳️ 입력 예시
+
+     ```swift
+     Input: nums = [1, 1, 1], target = 2
+     Output: 2
+     // [1,1]이 2번 등장
+     ```
+
+     ```swift
+     Input: nums = [1, 2, 3], target = 3
+     Output: 2
+     // [1,2], [3]
+     ```
+
+     ```swift
+     Input: nums = [3, 4, 7, -2, 2, 1, 4], target = 7
+     Output: 3
+     // 가능한 조합: [3,4], [7], [2,1,4]
+     ```
+
+     ---
+
+     ### ❗️조건
+
+     - 1 <= nums.count <= 10⁵
+     - -10⁴ <= nums[i] <= 10⁴
+     - -10⁹ <= target <= 10⁹
+     */
+    static func subarraySum(
+        _ nums: [Int],
+        _ target: Int
+    ) -> Int {
+        var count = 0
+        var sum = 0
+        var prefixCount: [Int: Int] = [0: 1]
+        
+        
+        for right in 0 ..< nums.count {
+            let rightValue = nums[right]
+            sum += rightValue
+            let diff = sum - target
+            if let freq = prefixCount[diff] {
+                count += freq
+            }
+            prefixCount[sum, default: 0] += 1
+        }
+        return count
+    }
+}
