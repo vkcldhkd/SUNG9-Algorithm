@@ -192,5 +192,66 @@ extension Day15 {
 
         return result
     }
+}
 
+extension Day15 {
+    /*
+     # ✅ 문제: 1이 정확히 K번 등장하는 부분 배열 개수
+
+     0과 1로만 이루어진 정수 배열 `nums`와 정수 `k`가 주어질 때,
+     **정수 1이 정확히 `k번` 등장하는 모든 연속 부분 배열(subarray)의 개수**를 구하세요.
+
+     ---
+
+     ## ✳️ 입력 예시
+
+     ### 예시 1
+     Input:
+     nums = [1, 0, 1, 0, 1]
+     k = 2
+
+     Output:
+     4
+
+     ### 예시 2
+     Input:
+     nums = [1, 1, 1, 1]
+     k = 2
+
+     Output:
+     3
+
+     ### 예시 3
+     Input:
+     nums = [0, 0, 0, 0]
+     k = 0
+
+     Output:
+     10
+     (모든 부분 배열이 1을 0번 포함함)
+
+     ---
+
+     ## ❗️조건
+
+     - 1 ≤ nums.count ≤ 100,000
+     - 0 ≤ k ≤ nums.count
+     - nums의 원소는 오직 0 또는 1
+     */
+    static func countSubarraysWithKOnes(
+        _ nums: [Int],
+        _ k: Int
+    ) -> Int {
+        var countDict: [Int: Int] = [0: 1]
+        var targetCount = 0
+        var result = 0
+
+        for num in nums {
+            targetCount += num
+            result += countDict[targetCount - k, default: 0]
+            countDict[targetCount, default: 0] += 1
+        }
+
+        return result
+    }
 }

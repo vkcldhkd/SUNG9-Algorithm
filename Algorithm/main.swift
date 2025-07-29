@@ -470,11 +470,17 @@
  print(Day15.subarraySum([1, 1, 1], 2)) // 2
  print(Day15.subarraySum([1, 2, 3], 3)) // 2
  print(Day15.subarraySum([3, 4, 7, -2, 2, 1, 4], 7)) // 4
+ 
+ print(Day15.subarraysWithKOccurrences([1, 2, 1, 2, 1], 1, 2)) // 4
+ print(Day15.subarraysWithKOccurrences([1, 1, 1, 1], 1, 3)) // 2
+ print(Day15.subarraysWithKOccurrences([2, 3, 4], 3, 1)) // 4
  */
 
-print(Day15.subarraysWithKOccurrences([1, 2, 1, 2, 1], 1, 2)) // 4
-print(Day15.subarraysWithKOccurrences([1, 1, 1, 1], 1, 3)) // 2
-print(Day15.subarraysWithKOccurrences([2, 3, 4], 3, 1)) // 4
+
+print(Day15.countSubarraysWithKOnes([1, 0, 1, 0, 1], 2)) // 4
+print(Day15.countSubarraysWithKOnes([1, 1, 1, 1], 2)) // 3
+print(Day15.countSubarraysWithKOnes([0, 0, 0, 0], 0)) // 8
+
 
 
 
