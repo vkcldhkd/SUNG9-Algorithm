@@ -255,3 +255,75 @@ extension Day15 {
         return result
     }
 }
+
+extension Day15 {
+    /*
+     # ✅ 문제: 동일한 숫자가 K번 이하로 등장하는 부분 배열의 개수
+
+     정수 배열 `nums`와 정수 `k`가 주어질 때,
+     **어떤 숫자든 간에, 가장 많이 등장한 숫자의 빈도가 `k` 이하인 모든 연속 부분 배열(subarray)**의 개수를 구하세요.
+
+     ---
+
+     ## ✳️ 입력 예시
+
+     ### 예시 1
+     Input:
+     nums = [1, 2, 1], k = 2
+
+     Output:
+     6
+
+     설명:
+     가능한 부분 배열은 다음과 같음
+     [1], [2], [1], [1,2], [2,1], [1,2,1] → 총 6개
+
+
+     ### 예시 2
+     Input:
+     nums = [1, 1, 1, 2, 2], k = 2
+
+     Output:
+     8
+
+     설명:
+     빈도가 3인 [1,1,1] 등은 조건을 초과하므로 제외됨
+
+     ---
+
+     ## ❗️조건
+
+     - 1 ≤ nums.count ≤ 100,000
+     - 1 ≤ k ≤ nums.count
+     - 0 ≤ nums[i] ≤ 10,000
+     */
+    static func countSubarraysWithMaxFrequencyAtMostK(
+        _ nums: [Int],
+        _ k: Int
+    ) -> Int { // 이런 유형 연습 필요
+        var left = 0
+        var freq: [Int: Int] = [:]
+        var count = 0
+
+        for right in 0..<nums.count {
+            let num = nums[right]
+            freq[num, default: 0] += 1
+
+            // 윈도우 내에서 가장 많이 등장한 숫자의 빈도 계산
+            while let currentMax = freq.values.max(), currentMax > k {
+                let leftNum = nums[left]
+                freq[leftNum]! -= 1
+                if freq[leftNum]! == 0 {
+                    freq.removeValue(forKey: leftNum)
+                }
+                left += 1
+            }
+
+            count += (right - left + 1)
+        }
+
+        return count
+    }
+
+
+}
