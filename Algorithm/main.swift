@@ -519,11 +519,20 @@
  print(Day16.countSubarraysWithZeroOneRatio([0, 1, 1, 0, 0, 1])) // 4
  print(Day16.countSubarraysWithZeroOneRatio([1, 1, 0, 0, 1, 0])) // 4
  print(Day16.countSubarraysWithZeroOneRatio([1, 0, 1, 0, 1, 0])) // 4
+ 
+ print(Day16.countSubarraysWithOneDuplicate([1, 2, 1, 2, 3])) // 0
+ print(Day16.countSubarraysWithOneDuplicate([4, 5, 4, 6, 5])) // 0
+ print(Day16.countSubarraysWithOneDuplicate([7, 7, 7])) // 2
  */
 
-print(Day16.countSubarraysWithOneDuplicate([1, 2, 1, 2, 3])) // 0
-print(Day16.countSubarraysWithOneDuplicate([4, 5, 4, 6, 5])) // 0
-print(Day16.countSubarraysWithOneDuplicate([7, 7, 7])) // 2
+
+/*
+ Day17
+ */
+
+print(Day17.countUniqueSubarrays([1, 2, 1, 3])) // 8
+print(Day17.countUniqueSubarrays([1, 2, 3, 4])) // 10
+print(Day17.countUniqueSubarrays([2, 2, 2])) // 3
 
 
 
