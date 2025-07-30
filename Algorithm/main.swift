@@ -528,11 +528,23 @@
 
 /*
  Day17
+ print(Day17.countUniqueSubarrays([1, 2, 1, 3])) // 8
+ print(Day17.countUniqueSubarrays([1, 2, 3, 4])) // 10
+ print(Day17.countUniqueSubarrays([2, 2, 2])) // 3
+
+ print(Day17.countAllEvenSubarrays([2, 1, 4, 6])) // 4
+ print(Day17.countAllEvenSubarrays([1, 3, 5])) // 0
+ print(Day17.countAllEvenSubarrays([2, 4, 1, 6, 8])) // 4
+
+ print(Day17.countAllOddSubarrays([1, 3, 5])) // 6
+ print(Day17.countAllOddSubarrays([1, 2, 3, 5])) // 4
+ print(Day17.countAllOddSubarrays([2, 4, 6])) // 0
+ print(Day17.countAllOddSubarrays([1, 3, 2, 5, 7])) // 6
  */
 
-print(Day17.countUniqueSubarrays([1, 2, 1, 3])) // 8
-print(Day17.countUniqueSubarrays([1, 2, 3, 4])) // 10
-print(Day17.countUniqueSubarrays([2, 2, 2])) // 3
+
+
+
 
 
 
