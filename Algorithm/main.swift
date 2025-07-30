@@ -507,12 +507,28 @@
  print(Day16.countBalancedPairSubarrays([1, 2, 1, 2, 1], 1, 2)) // 4
  print(Day16.countBalancedPairSubarrays([1, 2, 3, 1, 2], 1, 2)) // 4
  print(Day16.countBalancedPairSubarrays([3, 3, 3], 1, 2)) // 0
+ 
+ print(Day16.countBalancedTripleSubarrays([1, 2, 3, 1, 2, 3], 1, 2, 3)) // 5
+ print(Day16.countBalancedTripleSubarrays([1, 2, 1, 2, 3, 3], 1, 2, 3)) // 2
+ print(Day16.countBalancedTripleSubarrays([1, 1, 1, 1], 1, 2, 3)) // 0
+ 
+ print(Day16.maxBalancedPairSubarrayCount([1, 2, 1, 3, 2, 1, 3])) // 5
+ print(Day16.maxBalancedPairSubarrayCount([4, 4, 4, 4])) // 0
+ print(Day16.maxBalancedPairSubarrayCount([5, 1, 5, 1, 5, 1])) // 6
+ 
+ print(Day16.countSubarraysWithZeroOneRatio([0, 1, 1, 0, 0, 1])) // 4
+ print(Day16.countSubarraysWithZeroOneRatio([1, 1, 0, 0, 1, 0])) // 4
+ print(Day16.countSubarraysWithZeroOneRatio([1, 0, 1, 0, 1, 0])) // 4
  */
 
+print(Day16.countSubarraysWithOneDuplicate([1, 2, 1, 2, 3])) // 0
+print(Day16.countSubarraysWithOneDuplicate([4, 5, 4, 6, 5])) // 0
+print(Day16.countSubarraysWithOneDuplicate([7, 7, 7])) // 2
 
-print(Day16.countBalancedTripleSubarrays([1, 2, 3, 1, 2, 3], 1, 2, 3)) // 5
-print(Day16.countBalancedTripleSubarrays([1, 2, 1, 2, 3, 3], 1, 2, 3)) // 2
-print(Day16.countBalancedTripleSubarrays([1, 1, 1, 1], 1, 2, 3)) // 0
+
+
+
+
 
 
 
