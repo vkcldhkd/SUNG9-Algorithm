@@ -186,3 +186,156 @@ extension Day16 {
         return result
     }
 }
+
+extension Day16 {
+    /*
+     # ✅ 문제: 0과 1의 균형 구간 개수
+
+     0과 1로만 이루어진 배열 `nums`가 주어졌을 때, **연속된 부분 배열(subarray) 중 0과 1의 개수가 같은 구간의 개수**를 구하시오.
+
+     ---
+
+     ## ✳️ 입력 예시
+     ```swift
+     let nums = [0, 1, 0, 1]
+     ```
+
+     ## ✳️ 출력 예시
+     ```swift
+     4
+     ```
+
+     - 가능한 부분 배열: [0,1], [1,0], [0,1], [0,1,0,1]
+
+     ---
+
+     ## ✳️ 입력 예시 2
+     ```swift
+     let nums = [0, 0, 1, 1]
+     ```
+
+     ## ✳️ 출력 예시 2
+     ```swift
+     4
+     ```
+
+     - 가능한 부분 배열: [0,1], [0,0,1,1], [0,1,1], [1,1]
+
+     ---
+
+     ## ✳️ 입력 예시 3
+     ```swift
+     let nums = [1, 1, 1]
+     ```
+
+     ## ✳️ 출력 예시 3
+     ```swift
+     0
+     ```
+
+     - 0이 없으므로 균형을 이루는 구간이 없음
+
+     ---
+
+     ## ❗️조건
+     - 1 ≤ nums.count ≤ 100,000
+     - nums[i] ∈ {0, 1}
+     - 시간복잡도: O(n)
+     */
+    
+    static func countBalancedBinarySubarrays(_ nums: [Int]) -> Int {
+        var sum = 0
+        var count: [Int: Int] = [0: 1]
+        var result = 0
+        
+        for num in nums {
+            if num == 0 {
+                sum += 1
+            } else {
+                sum -= 1
+            }
+            
+            result += count[sum, default: 0]
+            count[sum, default: 0] += 1
+        }
+        
+        return result
+    }
+}
+
+extension Day16 {
+    /*
+     # ✅ 문제: 음수와 양수의 균형 구간 개수
+
+     정수 배열 `nums`가 주어졌을 때, **연속된 부분 배열(subarray) 중 양수 개수와 음수 개수가 같은 구간의 개수**를 구하시오.
+
+     ---
+
+     ## ✳️ 입력 예시
+     ```swift
+     let nums = [1, -1, 1, -1]
+     ```
+
+     ## ✳️ 출력 예시
+     ```swift
+     4
+     ```
+
+     - 가능한 부분 배열: [1,-1], [-1,1], [1,-1], [1,-1,1,-1]
+
+     ---
+
+     ## ✳️ 입력 예시 2
+     ```swift
+     let nums = [1, 1, -1, -1]
+     ```
+
+     ## ✳️ 출력 예시 2
+     ```swift
+     4
+     ```
+
+     - 가능한 부분 배열: [1,-1], [1,1,-1,-1], [1,-1,-1], [-1,-1]
+
+     ---
+
+     ## ✳️ 입력 예시 3
+     ```swift
+     let nums = [-1, -1, -1]
+     ```
+
+     ## ✳️ 출력 예시 3
+     ```swift
+     0
+     ```
+
+     - 양수가 없으므로 균형을 이루는 구간이 없음
+
+     ---
+
+     ## ❗️조건
+     - 1 ≤ nums.count ≤ 100,000
+     - -10⁴ ≤ nums[i] ≤ 10⁴
+     - 0은 주어지지 않음
+     - 시간복잡도: O(n)
+     */
+    
+    static func countBalancedPosNegSubarrays(_ nums: [Int]) -> Int {
+        var sum = 0
+        var count: [Int: Int] = [0: 1]
+        var result = 0
+        
+        for num in nums {
+            if num > 0 {
+                sum += 1
+            } else {
+                sum -= 1
+            }
+            
+            result += count[sum, default: 0]
+            count[sum, default: 0] += 1
+        }
+        
+        return result
+    }
+}
