@@ -339,3 +339,89 @@ extension Day16 {
         return result
     }
 }
+
+extension Day16 {
+    /*
+     # ✅ 문제: 동일 숫자 개수 균형 구간 개수
+
+     정수 배열 `nums`가 주어졌을 때, **연속된 부분 배열(subarray) 중 특정 두 수 a, b의 개수가 같은 구간의 개수**를 구하시오.
+
+     ---
+
+     ## ✳️ 입력 예시
+     ```swift
+     let nums = [1, 2, 1, 2, 1]
+     let a = 1
+     let b = 2
+     ```
+
+     ## ✳️ 출력 예시
+     ```swift
+     4
+     ```
+
+     - 가능한 부분 배열: [1,2], [2,1], [1,2], [1,2,1]
+
+     ---
+
+     ## ✳️ 입력 예시 2
+     ```swift
+     let nums = [1, 2, 3, 1, 2]
+     let a = 1
+     let b = 2
+     ```
+
+     ## ✳️ 출력 예시 2
+     ```swift
+     3
+     ```
+
+     - 가능한 부분 배열: [1,2], [2,3,1,2], [1,2]
+
+     ---
+
+     ## ✳️ 입력 예시 3
+     ```swift
+     let nums = [3, 3, 3]
+     let a = 1
+     let b = 2
+     ```
+
+     ## ✳️ 출력 예시 3
+     ```swift
+     0
+     ```
+
+     - a와 b가 존재하지 않으므로 균형 구간이 없음
+
+     ---
+
+     ## ❗️조건
+     - 1 ≤ nums.count ≤ 100,000
+     - -10⁴ ≤ nums[i], a, b ≤ 10⁴
+     - a ≠ b
+     - 시간복잡도: O(n)
+     */
+    static func countBalancedPairSubarrays(
+        _ nums: [Int],
+        _ a: Int,
+        _ b: Int
+    ) -> Int {
+        var sum = 0
+        var count: [Int: Int] = [0: 1]
+        var result = 0
+        
+        for num in nums {
+            if num == a {
+                sum += 1
+            } else if num == b {
+                sum -= 1
+            }
+            
+            result += count[sum, default: 0]
+            count[sum, default: 0] += 1
+        }
+        
+        return result
+    }
+}

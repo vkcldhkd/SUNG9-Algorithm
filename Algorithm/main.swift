@@ -499,11 +499,16 @@
  print(Day16.countBalancedBinarySubarrays([0, 1, 0, 1])) // 4
  print(Day16.countBalancedBinarySubarrays([0, 0, 1, 1])) // 2
  print(Day16.countBalancedBinarySubarrays([1, 1, 1])) // 0
+ 
+ print(Day16.countBalancedPosNegSubarrays([1, -1, 1, -1])) // 4
+ print(Day16.countBalancedPosNegSubarrays([1, 1, -1, -1])) // 2
+ print(Day16.countBalancedPosNegSubarrays([-1, -1, -1])) // 0
  */
 
-print(Day16.countBalancedPosNegSubarrays([1, -1, 1, -1])) // 4
-print(Day16.countBalancedPosNegSubarrays([1, 1, -1, -1])) // 4
-print(Day16.countBalancedPosNegSubarrays([-1, -1, -1])) // 0
+print(Day16.countBalancedPairSubarrays([1, 2, 1, 2, 1], 1, 2)) // 4
+//print(Day16.countBalancedPairSubarrays([1, 2, 3, 1, 2], 1, 2)) // 4
+//print(Day16.countBalancedPairSubarrays([3, 3, 3], 1, 2)) // 0
+
 
 
 
