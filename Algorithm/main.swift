@@ -540,38 +540,11 @@
  print(Day17.countAllOddSubarrays([1, 2, 3, 5])) // 4
  print(Day17.countAllOddSubarrays([2, 4, 6])) // 0
  print(Day17.countAllOddSubarrays([1, 3, 2, 5, 7])) // 6
+ 
+ print(Day17.countSubarraysWithAtLeastThreeOnes([1, 1, 1, 0, 1, 1, 1, 1])) // 12
+ print(Day17.countSubarraysWithAtLeastThreeOnes([1, 0, 1, 1, 1, 0, 1, 1])) // 3
+ print(Day17.countSubarraysWithAtLeastThreeOnes([1, 1, 0, 1, 1])) // 0
  */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

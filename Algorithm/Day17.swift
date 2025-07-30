@@ -189,3 +189,91 @@ extension Day17 {
         return result
     }
 }
+
+extension Day17 {
+    /*
+     ✅ 문제: 0과 1로 이루어진 배열에서 “1이 연속으로 3번 이상 등장하는 부분 배열의 개수”를 구하시오
+     ✳️ 입력 예시 1
+     swift
+     복사
+     편집
+     let nums = [1, 1, 1, 0, 1, 1, 1, 1]
+     ✳️ 출력 예시 1
+     swift
+     복사
+     편집
+     6
+     가능한 부분 배열:
+
+     [1,1,1] (0~2)
+
+     [1,1,1,0] (0~3)
+
+     [1,1,1,0,1] (0~4)
+
+     [1,1,1,0,1,1] (0~5)
+
+     [1,1,1,0,1,1,1] (0~6)
+
+     [1,1,1,0,1,1,1,1] (0~7)
+
+     (여기서 부분 배열이란 “서브어레이”, 즉 인덱스가 연속되는 구간임)
+
+     ✳️ 입력 예시 2
+     swift
+     복사
+     편집
+     let nums = [1, 0, 1, 1, 1, 0, 1, 1]
+     ✳️ 출력 예시 2
+     swift
+     복사
+     편집
+     3
+     가능한 부분 배열:
+
+     [1,1,1] (2~4)
+
+     [1,1,1,0] (2~5)
+
+     [1,1,1,0,1] (2~6)
+
+     ✳️ 입력 예시 3
+     swift
+     복사
+     편집
+     let nums = [1, 1, 0, 1, 1]
+     ✳️ 출력 예시 3
+     swift
+     복사
+     편집
+     0
+     1이 3번 이상 연속으로 등장하는 구간이 없음
+
+     ❗️조건
+     1 ≤ nums.count ≤ 10⁴
+
+     nums는 0과 1로만 구성됨
+     */
+    
+    static func countSubarraysWithAtLeastThreeOnes(_ nums: [Int]) -> Int {
+        let n = nums.count
+        var result = 0
+        
+        for start in 0 ..< n {
+            var ones = 0
+            
+            for end in start ..< n {
+                if nums[end] == 1 {
+                    ones += 1
+                    
+                    if ones >= 3 {
+                        result += 1
+                    }
+                } else {
+                    ones = 0
+                }
+            }
+        }
+        return result
+    }
+}
