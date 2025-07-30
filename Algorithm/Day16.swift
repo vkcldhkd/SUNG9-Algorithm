@@ -425,3 +425,97 @@ extension Day16 {
         return result
     }
 }
+
+
+extension Day16 {
+    /*
+     # ✅ 문제: 3개의 숫자 균형 구간 개수
+
+     정수 배열 `nums`가 주어졌을 때, **세 개의 숫자 a, b, c의 등장 횟수가 모두 같은 연속 부분 배열(subarray)의 개수**를 구하시오.
+
+     ---
+
+     ## ✳️ 입력 예시
+     ```swift
+     let nums = [1, 2, 3, 1, 2, 3]
+     let a = 1
+     let b = 2
+     let c = 3
+     ```
+
+     ## ✳️ 출력 예시
+     ```swift
+     5
+     ```
+
+     - 가능한 부분 배열 수: 4개
+
+     ---
+
+     ## ✳️ 입력 예시 2
+     ```swift
+     let nums = [1, 2, 1, 2, 3, 3]
+     let a = 1
+     let b = 2
+     let c = 3
+     ```
+
+     ## ✳️ 출력 예시 2
+     ```swift
+     2
+     ```
+
+     - 가능한 부분 배열 수: 2개
+
+     ---
+
+     ## ✳️ 입력 예시 3
+     ```swift
+     let nums = [1, 1, 1, 1]
+     let a = 1
+     let b = 2
+     let c = 3
+     ```
+
+     ## ✳️ 출력 예시 3
+     ```swift
+     0
+     ```
+
+     - b와 c가 없으므로 균형 구간이 없음
+
+     ---
+
+     ## ❗️조건
+     - 1 ≤ nums.count ≤ 100,000
+     - -10⁴ ≤ nums[i], a, b, c ≤ 10⁴
+     - a, b, c는 서로 다른 값
+     - 시간복잡도: O(n)
+     */
+    
+    static func countBalancedTripleSubarrays(
+        _ nums: [Int],
+        _ a: Int,
+        _ b: Int,
+        _ c: Int
+    ) -> Int {
+        var countA = 0, countB = 0, countC = 0
+        var result = 0
+        var dict: [String: Int] = ["0,0" : 1]
+        
+        for num in nums {
+            switch num {
+            case a: countA += 1
+            case b: countB += 1
+            case c: countC += 1
+            default: continue
+            }
+            
+            let key = "\(countA - countB),\(countA - countC)"
+            result += dict[key, default: 0]
+            dict[key, default: 0] += 1
+        }
+        
+        return result
+    }
+}
