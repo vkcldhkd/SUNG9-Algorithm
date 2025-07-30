@@ -277,3 +277,85 @@ extension Day17 {
         return result
     }
 }
+
+
+extension Day17 {
+    /*
+     ✅ 문제:
+     정수 배열 nums가 주어질 때,
+     연속된 부분 배열(subarray) 중, 부분 배열의 합이 짝수인 경우의 수를 구하시오.
+
+     ✳️ 입력 예시 1
+     swift
+     복사
+     편집
+     let nums = [1, 2, 3]
+     ✳️ 출력 예시 1
+     swift
+     복사
+     편집
+     3
+     [1, 2, 3] (합 6)
+
+     [2] (합 2)
+
+     [2, 3] (합 5, 홀수) — X
+
+     [1] (합 1, 홀수) — X
+
+     [3] (합 3, 홀수) — X
+
+     [1, 2] (합 3, 홀수) — X
+
+     [3] (합 3, 홀수) — X
+     => 실제로는 [1,2,3], [2], [2,3] 이렇게 3개 (직접 코드로 재검증)
+
+     ✳️ 입력 예시 2
+     swift
+     복사
+     편집
+     let nums = [2, 4, 6]
+     ✳️ 출력 예시 2
+     swift
+     복사
+     편집
+     6
+     [2], [4], [6], [2,4], [4,6], [2,4,6] (모두 짝수)
+
+     ✳️ 입력 예시 3
+     swift
+     복사
+     편집
+     let nums = [1, 3, 5]
+     ✳️ 출력 예시 3
+     swift
+     복사
+     편집
+     3
+     [1, 3], [3, 5], [1, 3, 5]
+
+     ❗️조건
+     1 ≤ nums.count ≤ 10⁴
+
+     각 요소는 0 ≤ num ≤ 10⁵
+     */
+    
+    static func countEvenSumSubarrays(_ nums: [Int]) -> Int {
+        var count = 0
+        
+        let n = nums.count
+        
+        for start in 0 ..< n {
+            var sum = 0
+            
+            for end in start ..< n {
+                sum += nums[end]
+                if sum % 2 == 0 {
+                    count += 1
+                }
+            }
+        }
+        
+        return count
+    }
+}

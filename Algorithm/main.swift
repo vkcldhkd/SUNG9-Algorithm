@@ -544,6 +544,10 @@
  print(Day17.countSubarraysWithAtLeastThreeOnes([1, 1, 1, 0, 1, 1, 1, 1])) // 12
  print(Day17.countSubarraysWithAtLeastThreeOnes([1, 0, 1, 1, 1, 0, 1, 1])) // 3
  print(Day17.countSubarraysWithAtLeastThreeOnes([1, 1, 0, 1, 1])) // 0
+ 
+ print(Day17.countEvenSumSubarrays([1, 2, 3])) // 2
+ print(Day17.countEvenSumSubarrays([2, 4, 6])) // 6
+ print(Day17.countEvenSumSubarrays([1, 3, 5])) // 2
  */
 
 
