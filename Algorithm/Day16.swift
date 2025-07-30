@@ -108,3 +108,81 @@ extension Day16 {
         return result
     }
 }
+
+
+extension Day16 {
+    /*
+     # ✅ 문제: 짝수와 홀수의 균형 구간 개수
+
+     정수 배열 `nums`가 주어졌을 때, **연속된 부분 배열(subarray) 중 짝수의 개수와 홀수의 개수가 같은 구간의 개수**를 구하시오.
+
+     ---
+
+     ## ✳️ 입력 예시
+     ```swift
+     let nums = [1, 2, 3, 4]
+     ```
+
+     ## ✳️ 출력 예시
+     ```swift
+     2
+     ```
+
+     - 가능한 부분 배열: [1,2], [3,4]
+
+     ---
+
+     ## ✳️ 입력 예시 2
+     ```swift
+     let nums = [1, 2, 1, 2]
+     ```
+
+     ## ✳️ 출력 예시 2
+     ```swift
+     4
+     ```
+
+     - 가능한 부분 배열: [1,2], [2,1], [1,2], [1,2,1,2]
+
+     ---
+
+     ## ✳️ 입력 예시 3
+     ```swift
+     let nums = [2, 4, 6]
+     ```
+
+     ## ✳️ 출력 예시 3
+     ```swift
+     0
+     ```
+
+     - 모두 짝수이므로 균형이 맞는 구간이 없음
+
+     ---
+
+     ## ❗️조건
+     - 1 ≤ nums.count ≤ 100,000
+     - 0 ≤ nums[i] ≤ 10⁴
+     - 시간복잡도: O(n)
+     */
+    
+    static func countBalancedEvenOddSubarrays(_ nums: [Int]) -> Int {
+        var sum = 0
+        var count: [Int: Int] = [0: 1] 
+        var result = 0
+
+        for num in nums {
+            if num % 2 == 0 { // 짝수면 +1, 홀수면 -1
+                sum += 1
+            } else {
+                sum -= 1
+            }
+
+            // 누적합이 같은 시점은 그 사이의 부분 배열의 짝수와 홀수의 수가 같다는 뜻
+            result += count[sum, default: 0]
+            count[sum, default: 0] += 1
+        }
+
+        return result
+    }
+}

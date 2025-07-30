@@ -490,10 +490,14 @@
  print(Day16.countSubarraysWithSumExactlyK([1, 1, 1], 2)) // 2
  print(Day16.countSubarraysWithSumExactlyK([1, 2, 3], 3)) // 2
  print(Day16.countSubarraysWithSumExactlyK([3, 4, 7, -2, 2, 1, 4], 7)) // 4
+ 
+ print(Day16.countEvenSumSubarrays([1, 2, 3, 4])) // 4
  */
 
+print(Day16.countBalancedEvenOddSubarrays([1, 2, 3, 4])) // 4
+print(Day16.countBalancedEvenOddSubarrays([1, 2, 1, 2])) // 4
 
-print(Day16.countEvenSumSubarrays([1, 2, 3, 4])) // 4
+
 
 
 
