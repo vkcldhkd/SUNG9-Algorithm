@@ -510,5 +510,121 @@ extension Day17 {
         
         return result
     }
+}
 
+extension Day17 {
+    /*
+     ✅ 문제: 첫 중복 숫자 찾기 (First Duplicate Number)
+     배열이 주어졌을 때, 가장 먼저 두 번 등장하는 숫자를 반환하세요.
+     가장 먼저 등장한다는 뜻은, 두 번째로 등장하는 위치가 가장 앞서는 숫자를 말합니다.
+
+     ✳️ 입력 예시 1
+     let nums = [2, 1, 3, 5, 3, 2]
+     
+     ✳️ 출력 예시 1
+     3
+     
+     ✳️ 입력 예시 2
+     let nums = [2, 4, 3, 5, 1]
+     
+     ✳️ 출력 예시 2
+     -1
+     
+     ✳️ 입력 예시 3
+     let nums = [1, 2, 1, 2, 3]
+     
+     ✳️ 출력 예시 3
+     1
+     
+     ❗️조건
+     1 ≤ nums.count ≤ 10⁵
+
+     1 ≤ nums[i] ≤ 10⁵
+
+     중복이 없다면 -1을 반환하세요.
+     */
+    static func firstDuplicate(_ nums: [Int]) -> Int {
+        var set = Set<Int>()
+        
+        for num in nums {
+            if set.contains(num) {
+                return num
+            }
+            set.insert(num)
+        }
+        
+        return -1
+    }
+}
+
+extension Day17 {
+    /*
+     # ✅ 문제: 가장 긴 고유 부분 문자열 (Longest Substring Without Repeating Characters)
+
+     문자열이 주어졌을 때, 중복된 문자가 없는 가장 긴 부분 문자열의 길이를 구하세요.
+
+     ---
+
+     ## ✳️ 입력 예시 1
+     ```swift
+     let s = "abcabcbb"
+     ```
+
+     ## ✳️ 출력 예시 1
+     ```swift
+     3
+     ```
+
+     ---
+
+     ## ✳️ 입력 예시 2
+     ```swift
+     let s = "bbbbb"
+     ```
+
+     ## ✳️ 출력 예시 2
+     ```swift
+     1
+     ```
+
+     ---
+
+     ## ✳️ 입력 예시 3
+     ```swift
+     let s = "pwwkew"
+     ```
+
+     ## ✳️ 출력 예시 3
+     ```swift
+     3
+     ```
+
+     ---
+
+     ## ❗️조건
+     - 1 ≤ s.count ≤ 10⁵
+     - 문자열은 알파벳 소문자로만 구성됩니다.
+     */
+    
+    static func lengthOfLongestSubstring(_ s: String) -> Int {
+        var seen = Set<Character>()
+        var left = s.startIndex
+        var right = s.startIndex
+        var maxLength = 0
+        
+        while right < s.endIndex {
+            let char = s[right]
+            if !seen.contains(char) {
+                seen.insert(char)
+                
+                let length = s.distance(from: left, to: right) + 1
+                maxLength = max(maxLength, length)
+                right = s.index(after: right)
+            } else {
+                seen.remove(s[left])
+                left = s.index(after: left)
+            }
+        }
+        return maxLength
+    }
 }
