@@ -548,9 +548,15 @@
  print(Day17.countEvenSumSubarrays([1, 2, 3])) // 2
  print(Day17.countEvenSumSubarrays([2, 4, 6])) // 6
  print(Day17.countEvenSumSubarrays([1, 3, 5])) // 2
+ 
+ print(Day17.countSubarraysWithSumMultipleOfK([1, 2, 3, 4, 5], 3)) // 4
+ print(Day17.countSubarraysWithSumMultipleOfK([2, 4, 6, 8], 4)) // 4
+ print(Day17.countSubarraysWithSumMultipleOfK([5, 5, 5], 5)) // 6
+ 
  */
 
+print(Day17.countSubarraysWithSumModuloOne([1, 2, 3, 4, 5], 3)) // 4
+print(Day17.countSubarraysWithSumModuloOne([5, 7, 1, 3], 4)) // 3
+print(Day17.countSubarraysWithSumModuloOne([1, 1, 1], 2)) // 4
 
-print(Day17.countSubarraysWithSumMultipleOfK([1, 2, 3, 4, 5], 3)) // 4
-print(Day17.countSubarraysWithSumMultipleOfK([2, 4, 6, 8], 4)) // 4
-print(Day17.countSubarraysWithSumMultipleOfK([5, 5, 5], 5)) // 6
+

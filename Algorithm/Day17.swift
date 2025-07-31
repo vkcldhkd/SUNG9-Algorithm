@@ -423,3 +423,92 @@ extension Day17 {
         return result
     }
 }
+
+extension Day17 {
+    /*
+     # ✅ 문제: k로 나눈 나머지가 1인 부분 배열 개수 세기
+
+     정수 배열 `nums`와 정수 `k`가 주어질 때,
+     **모든 연속된 부분 배열 중 합을 k로 나눈 나머지가 정확히 1인 부분 배열의 개수**를 구하시오.
+
+     ---
+
+     ## ✳️ 입력 예시 1
+     ```swift
+     let nums = [1, 2, 3, 4, 5]
+     let k = 3
+     ```
+
+     ## ✳️ 출력 예시 1
+     ```swift
+     4
+     ```
+
+     - 가능한 부분 배열: [1], [2, 3], [4], [1, 2, 3, 4]
+
+     ---
+
+     ## ✳️ 입력 예시 2
+     ```swift
+     let nums = [5, 7, 1, 3]
+     let k = 4
+     ```
+
+     ## ✳️ 출력 예시 2
+     ```swift
+     3
+     ```
+
+     - 가능한 부분 배열: [5], [5, 7, 1], [1, 3]
+
+     ---
+
+     ## ✳️ 입력 예시 3
+     ```swift
+     let nums = [1, 1, 1]
+     let k = 2
+     ```
+
+     ## ✳️ 출력 예시 3
+     ```swift
+     4
+     ```
+
+     - 가능한 부분 배열: [1], [1], [1], [1, 1, 1]
+
+     ---
+
+     ## ❗️조건
+     - 1 ≤ `nums.count` ≤ 10⁵
+     - -10⁴ ≤ `nums[i]` ≤ 10⁴
+     - 1 ≤ `k` ≤ 10⁴
+     */
+    
+    static func countSubarraysWithSumModuloOne(
+        _ nums: [Int],
+        _ k: Int
+    ) -> Int {
+        var prefixSum = 0
+        var remainderCount: [Int: Int] = [0: 1]
+        var result = 0
+        
+        for num in nums {
+            prefixSum += num
+            var remainder = prefixSum % k
+            
+            // 음수 보정
+            if remainder < 0 {
+                remainder += k
+            }
+            
+            // 이전에 등장한 (remainder - 1) 나머지의 개수를 결과에 추가
+            let target = (remainder - 1 + k) % k
+            result += remainderCount[target, default: 0]
+            
+            remainderCount[remainder, default: 0] += 1
+        }
+        
+        return result
+    }
+
+}
