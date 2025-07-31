@@ -156,3 +156,75 @@ extension Day18 {
         return result
     }
 }
+
+extension Day18 {
+    /*
+     # ✅ 문제: 부분 합이 k의 배수인 부분 배열 개수 (Subarray Sum is Multiple of K)
+
+     정수 배열 `nums`와 정수 `k`가 주어졌을 때,
+     합이 `k`의 배수인 (0 포함) **연속된 부분 배열의 개수**를 구하세요.
+
+     ---
+
+     ## ✳️ 입력 예시 1
+     ```swift
+     let nums = [1, 2, 3, 4, 5]
+     let k = 3
+     ```
+
+     ## ✳️ 출력 예시 1
+     ```swift
+     4
+     ```
+
+     ---
+
+     ## ✳️ 입력 예시 2
+     ```swift
+     let nums = [5, 7, 1, 3]
+     let k = 4
+     ```
+
+     ## ✳️ 출력 예시 2
+     ```swift
+     2
+     ```
+
+     ---
+
+     ## ✳️ 입력 예시 3
+     ```swift
+     let nums = [1, 1, 1]
+     let k = 2
+     ```
+
+     ## ✳️ 출력 예시 3
+     ```swift
+     0
+     ```
+
+     ---
+
+     ## ❗️조건
+     - 1 ≤ nums.count ≤ 10⁵
+     - 0 ≤ nums[i] ≤ 10⁴
+     - 1 ≤ k ≤ 10⁴
+     */
+    
+    static func countSubarraysWithSumMultipleOfK(
+        _ nums: [Int],
+        _ k: Int
+    ) -> Int {
+        var prefixSum = 0
+        var countDict: [Int: Int] = [0: 1]
+        var result = 0
+
+        for num in nums {
+            prefixSum += num
+            let mod = (prefixSum % k + k) % k  // 중요: 음수 방지
+            result += countDict[mod, default: 0]
+            countDict[mod, default: 0] += 1
+        }
+        return result
+    }
+}

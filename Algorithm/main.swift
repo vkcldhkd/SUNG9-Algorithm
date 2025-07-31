@@ -568,12 +568,17 @@
  print(Day18.twoSum([2, 7, 11, 15], 9)) // [0, 1]
  print(Day18.twoSum([3, 2, 4], 6)) // [1, 2]
  print(Day18.twoSum([3, 3], 6)) // [0, 1]
+
+ print(Day18.countSubarraysWithSumExactlyK([1, 1, 1], 2)) // 2
+ print(Day18.countSubarraysWithSumExactlyK([1, 2, 3], 3)) // 2
+ print(Day18.countSubarraysWithSumExactlyK([3, 4, 7, 2, -3, 1, 4, 2], 7)) // 4
  
  */
 
-print(Day18.countSubarraysWithSumExactlyK([1, 1, 1], 2)) // 2
-print(Day18.countSubarraysWithSumExactlyK([1, 2, 3], 3)) // 2
-print(Day18.countSubarraysWithSumExactlyK([3, 4, 7, 2, -3, 1, 4, 2], 7)) // 4
+
+print(Day18.countSubarraysWithSumMultipleOfK([1, 2, 3, 4, 5], 3)) // 4
+print(Day18.countSubarraysWithSumMultipleOfK([5, 7, 1, 3], 4)) // 2
+print(Day18.countSubarraysWithSumMultipleOfK([1, 1, 1], 2)) // 0
 
 
 
