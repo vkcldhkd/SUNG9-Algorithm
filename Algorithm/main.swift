@@ -560,12 +560,18 @@
  print(Day17.lengthOfLongestSubstring("abcabcbb")) // 3
  print(Day17.lengthOfLongestSubstring("bbbbb")) // 1
  print(Day17.lengthOfLongestSubstring("pwwkew")) // 3
+
+ print(Day17.mostFrequent([1, 3, 1, 3, 2, 1])) // 1
+ print(Day17.mostFrequent([4, 5, 6, 5, 4, 3])) // 4
+ print(Day17.mostFrequent([7, 8, 9, 10])) // 7
  
  */
 
-//print(Day17.mostFrequent([1, 3, 1, 3, 2, 1])) // 1
-print(Day17.mostFrequent([4, 5, 6, 5, 4, 3])) // 4
-//print(Day17.mostFrequent([7, 8, 9, 10])) // 7
+
+print(Day18.twoSum([2, 7, 11, 15], 9)) // [0, 1]
+print(Day18.twoSum([3, 2, 4], 6)) // [1, 2]
+print(Day18.twoSum([3, 3], 6)) // [0, 1]
+
 
 
 
