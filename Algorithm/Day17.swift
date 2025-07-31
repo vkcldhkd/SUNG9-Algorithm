@@ -403,22 +403,23 @@ extension Day17 {
         _ nums: [Int],
         _ k: Int
     ) -> Int {
+        var prefixSum = 0
+        var countDict: [Int: Int] = [0: 1]
+        var result = 0
         
-        var count = 0
-        let n = nums.count
-        
-        for start in 0 ..< n {
-            var sum = 0
+        for num in nums {
+            prefixSum += num
             
-            for end in start ..< n {
-                sum += nums[end]
-                
-                if sum % k == 0 {
-                    count += 1
-                }
+            var targetSum = prefixSum % k
+            
+            if targetSum < 0 {
+                targetSum += 1
             }
+            
+            result += countDict[targetSum, default: 0]
+            countDict[targetSum, default: 0] += 1
         }
         
-        return count
+        return result
     }
 }
