@@ -628,3 +628,80 @@ extension Day17 {
         return maxLength
     }
 }
+
+extension Day17 {
+    /*
+     # ✅ 문제: 가장 자주 등장한 숫자 (Most Frequent Element)
+
+     정수 배열이 주어졌을 때, 가장 자주 등장한 숫자를 반환하세요.
+     여러 개일 경우, 그 중 **가장 먼저 등장한 숫자**를 반환하세요.
+
+     ---
+
+     ## ✳️ 입력 예시 1
+     ```swift
+     let nums = [1, 3, 1, 3, 2, 1]
+     ```
+
+     ## ✳️ 출력 예시 1
+     ```swift
+     1
+     ```
+
+     ---
+
+     ## ✳️ 입력 예시 2
+     ```swift
+     let nums = [4, 5, 6, 5, 4, 3]
+     ```
+
+     ## ✳️ 출력 예시 2
+     ```swift
+     4
+     ```
+
+     ---
+
+     ## ✳️ 입력 예시 3
+     ```swift
+     let nums = [7, 8, 9, 10]
+     ```
+
+     ## ✳️ 출력 예시 3
+     ```swift
+     7
+     ```
+
+     ---
+
+     ## ❗️조건
+     - 1 ≤ nums.count ≤ 10⁵
+     - -10⁴ ≤ nums[i] ≤ 10⁴
+     */
+    static func mostFrequent(_ nums: [Int]) -> Int {
+        var countDict: [Int: Int] = [: ]
+        var maxCount = 0
+        var result = nums[0]
+        var firstIndexDict: [Int: Int] = [ :]
+        
+        for i in 0 ..< nums.count {
+            let num = nums[i]
+            var count = 0
+            countDict[num, default: 0] += 1
+            count = countDict[num, default: 0]
+            
+            if firstIndexDict[num] == nil {
+                firstIndexDict[num] = i
+            }
+            
+            if count > maxCount {
+                maxCount = count
+                result = num
+            } else if count == maxCount, firstIndexDict[num]! < firstIndexDict[result]! {
+                result = num
+            }
+        }
+        
+        return result
+    }
+}

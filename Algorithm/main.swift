@@ -556,11 +556,16 @@
  print(Day17.countSubarraysWithSumModuloOne([1, 2, 3, 4, 5], 3)) // 4
  print(Day17.countSubarraysWithSumModuloOne([5, 7, 1, 3], 4)) // 3
  print(Day17.countSubarraysWithSumModuloOne([1, 1, 1], 2)) // 4
+
+ print(Day17.lengthOfLongestSubstring("abcabcbb")) // 3
+ print(Day17.lengthOfLongestSubstring("bbbbb")) // 1
+ print(Day17.lengthOfLongestSubstring("pwwkew")) // 3
  
  */
 
-print(Day17.lengthOfLongestSubstring("abcabcbb")) // 3
-print(Day17.lengthOfLongestSubstring("bbbbb")) // 1
-print(Day17.lengthOfLongestSubstring("pwwkew")) // 3
+//print(Day17.mostFrequent([1, 3, 1, 3, 2, 1])) // 1
+print(Day17.mostFrequent([4, 5, 6, 5, 4, 3])) // 4
+//print(Day17.mostFrequent([7, 8, 9, 10])) // 7
+
 
 
