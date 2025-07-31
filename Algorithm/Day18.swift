@@ -228,3 +228,78 @@ extension Day18 {
         return result
     }
 }
+
+extension Day18 {
+    /*
+     # ✅ 문제: 합이 k 이하인 부분 배열의 수 (Count Subarrays With Sum At Most K)
+
+     정수 배열 `nums`와 정수 `k`가 주어졌을 때,
+     **합이 k 이하인 모든 연속 부분 배열의 개수**를 구하세요.
+
+     ---
+
+     ## ✳️ 입력 예시 1
+     ```swift
+     let nums = [1, 2, 3]
+     let k = 4
+     ```
+
+     ## ✳️ 출력 예시 1
+     ```swift
+     4
+     ```
+
+     ---
+
+     ## ✳️ 입력 예시 2
+     ```swift
+     let nums = [2, 1, 1, 1]
+     let k = 3
+     ```
+
+     ## ✳️ 출력 예시 2
+     ```swift
+     8
+     ```
+
+     ---
+
+     ## ✳️ 입력 예시 3
+     ```swift
+     let nums = [3, 1, 2, 1]
+     let k = 3
+     ```
+
+     ## ✳️ 출력 예시 3
+     ```swift
+     5
+     ```
+
+     ---
+
+     ## ❗️조건
+     - 1 ≤ nums.count ≤ 10⁵
+     - 0 ≤ nums[i] ≤ 10⁴
+     - 0 ≤ k ≤ 10⁹
+     */
+    static func countSubarraysWithSumAtMostK(
+        _ nums: [Int],
+        _ k: Int
+    ) -> Int {
+
+        var sum = 0
+        var left = 0
+        var result = 0
+        
+        for right in 0 ..< nums.count {
+            sum += nums[right]
+            while sum > k {
+                sum -= nums[left]
+                left += 1
+            }
+            
+            result += right - left + 1
+        }
+        return result
+    }
+}
