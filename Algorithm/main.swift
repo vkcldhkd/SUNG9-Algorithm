@@ -551,4 +551,6 @@
  */
 
 
-
+print(Day17.countSubarraysWithSumMultipleOfK([1, 2, 3, 4, 5], 3)) // 4
+print(Day17.countSubarraysWithSumMultipleOfK([2, 4, 6, 8], 4)) // 4
+print(Day17.countSubarraysWithSumMultipleOfK([5, 5, 5], 5)) // 6

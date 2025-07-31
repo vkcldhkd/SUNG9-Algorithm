@@ -359,3 +359,66 @@ extension Day17 {
         return count
     }
 }
+
+
+extension Day17 {
+    /*
+     ✅ 문제:
+     정수 배열 nums와 정수 k가 주어질 때,
+     연속된 부분 배열(subarray) 중, 부분 배열의 합이 k의 배수인 경우의 수를 구하시오.
+
+     ✳️ 입력 예시 1
+     let nums = [1, 2, 3, 4, 5]
+     let k = 3
+     
+     ✳️ 출력 예시 1
+     4
+     가능한 부분 배열: [3], [1,2], [1,2,3], [2,3,4]
+
+     ✳️ 입력 예시 2
+     let nums = [2, 4, 6, 8]
+     let k = 4
+     
+     ✳️ 출력 예시 2
+     4
+     가능한 부분 배열: [4], [4,6], [8], [2,4,6,8]
+
+     ✳️ 입력 예시 3
+     let nums = [5, 5, 5]
+     let k = 5
+     
+     ✳️ 출력 예시 3
+     6
+     가능한 부분 배열: [5], [5], [5], [5,5], [5,5], [5,5,5]
+
+     ❗️조건
+     1 ≤ nums.count ≤ 10⁴
+
+     1 ≤ k ≤ 10⁴
+
+     각 요소는 0 ≤ num ≤ 10⁵
+     */
+    
+    static func countSubarraysWithSumMultipleOfK(
+        _ nums: [Int],
+        _ k: Int
+    ) -> Int {
+        
+        var count = 0
+        let n = nums.count
+        
+        for start in 0 ..< n {
+            var sum = 0
+            
+            for end in start ..< n {
+                sum += nums[end]
+                
+                if sum % k == 0 {
+                    count += 1
+                }
+            }
+        }
+        
+        return count
+    }
+}
