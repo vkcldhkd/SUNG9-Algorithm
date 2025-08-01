@@ -576,9 +576,14 @@
  print(Day18.countSubarraysWithSumMultipleOfK([1, 2, 3, 4, 5], 3)) // 4
  print(Day18.countSubarraysWithSumMultipleOfK([5, 7, 1, 3], 4)) // 2
  print(Day18.countSubarraysWithSumMultipleOfK([1, 1, 1], 2)) // 0
- 
+
+ print(Day18.countSubarraysWithSumAtMostK([1, 2, 3], 4)) // 4
+ print(Day18.countSubarraysWithSumAtMostK([2, 1, 1, 1], 3)) // 8
+ print(Day18.countSubarraysWithSumAtMostK([3, 1, 2, 1], 3)) // 5
  */
 
-print(Day18.countSubarraysWithSumAtMostK([1, 2, 3], 4)) // 4
-print(Day18.countSubarraysWithSumAtMostK([2, 1, 1, 1], 3)) // 8
-print(Day18.countSubarraysWithSumAtMostK([3, 1, 2, 1], 3)) // 5
+print(Day18.countSubarraysWithEvenSum([1, 2, 3, 4])) // 4
+print(Day18.countSubarraysWithEvenSum([2, 2, 2])) // 6
+print(Day18.countSubarraysWithEvenSum([1, 3, 5])) // 2
+print(Day18.countSubarraysWithEvenSum([-1, -1, -1, -1])) // 4
+

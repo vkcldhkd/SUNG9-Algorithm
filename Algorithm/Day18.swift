@@ -303,3 +303,69 @@ extension Day18 {
         return result
     }
 }
+
+extension Day18 {
+    /*
+     # ✅ 문제: 부분합이 짝수인 부분 배열의 개수 (Count Subarrays With Even Sum)
+
+     정수 배열 `nums`가 주어졌을 때,
+     합이 **짝수인 연속된 부분 배열의 개수**를 구하세요.
+
+     ---
+
+     ## ✳️ 입력 예시 1
+     ```swift
+     let nums = [1, 2, 3, 4]
+     ```
+
+     ## ✳️ 출력 예시 1
+     ```swift
+     4
+     ```
+
+     ---
+
+     ## ✳️ 입력 예시 2
+     ```swift
+     let nums = [2, 2, 2]
+     ```
+
+     ## ✳️ 출력 예시 2
+     ```swift
+     6
+     ```
+
+     ---
+
+     ## ✳️ 입력 예시 3
+     ```swift
+     let nums = [1, 3, 5]
+     ```
+
+     ## ✳️ 출력 예시 3
+     ```swift
+     3
+     ```
+
+     ---
+
+     ## ❗️조건
+     - 1 ≤ nums.count ≤ 10⁵
+     - -10⁴ ≤ nums[i] ≤ 10⁴
+     */
+    static func countSubarraysWithEvenSum(_ nums: [Int]) -> Int {
+        var prefixSum = 0
+        var result = 0
+        var countDict: [Int: Int] = [0: 1]
+        
+        for num in nums {
+            prefixSum += num
+            
+            let mod = (prefixSum % 2 + 2) % 2  // 음수 대응
+            result += countDict[mod, default: 0]
+            countDict[mod, default: 0] += 1
+        }
+        
+        return result
+    }
+}
