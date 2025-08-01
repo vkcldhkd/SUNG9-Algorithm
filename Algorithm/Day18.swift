@@ -623,3 +623,84 @@ extension Day18 {
         return maxLength
     }
 }
+
+extension Day18 {
+    /*
+     # ✅ 문제: 합이 정확히 k인 가장 짧은 부분 배열의 길이 (Minimum Length Subarray With Sum Exactly K)
+
+     정수 배열 `nums`와 정수 `k`가 주어졌을 때,
+     합이 정확히 `k`가 되는 **가장 짧은 연속된 부분 배열의 길이**를 구하세요.
+
+     ---
+
+     ## ✳️ 입력 예시 1
+     ```swift
+     let nums = [1, 2, 3, 4, 5]
+     let k = 9
+     ```
+
+     ## ✳️ 출력 예시 1
+     ```swift
+     2
+     ```
+
+     ---
+
+     ## ✳️ 입력 예시 2
+     ```swift
+     let nums = [1, 1, 1, 1, 1, 1]
+     let k = 3
+     ```
+
+     ## ✳️ 출력 예시 2
+     ```swift
+     3
+     ```
+
+     ---
+
+     ## ✳️ 입력 예시 3
+     ```swift
+     let nums = [2, 4, 6, 10]
+     let k = 100
+     ```
+
+     ## ✳️ 출력 예시 3
+     ```swift
+     0
+     ```
+
+     ---
+
+     ## ❗️조건
+     - 1 ≤ nums.count ≤ 10⁵
+     - 1 ≤ nums[i] ≤ 10⁴
+     - 1 ≤ k ≤ 10⁹
+     */
+    static func minLengthSubarrayWithSumExactlyK(
+        _ nums: [Int],
+        _ k: Int
+    ) -> Int {
+        var minLength = Int.max
+        var prefixSum = 0
+        var indexDict: [Int: Int] = [: ]
+        
+        for (i, num) in nums.enumerated() {
+            prefixSum += num
+            
+            if prefixSum == k {
+                minLength = min(minLength, i+1)
+            }
+            
+            if let prevIndex = indexDict[prefixSum - k] {
+                minLength = min(minLength, i - prevIndex)
+            }
+            
+            if indexDict[prefixSum] == nil {
+                indexDict[prefixSum] = i
+            }
+        }
+        
+        return minLength == Int.max ? 0 : minLength
+    }
+}

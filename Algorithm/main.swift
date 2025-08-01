@@ -593,12 +593,17 @@
  print(Day18.countSubarraysWithSumExactlyK2([1, 1, 1], 2)) // 2
  print(Day18.countSubarraysWithSumExactlyK2([1, 2, 3], 3)) // 2
  print(Day18.countSubarraysWithSumExactlyK2([3, 4, 7, 2, -3, 1, 4, 2], 7)) // 4
+
+ print(Day18.maxLengthSubarrayWithSumK([1, -1, 5, -2, 3], 3)) // 4
+ print(Day18.maxLengthSubarrayWithSumK([-2, -1, 2, 1], 1)) // 2
+ print(Day18.maxLengthSubarrayWithSumK([1, 2, 3], 3)) // 2
  
  */
 
+print(Day18.minLengthSubarrayWithSumExactlyK([1, 2, 3, 4, 5], 9)) // 2
+print(Day18.minLengthSubarrayWithSumExactlyK([1, 1, 1, 1, 1, 1], 3)) // 3
+print(Day18.minLengthSubarrayWithSumExactlyK([2, 4, 6, 10], 100)) // 0
 
-print(Day18.maxLengthSubarrayWithSumK([1, -1, 5, -2, 3], 3)) // 4
-print(Day18.maxLengthSubarrayWithSumK([-2, -1, 2, 1], 1)) // 2
-print(Day18.maxLengthSubarrayWithSumK([1, 2, 3], 3)) // 2
+
 
 
