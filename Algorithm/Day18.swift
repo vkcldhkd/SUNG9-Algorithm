@@ -369,3 +369,99 @@ extension Day18 {
         return result
     }
 }
+
+
+extension Day18 {
+    /*
+     # ✅ 문제: 짝수 길이 부분 배열 중 중앙값이 k인 개수 (Count Subarrays with Median K)
+
+     정수 배열 `nums`와 정수 `k`가 주어졌을 때,
+     **중앙값(median)이 정확히 `k`인 부분 배열의 개수**를 구하세요.
+
+     ---
+
+     ## ✳️ 입력 예시 1
+     ```swift
+     let nums = [3, 2, 1, 4, 5]
+     let k = 4
+     ```
+
+     ## ✳️ 출력 예시 1
+     ```swift
+     3
+     ```
+
+     ---
+
+     ## ✳️ 입력 예시 2
+     ```swift
+     let nums = [2, 3, 1]
+     let k = 3
+     ```
+
+     ## ✳️ 출력 예시 2
+     ```swift
+     1
+     ```
+
+     ---
+
+     ## ✳️ 입력 예시 3
+     ```swift
+     let nums = [5, 5, 5, 5]
+     let k = 5
+     ```
+
+     ## ✳️ 출력 예시 3
+     ```swift
+     10
+     ```
+
+     ---
+
+     ## ❗️조건
+     - 1 ≤ nums.count ≤ 10⁵
+     - 1 ≤ nums[i], k ≤ 10⁵
+     - `k`는 반드시 배열에 최소 한 번 등장합니다
+     */
+    
+    static func countSubarraysWithMedianK(
+        _ nums: [Int],
+        _ k: Int
+    ) -> Int {
+        // 이 문제는 조금 더 연습 필요..
+        
+        guard let kIndex = nums.firstIndex(of: k) else { return 0 }
+
+        var balance = 0
+        var leftCounter: [Int: Int] = [0: 1]
+
+        // 왼쪽 → k 까지 탐색하며 balance 저장
+        for i in stride(from: kIndex - 1, through: 0, by: -1) {
+            if nums[i] < k {
+                balance -= 1
+            } else if nums[i] > k {
+                balance += 1
+            }
+            leftCounter[balance, default: 0] += 1
+        }
+
+        var result = leftCounter[0, default: 0] + leftCounter[-1, default: 0]
+        balance = 0
+
+        // k → 오른쪽으로 탐색하며 매칭되는 balance 계산
+        for i in kIndex + 1 ..< nums.count {
+            if nums[i] < k {
+                balance -= 1
+            } else if nums[i] > k {
+                balance += 1
+            }
+
+            result += leftCounter[-balance, default: 0]
+            result += leftCounter[-balance + 1, default: 0]
+        }
+
+        return result
+    }
+
+}
