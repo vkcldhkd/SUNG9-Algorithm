@@ -465,3 +465,161 @@ extension Day18 {
     }
 
 }
+
+
+extension Day18 {
+    /*
+     # ✅ 문제: 합이 k인 부분 배열의 수 (Count Subarrays with Sum K)
+
+     정수 배열 `nums`와 정수 `k`가 주어졌을 때,
+     합이 **정확히 k**가 되는 연속된 부분 배열의 개수를 구하세요.
+
+     ---
+
+     ## ✳️ 입력 예시 1
+     ```swift
+     let nums = [1, 1, 1]
+     let k = 2
+     ```
+
+     ## ✳️ 출력 예시 1
+     ```swift
+     2
+     ```
+
+     ---
+
+     ## ✳️ 입력 예시 2
+     ```swift
+     let nums = [1, 2, 3]
+     let k = 3
+     ```
+
+     ## ✳️ 출력 예시 2
+     ```swift
+     2
+     ```
+
+     ---
+
+     ## ✳️ 입력 예시 3
+     ```swift
+     let nums = [3, 4, 7, 2, -3, 1, 4, 2]
+     let k = 7
+     ```
+
+     ## ✳️ 출력 예시 3
+     ```swift
+     4
+     ```
+
+     ---
+
+     ## ❗️조건
+     - 1 ≤ nums.count ≤ 20,000
+     - -1000 ≤ nums[i] ≤ 1000
+     - -10⁷ ≤ k ≤ 10⁷
+     */
+    
+    static func countSubarraysWithSumExactlyK2 (
+        _ nums: [Int],
+        _ k: Int
+    ) -> Int {
+        var count = 0
+        var prefixSum = 0
+        var freqDict: [Int: Int] = [0: 1]
+        
+        for num in nums {
+            prefixSum += num
+            
+            
+            if let freq = freqDict[prefixSum - k] {
+                count += freq
+            }
+            freqDict[prefixSum, default: 0] += 1
+        }
+        
+        return count
+    }
+}
+
+extension Day18 {
+    /*
+     # ✅ 문제: 합이 정확히 k인 가장 긴 부분 배열의 길이 (Maximum Length Subarray With Sum K)
+
+     정수 배열 `nums`와 정수 `k`가 주어졌을 때,
+     합이 **정확히 k가 되는 가장 긴 연속 부분 배열의 길이**를 구하세요.
+
+     ---
+
+     ## ✳️ 입력 예시 1
+     ```swift
+     let nums = [1, -1, 5, -2, 3]
+     let k = 3
+     ```
+
+     ## ✳️ 출력 예시 1
+     ```swift
+     4
+     ```
+
+     ---
+
+     ## ✳️ 입력 예시 2
+     ```swift
+     let nums = [-2, -1, 2, 1]
+     let k = 1
+     ```
+
+     ## ✳️ 출력 예시 2
+     ```swift
+     2
+     ```
+
+     ---
+
+     ## ✳️ 입력 예시 3
+     ```swift
+     let nums = [1, 2, 3]
+     let k = 3
+     ```
+
+     ## ✳️ 출력 예시 3
+     ```swift
+     2
+     ```
+
+     ---
+
+     ## ❗️조건
+     - 1 ≤ nums.count ≤ 10⁵
+     - -10⁴ ≤ nums[i] ≤ 10⁴
+     - -10⁷ ≤ k ≤ 10⁷
+     */
+    static func maxLengthSubarrayWithSumK(
+        _ nums: [Int],
+        _ k: Int
+    ) -> Int {
+        var maxLength = 0
+        var prefixSum = 0
+        var indexDict: [Int: Int] = [: ]
+        
+        for (i, num) in nums.enumerated() {
+            prefixSum += num
+            
+            if prefixSum == k {
+                maxLength = max(maxLength, i+1)
+            }
+            
+            if let prevIndex = indexDict[prefixSum - k] {
+                maxLength = max(maxLength, i - prevIndex)
+            }
+            
+            if indexDict[prefixSum] == nil {
+                indexDict[prefixSum] = i
+            }
+        }
+        
+        return maxLength
+    }
+}
