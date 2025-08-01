@@ -783,3 +783,84 @@ extension Day18 {
         return minLength == Int.max ? 0 : minLength
     }
 }
+
+extension Day18 {
+    /*
+     # ✅ 문제: 합이 k 이상이 되는 최소 연속 부분 배열 (출력 포함)
+
+     정수 배열 `nums`와 정수 `k`가 주어졌을 때,
+     합이 `k` 이상이 되는 **가장 짧은 연속 부분 배열을 직접 반환**하세요.
+
+     존재하지 않는다면 `[]`를 반환하세요.
+
+     ---
+
+     ## ✳️ 입력 예시 1
+     ```swift
+     let nums = [2, 3, 1, 2, 4, 3]
+     let k = 7
+     ```
+
+     ## ✳️ 출력 예시 1
+     ```swift
+     [4, 3]
+     ```
+
+     ---
+
+     ## ✳️ 입력 예시 2
+     ```swift
+     let nums = [1, 4, 4]
+     let k = 4
+     ```
+
+     ## ✳️ 출력 예시 2
+     ```swift
+     [4]
+     ```
+
+     ---
+
+     ## ✳️ 입력 예시 3
+     ```swift
+     let nums = [1, 1, 1, 1, 1, 1, 1, 1]
+     let k = 11
+     ```
+
+     ## ✳️ 출력 예시 3
+     ```swift
+     []
+     ```
+
+     ---
+
+     ## ❗️조건
+     - 1 ≤ nums.count ≤ 10⁵
+     - 1 ≤ nums[i] ≤ 10⁴
+     - 1 ≤ k ≤ 10⁹
+     */
+    
+    static func shortestSubarrayWithSumAtLeastK(
+        _ nums: [Int],
+        _ k: Int
+    ) -> [Int] {
+        var minLength = Int.max
+        var start = 0
+        var prefixSum = 0
+        var result: [Int] = []
+        
+        for (end, num) in nums.enumerated() {
+            prefixSum += num
+            
+            while prefixSum >= k {
+                if end - start + 1 < minLength {
+                    result = Array(nums[start...end])
+                    minLength = end - start + 1
+                }
+                prefixSum -= nums[start]
+                start += 1
+            }
+        }
+        return result
+    }
+}

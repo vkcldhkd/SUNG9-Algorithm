@@ -601,11 +601,16 @@
  print(Day18.minLengthSubarrayWithSumExactlyK([1, 2, 3, 4, 5], 9)) // 2
  print(Day18.minLengthSubarrayWithSumExactlyK([1, 1, 1, 1, 1, 1], 3)) // 3
  print(Day18.minLengthSubarrayWithSumExactlyK([2, 4, 6, 10], 100)) // 0
+ 
+ print(Day18.minLengthSubarrayWithSumAtLeastK([2, 3, 1, 2, 4, 3], 7)) // 2
+ print(Day18.minLengthSubarrayWithSumAtLeastK([1, 4, 4], 4)) // 1
+ print(Day18.minLengthSubarrayWithSumAtLeastK([1, 1, 1, 1, 1, 1, 1, 1], 11)) // 0
  */
 
-print(Day18.minLengthSubarrayWithSumAtLeastK([2, 3, 1, 2, 4, 3], 7)) // 2
-print(Day18.minLengthSubarrayWithSumAtLeastK([1, 4, 4], 4)) // 1
-print(Day18.minLengthSubarrayWithSumAtLeastK([1, 1, 1, 1, 1, 1, 1, 1], 11)) // 0
+print(Day18.shortestSubarrayWithSumAtLeastK([2, 3, 1, 2, 4, 3], 7)) // [4, 3]
+print(Day18.shortestSubarrayWithSumAtLeastK([1, 4, 4], 4)) // [4]
+print(Day18.shortestSubarrayWithSumAtLeastK([1, 1, 1, 1, 1, 1, 1, 1], 11)) // []
+
 
 
 
