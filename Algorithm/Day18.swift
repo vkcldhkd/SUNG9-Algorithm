@@ -704,3 +704,82 @@ extension Day18 {
         return minLength == Int.max ? 0 : minLength
     }
 }
+
+extension Day18 {
+    /*
+     # ✅ 문제: 합이 k 이상인 가장 짧은 부분 배열의 길이 (Minimum Length Subarray With Sum ≥ K)
+
+     정수 배열 `nums`와 정수 `k`가 주어졌을 때,
+     합이 **k 이상인** 연속된 부분 배열 중에서 **가장 짧은 길이**를 구하세요.
+
+     존재하지 않는다면 0을 반환하세요.
+
+     ---
+
+     ## ✳️ 입력 예시 1
+     ```swift
+     let nums = [2, 3, 1, 2, 4, 3]
+     let k = 7
+     ```
+
+     ## ✳️ 출력 예시 1
+     ```swift
+     2
+     ```
+
+     ---
+
+     ## ✳️ 입력 예시 2
+     ```swift
+     let nums = [1, 4, 4]
+     let k = 4
+     ```
+
+     ## ✳️ 출력 예시 2
+     ```swift
+     1
+     ```
+
+     ---
+
+     ## ✳️ 입력 예시 3
+     ```swift
+     let nums = [1, 1, 1, 1, 1, 1, 1, 1]
+     let k = 11
+     ```
+
+     ## ✳️ 출력 예시 3
+     ```swift
+     0
+     ```
+
+     ---
+
+     ## ❗️조건
+     - 1 ≤ nums.count ≤ 10⁵
+     - 1 ≤ nums[i] ≤ 10⁴
+     - 1 ≤ k ≤ 10⁹
+
+     ---
+     */
+    static func minLengthSubarrayWithSumAtLeastK (
+        _ nums: [Int],
+        _ k: Int
+    ) -> Int {
+        var minLength = Int.max
+        var prefixSum = 0
+        var left = 0
+        
+        for right in 0 ..< nums.count {
+            let rightValue = nums[right]
+            prefixSum += rightValue
+            
+            while prefixSum >= k {
+                minLength = min(minLength, right - left + 1)
+                prefixSum -= nums[left]
+                left += 1
+            }
+        }
+        return minLength == Int.max ? 0 : minLength
+    }
+}
