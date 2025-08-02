@@ -161,3 +161,80 @@ extension Day19 {
         return result
     }
 }
+
+extension Day19 {
+    /*
+     # ✅ 문제: 합이 정확히 k인 모든 연속 부분 배열 구하기 (Find All Subarrays With Sum Exactly K)
+
+     정수 배열 `nums`와 정수 `k`가 주어졌을 때,
+     **합이 정확히 `k`인 모든 연속 부분 배열(subarray)** 을 찾아 반환하세요.
+     출력은 `[Int]` 배열들의 배열이어야 합니다.
+
+     ---
+
+     ## ✳️ 입력 예시 1
+     ```swift
+     let nums = [1, 2, 3, 2, 1]
+     let k = 5
+     ```
+
+     ## ✳️ 출력 예시 1
+     ```swift
+     [[2, 3], [3, 2]]
+     ```
+
+     ---
+
+     ## ✳️ 입력 예시 2
+     ```swift
+     let nums = [1, 1, 1]
+     let k = 2
+     ```
+
+     ## ✳️ 출력 예시 2
+     ```swift
+     [[1, 1], [1, 1]]
+     ```
+
+     ---
+
+     ## ✳️ 입력 예시 3
+     ```swift
+     let nums = [2, 4, 6]
+     let k = 8
+     ```
+
+     ## ✳️ 출력 예시 3
+     ```swift
+     []
+     ```
+
+     ---
+
+     ## ❗️조건
+     - 1 ≤ nums.count ≤ 10⁴
+     - -10⁴ ≤ nums[i] ≤ 10⁴
+     - -10⁵ ≤ k ≤ 10⁵
+     */
+    
+    static func findAllSubarraysWithSumExactlyK(
+        _ nums: [Int],
+        _ k: Int
+    ) -> [[Int]] {
+        let n = nums.count
+        var result: [[Int]] = []
+        
+        for i in 0 ..< n {
+            var sum = 0
+            for j in i ..< n {
+                sum += nums[j]
+                
+                if sum == k {
+                    result.append(Array(nums[i ... j]))
+                }
+            }
+        }
+        
+        return result
+    }
+}
