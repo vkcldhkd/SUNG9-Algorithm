@@ -238,3 +238,168 @@ extension Day19 {
         return result
     }
 }
+
+extension Day19 {
+    /*
+     # ✅ 문제: 합이 정확히 k인 연속 부분 배열의 개수 (Count Subarrays With Sum Exactly K)
+
+     정수 배열 `nums`와 정수 `k`가 주어졌을 때,
+     **합이 정확히 `k`인 모든 연속 부분 배열(subarray)** 의 **개수**를 구하세요.
+
+     ---
+
+     ## ✳️ 입력 예시 1
+     ```swift
+     let nums = [1, 2, 3]
+     let k = 3
+     ```
+
+     ## ✳️ 출력 예시 1
+     ```swift
+     2
+     ```
+
+     - 부분 배열: `[1,2]`, `[3]`
+
+     ---
+
+     ## ✳️ 입력 예시 2
+     ```swift
+     let nums = [1, 1, 1]
+     let k = 2
+     ```
+
+     ## ✳️ 출력 예시 2
+     ```swift
+     2
+     ```
+
+     - 부분 배열: `[1,1]` (두 번)
+
+     ---
+
+     ## ✳️ 입력 예시 3
+     ```swift
+     let nums = [3, 4, 7, -2, 2, 1, 4, 2]
+     let k = 7
+     ```
+
+     ## ✳️ 출력 예시 3
+     ```swift
+     4
+     ```
+
+     - 부분 배열: `[3,4]`, `[7]`, `[4, 2, 1]`, `[1, 4, 2]`
+
+     ---
+
+     ## ❗️조건
+     - 1 ≤ nums.count ≤ 10⁵
+     - -10⁴ ≤ nums[i] ≤ 10⁴
+     - -10⁵ ≤ k ≤ 10⁵
+     */
+    static func countSubarraysWithSumExactlyK(
+        _ nums: [Int],
+        _ k: Int
+    ) -> Int {
+
+        var prefixSum = 0
+        var freqDict: [Int: Int] = [0: 1]
+        var count = 0
+        
+        for num in nums {
+            prefixSum += num
+            
+            count += freqDict[prefixSum - k, default: 0]
+            freqDict[prefixSum, default: 0] += 1
+        }
+        
+        return count
+    }
+}
+
+
+extension Day19 {
+    /*
+     # ✅ 문제: 합이 정확히 k인 가장 긴 연속 부분 배열의 길이 (Max Length Subarray Sum Exactly K)
+
+     정수 배열 `nums`와 정수 `k`가 주어졌을 때,
+     합이 **정확히 `k`인 가장 긴 연속 부분 배열(subarray)** 의 **길이**를 구하세요.
+
+     ---
+
+     ## ✳️ 입력 예시 1
+     ```swift
+     let nums = [1, -1, 5, -2, 3]
+     let k = 3
+     ```
+
+     ## ✳️ 출력 예시 1
+     ```swift
+     4
+     ```
+
+     - 부분 배열: `[-1, 5, -2, 3]` (합 = 3)
+
+     ---
+
+     ## ✳️ 입력 예시 2
+     ```swift
+     let nums = [-2, -1, 2, 1]
+     let k = 1
+     ```
+
+     ## ✳️ 출력 예시 2
+     ```swift
+     2
+     ```
+
+     - 부분 배열: `[2, -1]`
+
+     ---
+
+     ## ✳️ 입력 예시 3
+     ```swift
+     let nums = [1, 2, 3]
+     let k = 6
+     ```
+
+     ## ✳️ 출력 예시 3
+     ```swift
+     3
+     ```
+
+     - 부분 배열: `[1, 2, 3]`
+
+     ---
+
+     ## ❗️조건
+     - 1 ≤ nums.count ≤ 10⁵
+     - -10⁴ ≤ nums[i] ≤ 10⁴
+     - -10⁵ ≤ k ≤ 10⁵
+     */
+    
+    static func maxLengthSubarrayWithSumExactlyK(
+        _ nums: [Int],
+        _ k: Int
+    ) -> Int {
+        var prefixSum = 0
+        var indexDict: [Int: Int] = [0: -1]
+        var maxLength = 0
+
+        for (i, num) in nums.enumerated() {
+            prefixSum += num
+
+            if let prevIndex = indexDict[prefixSum - k] {
+                maxLength = max(maxLength, i - prevIndex)
+            }
+
+            if indexDict[prefixSum] == nil {
+                indexDict[prefixSum] = i
+            }
+        }
+
+        return maxLength
+    }
+
+}

@@ -626,9 +626,18 @@
  print(Day19.countSubarraysWithSumAtMostK([1, 2, 3], 4)) // 4
  print(Day19.countSubarraysWithSumAtMostK([2, 1, 1, 1], 3)) // 8
  print(Day19.countSubarraysWithSumAtMostK([3, 1, 2, 1], 3)) // 6
+ 
+ print(Day19.findAllSubarraysWithSumExactlyK([1, 2, 3, 2, 1], 5)) // [[2, 3], [3, 2]]
+ print(Day19.findAllSubarraysWithSumExactlyK([1, 1, 1], 2)) // [[1, 1], [1, 1]]
+ print(Day19.findAllSubarraysWithSumExactlyK([2, 4, 6], 8)) // []
+ 
+ print(Day19.countSubarraysWithSumExactlyK([1, 2, 3], 3)) // 2
+ print(Day19.countSubarraysWithSumExactlyK([1, 1, 1], 2)) // 2
+ print(Day19.countSubarraysWithSumExactlyK([3, 4, 7, -2, 2, 1, 4, 2], 7)) // 6
  */
 
-print(Day19.findAllSubarraysWithSumExactlyK([1, 2, 3, 2, 1], 5)) // [[2, 3], [3, 2]]
-print(Day19.findAllSubarraysWithSumExactlyK([1, 1, 1], 2)) // [[1, 1], [1, 1]]
-print(Day19.findAllSubarraysWithSumExactlyK([2, 4, 6], 8)) // []
+print(Day19.maxLengthSubarrayWithSumExactlyK([1, -1, 5, -2, 3], 3)) // 4
+print(Day19.maxLengthSubarrayWithSumExactlyK([-2, -1, 2, 1], 1)) // 2
+print(Day19.maxLengthSubarrayWithSumExactlyK([1, 2, 3], 6)) // 3
+
 
