@@ -618,10 +618,14 @@
 
 /*
  Day19
+ 
+ print(Day19.shortestSubarrayWithSumAtLeastK([2, 3, 1, 2, 4, 3], 7)) // 2
+ print(Day19.shortestSubarrayWithSumAtLeastK([1, 1, 1, 1, 1, 1, 1], 11)) // 0
+ print(Day19.shortestSubarrayWithSumAtLeastK([1, 4, 4], 4)) // 1
+ 
+ 
  */
 
-print(Day19.shortestSubarrayWithSumAtLeastK([2, 3, 1, 2, 4, 3], 7)) // 2
-print(Day19.shortestSubarrayWithSumAtLeastK([1, 1, 1, 1, 1, 1, 1], 11)) // 0
-print(Day19.shortestSubarrayWithSumAtLeastK([1, 4, 4], 4)) // 1
-
-
+print(Day19.countSubarraysWithSumAtMostK([1, 2, 3], 4)) // 4
+print(Day19.countSubarraysWithSumAtMostK([2, 1, 1, 1], 3)) // 8
+print(Day19.countSubarraysWithSumAtMostK([3, 1, 2, 1], 3)) // 5
