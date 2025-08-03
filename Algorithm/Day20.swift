@@ -371,3 +371,185 @@ extension Day20 {
         return maxLength
     }
 }
+
+
+extension Day20 {
+    /*
+     # ✅ 문제: 동일한 숫자가 **정확히 k번 등장하는 가장 긴 연속 부분 배열 길이**
+
+     정수 배열 `nums`와 정수 `k`가 주어질 때,
+     **배열 내 동일한 숫자가 정확히 k번 등장하는 가장 긴 연속 부분 배열의 길이**를 구하세요.
+
+     ---
+
+     ## ✳️ 입력 예시 1
+     ```swift
+     let nums = [1, 2, 2, 3, 1, 4]
+     let k = 2
+     ```
+
+     ## ✳️ 출력 예시 1
+     ```swift
+     5
+     ```
+
+     - `[2, 2, 3, 1]`은 숫자 `2`가 정확히 2번 등장
+
+     ---
+
+     ## ✳️ 입력 예시 2
+     ```swift
+     let nums = [1, 1, 1, 2, 2, 3, 3]
+     let k = 2
+     ```
+
+     ## ✳️ 출력 예시 2
+     ```swift
+     5
+     ```
+
+     - `[1, 2, 2, 3, 3]`에서 2와 3이 각각 정확히 2번 등장
+
+     ---
+
+     ## ✳️ 입력 예시 3
+     ```swift
+     let nums = [4, 4, 4, 4]
+     let k = 3
+     ```
+
+     ## ✳️ 출력 예시 3
+     ```swift
+     3
+     ```
+
+     - `[4, 4, 4]`만 조건 만족
+
+     ---
+
+     ## ❗️조건
+     - 1 ≤ nums.count ≤ 10⁵
+     - -10⁴ ≤ nums[i] ≤ 10⁴
+     - 1 ≤ k ≤ 10⁵
+     */
+    static func maxLengthSubarrayWithSomeElementExactlyK(
+        _ nums: [Int],
+        _ k: Int
+    ) -> Int {
+        var countMap: [Int: Int] = [:]
+        var left = 0
+        var maxLength = 0
+        var exactKSet: Set<Int> = []
+
+        for right in 0..<nums.count {
+            let num = nums[right]
+            countMap[num, default: 0] += 1
+
+            if countMap[num] == k {
+                exactKSet.insert(num)
+            } else if countMap[num] == k + 1 {
+                exactKSet.remove(num)
+            }
+
+            while !exactKSet.isEmpty && countMap[exactKSet.first!]! > k {
+                let leftNum = nums[left]
+                countMap[leftNum, default: 0] -= 1
+                if countMap[leftNum] == k {
+                    exactKSet.insert(leftNum)
+                } else if countMap[leftNum] ?? 0 < k {
+                    exactKSet.remove(leftNum)
+                }
+                if countMap[leftNum] == 0 {
+                    countMap.removeValue(forKey: leftNum)
+                }
+                left += 1
+            }
+
+            if !exactKSet.isEmpty {
+                maxLength = max(maxLength, right - left + 1)
+            }
+        }
+        return maxLength
+    }
+}
+
+extension Day20 {
+    /*
+     
+     # ✅ 문제: 가장 긴 동일한 문자 교체
+
+     문자열 `s`가 주어질 때, 최대 `k`개의 문자를 임의의 다른 문자로 바꿔서 만들 수 있는 **같은 문자가 연속으로 반복되는 가장 긴 부분 문자열**의 길이를 구하시오.
+
+     ---
+
+     ## ✳️ 입력 예시 1
+     ```swift
+     let s = "ABAB"
+     let k = 2
+     ```
+
+     ## ✳️ 출력 예시 1
+     ```swift
+     4
+     ```
+     - 두 개의 'B'를 'A'로 바꾸면 `"AAAA"`가 되어 길이 4 가능.
+
+     ---
+
+     ## ✳️ 입력 예시 2
+     ```swift
+     let s = "AABABBA"
+     let k = 1
+     ```
+
+     ## ✳️ 출력 예시 2
+     ```swift
+     4
+     ```
+     - 'B' 하나를 'A'로 바꾸면 `"AABAAA"` 또는 `"AAABAA"` 가능.
+
+     ---
+
+     ## ✳️ 입력 예시 3
+     ```swift
+     let s = "ABAA"
+     let k = 0
+     ```
+
+     ## ✳️ 출력 예시 3
+     ```swift
+     2
+     ```
+     - 바꿀 수 없으므로 `"AA"` 또는 `"AB"` 중 최대 길이 2.
+
+     ---
+
+     ## ❗️조건
+     - `1 <= s.count <= 10^5`
+     - `s`는 대문자 알파벳으로만 구성됨.
+     - `0 <= k <= s.count`
+     */
+    static func characterReplacement(
+        _ s: String,
+        _ k: Int
+    ) -> Int {
+        var left = 0
+        var result = 0
+        var maxCount = 0
+        let chars = s.map { $0 }
+        var charDict: [Character: Int] = [: ]
+        
+        for (right, char) in chars.enumerated() {
+            charDict[char, default: 0] += 1
+            maxCount = max(maxCount, charDict[char, default: 0])
+            
+            while (right - left + 1 - maxCount) > k {
+                charDict[chars[left], default: 0] -= 1
+                left += 1
+            }
+            result = max(result, right - left + 1)
+        }
+        
+        return result
+    }
+}

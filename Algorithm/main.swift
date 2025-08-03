@@ -659,9 +659,18 @@
  print(Day20.minLengthSubarrayWithElementExactlyKCount([1, 2, 2, 3, 1], 2)) // 2
  print(Day20.minLengthSubarrayWithElementExactlyKCount([1, 1, 1, 1], 3)) // 3
  print(Day20.minLengthSubarrayWithElementExactlyKCount([1, 2, 3], 2)) // 0
+ 
+ print(Day20.maxLengthSubarrayWithEachElementAtMostK([1, 2, 2, 3, 1, 4], 2)) // 6
+ print(Day20.maxLengthSubarrayWithEachElementAtMostK([1, 1, 1, 2, 2, 3], 2)) // 5
+ print(Day20.maxLengthSubarrayWithEachElementAtMostK([4, 4, 4, 4], 1)) // 1
+ 
+ print(Day20.maxLengthSubarrayWithSomeElementExactlyK([1, 2, 2, 3, 1, 4], 2)) // 6
+ print(Day20.maxLengthSubarrayWithSomeElementExactlyK([1, 1, 1, 2, 2, 3, 3], 2)) // 7
+ print(Day20.maxLengthSubarrayWithSomeElementExactlyK([4, 4, 4, 4], 3)) // 3
+ 
+ print(Day20.characterReplacement("ABAB", 2)) // 4
+ print(Day20.characterReplacement("AABABBA", 1)) // 4
+ print(Day20.characterReplacement("ABAA", 0)) // 2
  */
 
-print(Day20.maxLengthSubarrayWithEachElementAtMostK([1, 2, 2, 3, 1, 4], 2)) // 6
-print(Day20.maxLengthSubarrayWithEachElementAtMostK([1, 1, 1, 2, 2, 3], 2)) // 5
-print(Day20.maxLengthSubarrayWithEachElementAtMostK([4, 4, 4, 4], 1)) // 1
 
