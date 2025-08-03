@@ -120,3 +120,69 @@ enum Day20 {
     }
 
 }
+
+extension Day20 {
+    /*
+     ✅ 문제: 동일한 숫자가 k번 이상 등장하는 가장 짧은 부분 배열 길이
+     정수 배열 nums와 정수 k가 주어졌을 때,
+     배열에서 어떤 숫자가 정확히 k번 이상 등장하는 가장 짧은 연속 부분 배열의 길이를 구하세요.
+     해당하는 부분 배열이 없다면 0을 반환하세요.
+
+     ✳️ 입력 예시 1
+     let nums = [1, 2, 2, 3, 1]
+     let k = 2
+     
+     ✳️ 출력 예시 1
+     3
+     부분 배열: [2, 2, 3] 또는 [3, 1, 2] (중복 최소 길이 = 3)
+
+     ✳️ 입력 예시 2
+     let nums = [1, 1, 1, 1]
+     let k = 3
+     
+     ✳️ 출력 예시 2
+     3
+     부분 배열: [1, 1, 1]
+
+     ✳️ 입력 예시 3
+     let nums = [1, 2, 3]
+     let k = 2
+     
+     ✳️ 출력 예시 3
+     0
+     어떤 수든 2번 이상 등장하지 않음
+
+     ❗️조건
+     1 ≤ nums.count ≤ 10⁵
+
+     -10⁴ ≤ nums[i] ≤ 10⁴
+
+     1 ≤ k ≤ 10⁵
+
+
+     */
+    static func minLengthSubarrayWithElementAtLeastKCount(
+        _ nums: [Int],
+        _ k: Int
+    ) -> Int {
+        var left = 0
+        var countMap: [Int: Int] = [:]
+        var minLength = Int.max
+
+        for right in 0 ..< nums.count {
+            countMap[nums[right], default: 0] += 1
+
+            while countMap.values.contains(where: { $0 >= k }) {
+                minLength = min(minLength, right - left + 1)
+                countMap[nums[left], default: 0] -= 1
+                if countMap[nums[left]] == 0 {
+                    countMap.removeValue(forKey: nums[left])
+                }
+                left += 1
+            }
+        }
+
+        return minLength == Int.max ? 0 : minLength
+    }
+
+}

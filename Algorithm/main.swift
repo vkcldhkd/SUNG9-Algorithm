@@ -645,6 +645,16 @@
  */
 
 
-print(Day20.maxLengthSubarrayWithSumAtMostK([1, 2, 3], 3)) // 2
-print(Day20.maxLengthSubarrayWithSumAtMostK([2, 1, 1, 1], 3)) // 3
-print(Day20.maxLengthSubarrayWithSumAtMostK([3, 1, 2, 1], 3)) // 2
+/*
+ Day20
+ 
+ print(Day20.maxLengthSubarrayWithSumAtMostK([1, 2, 3], 3)) // 2
+ print(Day20.maxLengthSubarrayWithSumAtMostK([2, 1, 1, 1], 3)) // 3
+ print(Day20.maxLengthSubarrayWithSumAtMostK([3, 1, 2, 1], 3)) // 2
+ 
+ 
+ */
+
+print(Day20.minLengthSubarrayWithElementAtLeastKCount([1, 2, 2, 3, 1], 2)) // 3
+print(Day20.minLengthSubarrayWithElementAtLeastKCount([1, 1, 1, 1], 3)) // 3
+print(Day20.minLengthSubarrayWithElementAtLeastKCount([1, 2, 3], 2)) // 0
