@@ -671,9 +671,14 @@
  print(Day20.characterReplacement("ABAB", 2)) // 4
  print(Day20.characterReplacement("AABABBA", 1)) // 4
  print(Day20.characterReplacement("ABAA", 0)) // 2
+ 
+ print(Day20.lengthOfLongestSubstringTwoDistinct("eceba")) // 3
+ print(Day20.lengthOfLongestSubstringTwoDistinct("ccaabbb")) // 5
+ print(Day20.lengthOfLongestSubstringTwoDistinct("aaaaa")) // 5
  */
 
+print(Day20.lengthOfLongestSubstringAtMostKDistinct("eceba", 2)) // 3
+print(Day20.lengthOfLongestSubstringAtMostKDistinct("aaabbcc", 1)) // 3
+print(Day20.lengthOfLongestSubstringAtMostKDistinct("aabbcc", 3)) // 6
 
-print(Day20.lengthOfLongestSubstringTwoDistinct("eceba")) // 3
-print(Day20.lengthOfLongestSubstringTwoDistinct("ccaabbb")) // 5
-print(Day20.lengthOfLongestSubstringTwoDistinct("aaaaa")) // 5
+
