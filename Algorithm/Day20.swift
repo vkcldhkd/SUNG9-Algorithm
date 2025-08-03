@@ -553,3 +553,80 @@ extension Day20 {
         return result
     }
 }
+
+extension Day20 {
+    /*
+     
+     # ✅ 문제: 가장 긴 두 문자로 이루어진 부분 문자열
+
+     문자열 `s`가 주어졌을 때, **서로 다른 문자 두 개로만 구성된 가장 긴 연속 부분 문자열**의 길이를 구하시오.
+
+     ---
+
+     ## ✳️ 입력 예시 1
+     ```swift
+     let s = "eceba"
+     ```
+
+     ## ✳️ 출력 예시 1
+     ```swift
+     3
+     ```
+     - "ece" 가 조건을 만족하며 길이 3
+
+     ---
+
+     ## ✳️ 입력 예시 2
+     ```swift
+     let s = "ccaabbb"
+     ```
+
+     ## ✳️ 출력 예시 2
+     ```swift
+     5
+     ```
+     - "aabbb" 또는 "caabb" 둘 다 가능
+
+     ---
+
+     ## ✳️ 입력 예시 3
+     ```swift
+     let s = "aaaaa"
+     ```
+
+     ## ✳️ 출력 예시 3
+     ```swift
+     5
+     ```
+     - 하나의 문자만 있어도 조건을 만족 (문자 2개 이하)
+
+     ---
+
+     ## ❗️조건
+     - `1 <= s.count <= 10^5`
+     - `s`는 소문자 알파벳으로만 구성됨
+     */
+    static func lengthOfLongestSubstringTwoDistinct(_ s: String) -> Int {
+        var left = 0
+        var result = 0
+        let chars = s.map { $0 }
+        var freqDict: [Character: Int] = [: ]
+        
+        for (right, char) in chars.enumerated() {
+            freqDict[char, default: 0] += 1
+            
+            while freqDict.count > 2 {
+                let leftChar = chars[left]
+                freqDict[leftChar, default: 0] -= 1
+                if freqDict[leftChar] == 0 {
+                    freqDict.removeValue(forKey: leftChar)
+                }
+                left += 1
+            }
+            
+            result = max(result, right - left + 1)
+        }
+        
+        return result
+    }
+}

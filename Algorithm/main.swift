@@ -674,3 +674,6 @@
  */
 
 
+print(Day20.lengthOfLongestSubstringTwoDistinct("eceba")) // 3
+print(Day20.lengthOfLongestSubstringTwoDistinct("ccaabbb")) // 5
+print(Day20.lengthOfLongestSubstringTwoDistinct("aaaaa")) // 5
