@@ -638,8 +638,13 @@
  print(Day19.maxLengthSubarrayWithSumExactlyK([1, -1, 5, -2, 3], 3)) // 4
  print(Day19.maxLengthSubarrayWithSumExactlyK([-2, -1, 2, 1], 1)) // 2
  print(Day19.maxLengthSubarrayWithSumExactlyK([1, 2, 3], 6)) // 3
+ 
+ print(Day19.minLengthSubarrayWithSumExactlyK([1, -1, 5, -2, 3], 3)) // 1
+ print(Day19.minLengthSubarrayWithSumExactlyK([-2, -1, 2, 1], 1)) // 1
+ print(Day19.minLengthSubarrayWithSumExactlyK([1, 2, 3], 7)) // 0
  */
 
-print(Day19.minLengthSubarrayWithSumExactlyK([1, -1, 5, -2, 3], 3)) // 1
-print(Day19.minLengthSubarrayWithSumExactlyK([-2, -1, 2, 1], 1)) // 1
-print(Day19.minLengthSubarrayWithSumExactlyK([1, 2, 3], 7)) // 0
+
+print(Day20.maxLengthSubarrayWithSumAtMostK([1, 2, 3], 3)) // 2
+print(Day20.maxLengthSubarrayWithSumAtMostK([2, 1, 1, 1], 3)) // 3
+print(Day20.maxLengthSubarrayWithSumAtMostK([3, 1, 2, 1], 3)) // 2
