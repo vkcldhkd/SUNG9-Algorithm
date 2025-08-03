@@ -184,5 +184,106 @@ extension Day20 {
 
         return minLength == Int.max ? 0 : minLength
     }
+}
+
+extension Day20 {
+    /*
+     # ✅ 문제: 동일한 숫자가 k번 **정확히** 등장하는 가장 짧은 부분 배열 길이 (유사 문제)
+
+     정수 배열 `nums`와 정수 `k`가 주어질 때,
+     **동일한 숫자가 정확히 k번 등장**하는 가장 짧은 **연속 부분 배열**의 길이를 구하세요.
+     그런 배열이 없다면 0을 반환하세요.
+
+     ---
+
+     ## ✳️ 입력 예시 1
+     ```swift
+     let nums = [1, 2, 2, 3, 1]
+     let k = 2
+     ```
+
+     ## ✳️ 출력 예시 1
+     ```swift
+     2
+     ```
+
+     - 가능한 부분 배열: `[2, 2]` (숫자 2가 정확히 2번 등장)
+
+     ---
+
+     ## ✳️ 입력 예시 2
+     ```swift
+     let nums = [1, 1, 1, 1]
+     let k = 3
+     ```
+
+     ## ✳️ 출력 예시 2
+     ```swift
+     3
+     ```
+
+     - 가능한 부분 배열: `[1, 1, 1]` (숫자 1이 정확히 3번 등장)
+
+     ---
+
+     ## ✳️ 입력 예시 3
+     ```swift
+     let nums = [1, 2, 3]
+     let k = 2
+     ```
+
+     ## ✳️ 출력 예시 3
+     ```swift
+     0
+     ```
+
+     - 어떤 숫자도 정확히 2번 등장하지 않음
+
+     ---
+
+     ## ❗️조건
+     - 1 ≤ nums.count ≤ 10⁵
+     - -10⁴ ≤ nums[i] ≤ 10⁴
+     - 1 ≤ k ≤ 10⁵
+     */
+    static func minLengthSubarrayWithElementExactlyKCount(
+        _ nums: [Int],
+        _ k: Int
+    ) -> Int {
+        var left = 0
+        var countMap: [Int: Int] = [:]
+        var targetCount = 0
+        var minLength = Int.max
+
+        for right in 0..<nums.count {
+            let num = nums[right]
+            countMap[num, default: 0] += 1
+
+            if countMap[num] == k {
+                targetCount += 1
+            } else if countMap[num] == k + 1 {
+                targetCount -= 1
+            }
+
+            while targetCount > 0 {
+                minLength = min(minLength, right - left + 1)
+                let leftNum = nums[left]
+                countMap[leftNum, default: 0] -= 1
+
+                if countMap[leftNum] == k - 1 {
+                    targetCount -= 1
+                } else if countMap[leftNum] == k {
+                    targetCount += 1
+                }
+
+                if countMap[leftNum] == 0 {
+                    countMap.removeValue(forKey: leftNum)
+                }
+                left += 1
+            }
+        }
+
+        return minLength == Int.max ? 0 : minLength
+    }
 
 }
