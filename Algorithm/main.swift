@@ -675,10 +675,16 @@
  print(Day20.lengthOfLongestSubstringTwoDistinct("eceba")) // 3
  print(Day20.lengthOfLongestSubstringTwoDistinct("ccaabbb")) // 5
  print(Day20.lengthOfLongestSubstringTwoDistinct("aaaaa")) // 5
+ 
+ print(Day20.lengthOfLongestSubstringAtMostKDistinct("eceba", 2)) // 3
+ print(Day20.lengthOfLongestSubstringAtMostKDistinct("aaabbcc", 1)) // 3
+ print(Day20.lengthOfLongestSubstringAtMostKDistinct("aabbcc", 3)) // 6
  */
 
-print(Day20.lengthOfLongestSubstringAtMostKDistinct("eceba", 2)) // 3
-print(Day20.lengthOfLongestSubstringAtMostKDistinct("aaabbcc", 1)) // 3
-print(Day20.lengthOfLongestSubstringAtMostKDistinct("aabbcc", 3)) // 6
+
+print(Day20.lengthOfLongestSubstringExactlyKDistinct("eceba", 2)) // 3
+print(Day20.lengthOfLongestSubstringExactlyKDistinct("aaabbcc", 1)) // 3
+print(Day20.lengthOfLongestSubstringExactlyKDistinct("aabbcc", 3)) // 6
+print(Day20.lengthOfLongestSubstringExactlyKDistinct("aabbcc", 2)) // 4
 
 
