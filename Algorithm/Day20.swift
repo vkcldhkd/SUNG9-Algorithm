@@ -285,5 +285,89 @@ extension Day20 {
 
         return minLength == Int.max ? 0 : minLength
     }
+}
 
+extension Day20 {
+    /*
+     # ✅ 문제: 동일한 숫자가 **최대 k번 이하** 등장하는 가장 긴 부분 배열 길이
+
+     정수 배열 `nums`와 정수 `k`가 주어질 때,
+     **동일한 숫자가 최대 k번 이하로 등장**하는 가장 긴 **연속 부분 배열**의 길이를 구하세요.
+
+     ---
+
+     ## ✳️ 입력 예시 1
+     ```swift
+     let nums = [1, 2, 2, 3, 1, 4]
+     let k = 2
+     ```
+
+     ## ✳️ 출력 예시 1
+     ```swift
+     6
+     ```
+
+     - 모든 숫자가 2번 이하로 등장 → 전체 배열 가능
+
+     ---
+
+     ## ✳️ 입력 예시 2
+     ```swift
+     let nums = [1, 1, 1, 2, 2, 3]
+     let k = 2
+     ```
+
+     ## ✳️ 출력 예시 2
+     ```swift
+     5
+     ```
+
+     - 가능한 부분 배열: `[1, 1, 2, 2, 3]`
+
+     ---
+
+     ## ✳️ 입력 예시 3
+     ```swift
+     let nums = [4, 4, 4, 4]
+     let k = 1
+     ```
+
+     ## ✳️ 출력 예시 3
+     ```swift
+     1
+     ```
+
+     - 각 숫자가 1번 이하로 나와야 하므로, 길이 1까지 가능
+
+     ---
+
+     ## ❗️조건
+     - 1 ≤ nums.count ≤ 10⁵
+     - -10⁴ ≤ nums[i] ≤ 10⁴
+     - 1 ≤ k ≤ 10⁵
+     */
+    
+    static func maxLengthSubarrayWithEachElementAtMostK(
+        _ nums: [Int],
+        _ k: Int
+    ) -> Int {
+        var left = 0
+        var maxLength = 0
+        var countDict: [Int: Int] = [: ]
+        
+        for (right, num) in nums.enumerated() {
+            countDict[num, default: 0] += 1
+            
+            while countDict[num, default: 0] > k {
+                countDict[nums[left], default: 0] -= 1
+                
+                if countDict[nums[left]] == 0 {
+                    countDict.removeValue(forKey: nums[left])
+                }
+                left += 1
+            }
+            maxLength = max(maxLength, right - left + 1)
+        }
+        return maxLength
+    }
 }
