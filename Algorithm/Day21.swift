@@ -214,3 +214,87 @@ extension Day21 {
         return Array(result.values)
     }
 }
+
+extension Day21 {
+    /*
+     
+     # ✅ 문제: 가장 긴 동일 문자 부분 문자열 (k번 교체 가능)
+
+     문자열 `s`와 정수 `k`가 주어질 때,
+     **최대 k개의 문자를 다른 문자로 바꿔서 만들 수 있는, 동일한 문자가 반복된 가장 긴 연속 부분 문자열**의 길이를 구하시오.
+
+     ---
+
+     ## ✳️ 입력 예시 1
+     ```swift
+     let s = "ABAB"
+     let k = 2
+     ```
+
+     ## ✳️ 출력 예시 1
+     ```swift
+     4
+     ```
+     - 두 개의 B를 A로 바꾸면 `"AAAA"` 가능
+
+     ---
+
+     ## ✳️ 입력 예시 2
+     ```swift
+     let s = "AABABBA"
+     let k = 1
+     ```
+
+     ## ✳️ 출력 예시 2
+     ```swift
+     4
+     ```
+     - "AABA" 또는 "ABBA" 가능
+
+     ---
+
+     ## ✳️ 입력 예시 3
+     ```swift
+     let s = "AAAA"
+     let k = 2
+     ```
+
+     ## ✳️ 출력 예시 3
+     ```swift
+     4
+     ```
+
+     ---
+
+     ## ❗️조건
+     - `1 <= s.count <= 10^5`
+     - `s`는 대문자 알파벳으로만 구성됨
+     - `0 <= k <= s.count`
+     */
+    static func characterReplacement(
+        _ s: String,
+        _ k: Int
+    ) -> Int {
+        var left = 0
+        var maxLength = 0
+        var maxFreq = 0
+        
+        let chars = Array(s)
+        var freqDict: [Character: Int] = [: ]
+        
+        for (right, char) in chars.enumerated() {
+            freqDict[char, default: 0] += 1
+            maxFreq = max(maxFreq, freqDict[char, default: 0])
+            
+            while (right - left + 1) - maxFreq > k {
+                let leftChar = chars[left]
+                freqDict[leftChar, default: 0] -= 1
+                left += 1
+            }
+            
+            maxLength = max(maxLength, right - left + 1)
+        }
+        
+        return maxLength
+    }
+}
