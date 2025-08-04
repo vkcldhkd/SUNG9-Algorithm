@@ -471,3 +471,89 @@ extension Day21 {
         return maxLength
     }
 }
+
+
+extension Day21 {
+    /*
+     
+     # ✅ 문제: 정수 배열에서 정확히 K개의 고유 숫자를 가진 가장 긴 부분 배열
+
+     정수 배열 `nums`와 정수 `k`가 주어질 때,
+     **서로 다른 정수 값이 정확히 k개 포함된 가장 긴 연속 부분 배열의 길이**를 구하시오.
+
+     ---
+
+     ## ✳️ 입력 예시 1
+     ```swift
+     let nums = [1, 2, 1, 2, 3]
+     let k = 2
+     ```
+
+     ## ✳️ 출력 예시 1
+     ```swift
+     4
+     ```
+     - [1, 2, 1, 2]는 숫자 1과 2로 구성된 길이 4짜리 부분 배열
+
+     ---
+
+     ## ✳️ 입력 예시 2
+     ```swift
+     let nums = [1, 2, 1, 3, 4]
+     let k = 3
+     ```
+
+     ## ✳️ 출력 예시 2
+     ```swift
+     3
+     ```
+     - [1, 3, 4] 또는 [2, 1, 3]이 조건을 만족하며 길이 3
+
+     ---
+
+     ## ✳️ 입력 예시 3
+     ```swift
+     let nums = [1, 1, 1, 1]
+     let k = 1
+     ```
+
+     ## ✳️ 출력 예시 3
+     ```swift
+     4
+     ```
+     - 전체 배열이 1개 숫자로만 구성됨
+
+     ---
+
+     ## ❗️조건
+     - `1 <= nums.count <= 10^5`
+     - `0 <= nums[i] <= 10^9`
+     - `1 <= k <= nums.count`
+     */
+    static func longestSubarrayWithExactlyKDistinct(
+        _ nums: [Int],
+        _ k: Int
+    ) -> Int {
+        var left = 0
+        var maxLength = 0
+        var freqDict: [Int: Int] = [: ]
+        
+        for (right, num) in nums.enumerated() {
+            freqDict[num, default: 0] += 1
+            
+            while freqDict.count > k {
+                let leftNum = nums[left]
+                freqDict[leftNum, default: 0] -= 1
+                if freqDict[leftNum] == 0 {
+                    freqDict.removeValue(forKey: leftNum)
+                }
+                left += 1
+            }
+            
+            if freqDict.count == k {
+                maxLength = max(maxLength, right - left + 1)
+            }
+        }
+        return maxLength
+    }
+}

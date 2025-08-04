@@ -716,9 +716,12 @@
  print(Day21.lengthOfLongestSubstringAtMostKDistinct("eceba", 2)) // 3
  print(Day21.lengthOfLongestSubstringAtMostKDistinct("aaabbcc", 1)) // 3
  print(Day21.lengthOfLongestSubstringAtMostKDistinct("aabbcc", 2)) // 4
+ 
+ print(Day21.lengthOfLongestSubstringExactlyKDistinct("aaabcbbcc", 2)) // 6
+ print(Day21.lengthOfLongestSubstringExactlyKDistinct("aabbccddeeff", 3)) // 6
+ print(Day21.lengthOfLongestSubstringExactlyKDistinct("a", 1)) // 1
  */
 
-
-print(Day21.lengthOfLongestSubstringExactlyKDistinct("aaabcbbcc", 2)) // 6
-print(Day21.lengthOfLongestSubstringExactlyKDistinct("aabbccddeeff", 3)) // 6
-print(Day21.lengthOfLongestSubstringExactlyKDistinct("a", 1)) // 1
+print(Day21.longestSubarrayWithExactlyKDistinct([1, 2, 1, 2, 3], 2)) // 4
+print(Day21.longestSubarrayWithExactlyKDistinct([1, 2, 1, 3, 4], 3)) // 3
+print(Day21.longestSubarrayWithExactlyKDistinct([1, 1, 1, 1], 1)) // 4
