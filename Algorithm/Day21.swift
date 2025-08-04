@@ -82,3 +82,73 @@ extension Day21 {
     }
 }
 
+extension Day21 {
+    /*
+     
+     # ✅ 문제: 아나그램 판별
+
+     두 문자열 `s`와 `t`가 주어졌을 때,
+     문자 구성(문자의 종류와 개수)이 동일하면 두 문자열은 아나그램이라고 합니다.
+     `s`와 `t`가 아나그램인지 여부를 판단하는 함수를 구현하시오.
+
+     ---
+
+     ## ✳️ 입력 예시 1
+     ```swift
+     let s = "anagram"
+     let t = "nagaram"
+     ```
+
+     ## ✳️ 출력 예시 1
+     ```swift
+     true
+     ```
+     - 문자 개수와 종류가 동일함
+
+     ---
+
+     ## ✳️ 입력 예시 2
+     ```swift
+     let s = "rat"
+     let t = "car"
+     ```
+
+     ## ✳️ 출력 예시 2
+     ```swift
+     false
+     ```
+     - 문자 구성 다름
+
+     ---
+
+     ## ✳️ 입력 예시 3
+     ```swift
+     let s = "aacc"
+     let t = "ccac"
+     ```
+
+     ## ✳️ 출력 예시 3
+     ```swift
+     false
+     ```
+     - 문자 개수가 다름
+
+     ---
+
+     ## ❗️조건
+     - `1 <= s.count, t.count <= 10^5`
+     - `s`와 `t`는 소문자 알파벳으로만 구성됨
+     */
+    static func isAnagram(
+        _ s: String,
+        _ t: String
+    ) -> Bool {
+        var sDict: [Character: Int] = [: ]
+        var tDict: [Character: Int] = [: ]
+        
+        s.forEach { sDict[$0, default: 0] += 1 }
+        t.forEach { tDict[$0, default: 0] += 1 }
+    
+        return sDict == tDict
+    }
+}

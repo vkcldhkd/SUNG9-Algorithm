@@ -697,8 +697,12 @@
 
 /*
  Day21
+ print(Day21.twoSum([2, 7, 11, 15], 9)) // [0, 1]
+ print(Day21.twoSum([3, 2, 4], 6)) // [1, 2]
+ print(Day21.twoSum([3, 3], 6)) // [0, 1]
  */
 
-print(Day21.twoSum([2, 7, 11, 15], 9)) // [0, 1]
-print(Day21.twoSum([3, 2, 4], 6)) // [1, 2]
-print(Day21.twoSum([3, 3], 6)) // [0, 1]
+
+print(Day21.isAnagram("anagram", "nagaram")) // true
+print(Day21.isAnagram("rat", "car")) // false
+print(Day21.isAnagram("aacc", "ccac")) // false
