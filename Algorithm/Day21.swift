@@ -382,3 +382,92 @@ extension Day21 {
         return maxLength
     }
 }
+
+extension Day21 {
+    /*
+     
+     # ✅ 문제: 최대 k개의 서로 다른 문자를 포함하는 가장 긴 부분 문자열
+
+     문자열 `s`와 정수 `k`가 주어질 때,
+     **서로 다른 문자가 정확히 k개 포함된 가장 긴 연속 부분 문자열의 길이**를 구하시오.
+
+     이전 문제는 "k 이하"였지만, 이번 문제는 **정확히 k개**여야만 길이를 갱신할 수 있습니다.
+
+     ---
+
+     ## ✳️ 입력 예시 1
+     ```swift
+     let s = "aaabcbbcc"
+     let k = 2
+     ```
+
+     ## ✳️ 출력 예시 1
+     ```swift
+     4
+     ```
+     - "bbcc" 또는 "aabc" 등 2개의 문자만 포함한 최대 길이
+
+     ---
+
+     ## ✳️ 입력 예시 2
+     ```swift
+     let s = "aabbccddeeff"
+     let k = 3
+     ```
+
+     ## ✳️ 출력 예시 2
+     ```swift
+     6
+     ```
+     - "ccbbee" 또는 "aabbcc" 등의 부분 문자열 가능
+
+     ---
+
+     ## ✳️ 입력 예시 3
+     ```swift
+     let s = "a"
+     let k = 1
+     ```
+
+     ## ✳️ 출력 예시 3
+     ```swift
+     1
+     ```
+
+     ---
+
+     ## ❗️조건
+     - `1 <= s.count <= 10^5`
+     - `1 <= k <= 26`
+     - `s`는 소문자 알파벳으로만 구성됨
+     */
+    static func lengthOfLongestSubstringExactlyKDistinct(
+        _ s: String,
+        _ k: Int
+    ) -> Int {
+        var left = 0
+        var maxLength = 0
+        
+        let chars = Array(s)
+        var freqDict: [Character: Int] = [: ]
+        
+        for (right, char) in chars.enumerated() {
+            freqDict[char, default: 0] += 1
+            
+            while freqDict.count > k {
+                let leftChar = chars[left]
+                freqDict[leftChar, default: 0] -= 1
+                if freqDict[leftChar] == 0 {
+                    freqDict.removeValue(forKey: leftChar)
+                }
+                left += 1
+            }
+            
+            if freqDict.count == k {
+                maxLength = max(maxLength, right - left + 1)
+            }
+        }
+        
+        return maxLength
+    }
+}
