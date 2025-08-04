@@ -688,9 +688,17 @@
  print(Day20.lengthOfLongestSubstringExactlyKUnique("abcabcbb", 2)) // 4
  print(Day20.lengthOfLongestSubstringExactlyKUnique("AaAaBbBb", 2)) // 4
  print(Day20.lengthOfLongestSubstringExactlyKUnique("a1b2c3d4", 4)) // 4
+ 
+ print(Day20.lengthOfLongestSubstringWithoutRepeating("abcabcbb")) // 3
+ print(Day20.lengthOfLongestSubstringWithoutRepeating("bbbbb")) // 1
+ print(Day20.lengthOfLongestSubstringWithoutRepeating("pwwkew")) // 3
  */
 
-print(Day20.lengthOfLongestSubstringWithoutRepeating("abcabcbb")) // 3
-print(Day20.lengthOfLongestSubstringWithoutRepeating("bbbbb")) // 1
-print(Day20.lengthOfLongestSubstringWithoutRepeating("pwwkew")) // 3
 
+/*
+ Day21
+ */
+
+print(Day21.twoSum([2, 7, 11, 15], 9)) // [0, 1]
+print(Day21.twoSum([3, 2, 4], 6)) // [1, 2]
+print(Day21.twoSum([3, 3], 6)) // [0, 1]
