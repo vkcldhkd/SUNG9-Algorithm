@@ -298,3 +298,87 @@ extension Day21 {
         return maxLength
     }
 }
+
+extension Day21 {
+    /*
+     
+     # ✅ 문제: 가장 긴 k개 이하의 고유 문자 부분 문자열
+
+     문자열 `s`와 정수 `k`가 주어질 때,
+     **서로 다른 문자가 최대 k개까지 포함된 가장 긴 연속 부분 문자열의 길이**를 구하시오.
+
+     ---
+
+     ## ✳️ 입력 예시 1
+     ```swift
+     let s = "eceba"
+     let k = 2
+     ```
+
+     ## ✳️ 출력 예시 1
+     ```swift
+     3
+     ```
+     - "ece"는 'e'와 'c' 두 종류만 포함 → 조건 만족
+
+     ---
+
+     ## ✳️ 입력 예시 2
+     ```swift
+     let s = "aaabbcc"
+     let k = 1
+     ```
+
+     ## ✳️ 출력 예시 2
+     ```swift
+     3
+     ```
+     - "aaa", "bbb", "ccc" 가능
+
+     ---
+
+     ## ✳️ 입력 예시 3
+     ```swift
+     let s = "aabbcc"
+     let k = 2
+     ```
+
+     ## ✳️ 출력 예시 3
+     ```swift
+     4
+     ```
+     - "aabb" 또는 "bbcc" 가능
+
+     ---
+
+     ## ❗️조건
+     - `1 <= s.count <= 10^5`
+     - `1 <= k <= 26`
+     - `s`는 영어 소문자로만 구성됨
+     */
+    static func lengthOfLongestSubstringAtMostKDistinct(
+        _ s: String,
+        _ k: Int
+    ) -> Int {
+        var left = 0
+        var maxLength = 0
+        
+        let chars = Array(s)
+        var freqDict: [Character: Int] = [: ]
+        
+        for (right, char) in chars.enumerated() {
+            freqDict[char, default: 0] += 1
+            
+            while freqDict.count > k {
+                let leftChar = chars[left]
+                freqDict[leftChar, default: 0] -= 1
+                if freqDict[leftChar] == 0 {
+                    freqDict.removeValue(forKey: leftChar)
+                }
+                left += 1
+            }
+            maxLength = max(maxLength, right - left + 1)
+        }
+        return maxLength
+    }
+}

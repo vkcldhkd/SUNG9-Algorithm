@@ -708,9 +708,12 @@
  print(Day21.groupAnagrams(["eat", "tea", "tan", "ate", "nat", "bat"])) // [["eat", "tea", "ate"], ["tan", "nat"], ["bat"]]
  print(Day21.groupAnagrams([""])) // [[""]]
  print(Day21.groupAnagrams(["a"])) // [["a"]]
+ 
+ print(Day21.characterReplacement("ABAB", 2)) // 4
+ print(Day21.characterReplacement("AABABBA", 1)) // 4
+ print(Day21.characterReplacement("AAAA", 2)) // 4
  */
 
-
-print(Day21.characterReplacement("ABAB", 2)) // 4
-print(Day21.characterReplacement("AABABBA", 1)) // 4
-print(Day21.characterReplacement("AAAA", 2)) // 4
+print(Day21.lengthOfLongestSubstringAtMostKDistinct("eceba", 2)) // 3
+print(Day21.lengthOfLongestSubstringAtMostKDistinct("aaabbcc", 1)) // 3
+print(Day21.lengthOfLongestSubstringAtMostKDistinct("aabbcc", 2)) // 4
