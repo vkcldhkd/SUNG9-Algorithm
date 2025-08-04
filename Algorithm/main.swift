@@ -720,8 +720,13 @@
  print(Day21.lengthOfLongestSubstringExactlyKDistinct("aaabcbbcc", 2)) // 6
  print(Day21.lengthOfLongestSubstringExactlyKDistinct("aabbccddeeff", 3)) // 6
  print(Day21.lengthOfLongestSubstringExactlyKDistinct("a", 1)) // 1
+ 
+ print(Day21.longestSubarrayWithExactlyKDistinct([1, 2, 1, 2, 3], 2)) // 4
+ print(Day21.longestSubarrayWithExactlyKDistinct([1, 2, 1, 3, 4], 3)) // 3
+ print(Day21.longestSubarrayWithExactlyKDistinct([1, 1, 1, 1], 1)) // 4
  */
 
-print(Day21.longestSubarrayWithExactlyKDistinct([1, 2, 1, 2, 3], 2)) // 4
-print(Day21.longestSubarrayWithExactlyKDistinct([1, 2, 1, 3, 4], 3)) // 3
-print(Day21.longestSubarrayWithExactlyKDistinct([1, 1, 1, 1], 1)) // 4
+print(Day21.longestSubarrayWithMaxKRepeats([1, 2, 2, 3, 3, 3, 4], 2)) // 5
+print(Day21.longestSubarrayWithMaxKRepeats([1, 1, 1, 1], 2)) // 2
+print(Day21.longestSubarrayWithMaxKRepeats([1, 2, 3, 4, 5], 1)) // 5
+

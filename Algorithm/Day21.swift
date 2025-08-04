@@ -557,3 +557,86 @@ extension Day21 {
         return maxLength
     }
 }
+
+extension Day21 {
+    /*
+     
+     # ✅ 문제: 동일 숫자가 k번 이하로 등장하도록 만든 가장 긴 부분 배열
+
+     정수 배열 `nums`와 정수 `k`가 주어질 때,
+     **어떤 숫자든 최대 k번까지만 등장할 수 있도록 만든 가장 긴 연속 부분 배열의 길이**를 구하시오.
+
+     ---
+
+     ## ✳️ 입력 예시 1
+     ```swift
+     let nums = [1, 2, 2, 3, 3, 3, 4]
+     let k = 2
+     ```
+
+     ## ✳️ 출력 예시 1
+     ```swift
+     5
+     ```
+     - [2, 2, 3, 3, 4] 또는 [1, 2, 2, 3, 3] 가능
+
+     ---
+
+     ## ✳️ 입력 예시 2
+     ```swift
+     let nums = [1, 1, 1, 1]
+     let k = 2
+     ```
+
+     ## ✳️ 출력 예시 2
+     ```swift
+     2
+     ```
+     - 최대 2개까지만 허용되므로 "1, 1"
+
+     ---
+
+     ## ✳️ 입력 예시 3
+     ```swift
+     let nums = [1, 2, 3, 4, 5]
+     let k = 1
+     ```
+
+     ## ✳️ 출력 예시 3
+     ```swift
+     5
+     ```
+     - 모든 숫자가 1번만 등장 → 전체 사용 가능
+
+     ---
+
+     ## ❗️조건
+     - `1 <= nums.count <= 10^5`
+     - `0 <= nums[i] <= 10^9`
+     - `1 <= k <= nums.count`
+     */
+    static func longestSubarrayWithMaxKRepeats(
+        _ nums: [Int],
+        _ k: Int
+    ) -> Int {
+        var left = 0
+        var maxLength = 0
+        var freqDict: [Int: Int] = [: ]
+        
+        for (right, num) in nums.enumerated() {
+            freqDict[num, default: 0] += 1
+            
+            while freqDict.values.contains(where: { $0 > k }) {
+                let leftNum = nums[left]
+                freqDict[leftNum, default: 0] -= 1
+                if freqDict[leftNum] == 0 {
+                    freqDict.removeValue(forKey: leftNum)
+                }
+                left += 1
+            }
+            maxLength = max(maxLength, right - left + 1)
+        }
+        
+        return maxLength
+    }
+}
