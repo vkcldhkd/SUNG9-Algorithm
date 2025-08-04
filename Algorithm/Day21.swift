@@ -152,3 +152,65 @@ extension Day21 {
         return sDict == tDict
     }
 }
+
+extension Day21 {
+    /*
+     
+     # ✅ 문제: 아나그램 그룹화
+
+     문자열 배열 `strs`가 주어졌을 때,
+     문자 구성이 같은 문자열끼리 그룹으로 묶어라.
+     즉, 아나그램인 문자열들을 함께 묶어 2차원 배열로 반환하시오.
+
+     ---
+
+     ## ✳️ 입력 예시 1
+     ```swift
+     let strs = ["eat", "tea", "tan", "ate", "nat", "bat"]
+     ```
+
+     ## ✳️ 출력 예시 1
+     ```swift
+     [["eat", "tea", "ate"], ["tan", "nat"], ["bat"]]
+     ```
+
+     ---
+
+     ## ✳️ 입력 예시 2
+     ```swift
+     let strs = [""]
+     ```
+
+     ## ✳️ 출력 예시 2
+     ```swift
+     [[""]]
+     ```
+
+     ---
+
+     ## ✳️ 입력 예시 3
+     ```swift
+     let strs = ["a"]
+     ```
+
+     ## ✳️ 출력 예시 3
+     ```swift
+     [["a"]]
+     ```
+
+     ---
+
+     ## ❗️조건
+     - `1 <= strs.count <= 10^4`
+     - `0 <= strs[i].count <= 100`
+     - `strs[i]`는 소문자로만 구성됨
+     */
+    static func groupAnagrams(_ strs: [String]) -> [[String]] {
+        var result: [String: [String]] = [: ]
+        for str in strs {
+            let sortedStr = String(str.sorted())
+            result[sortedStr, default: []].append(str)
+        }
+        return Array(result.values)
+    }
+}
