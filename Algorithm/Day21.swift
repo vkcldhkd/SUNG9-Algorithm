@@ -640,3 +640,88 @@ extension Day21 {
         return maxLength
     }
 }
+
+extension Day21 {
+    /*
+     
+     # ✅ 문제: 동일 문자 최대 K회 반복 허용 부분 문자열
+
+     문자열 `s`와 정수 `k`가 주어질 때,
+     **같은 문자가 최대 k번까지만 연속해서 등장할 수 있도록 한 가장 긴 연속 부분 문자열의 길이**를 구하시오.
+
+     ---
+
+     ## ✳️ 입력 예시 1
+     ```swift
+     let s = "aaabbcc"
+     let k = 2
+     ```
+
+     ## ✳️ 출력 예시 1
+     ```swift
+     5
+     ```
+     - "aabbc" 또는 "abbcc" 가능 (a는 2번까지만, b도 2번까지만)
+
+     ---
+
+     ## ✳️ 입력 예시 2
+     ```swift
+     let s = "aaaa"
+     let k = 2
+     ```
+
+     ## ✳️ 출력 예시 2
+     ```swift
+     2
+     ```
+     - "aa"만 가능 (k=2이므로 연속으로 2개까지만 허용)
+
+     ---
+
+     ## ✳️ 입력 예시 3
+     ```swift
+     let s = "abcde"
+     let k = 1
+     ```
+
+     ## ✳️ 출력 예시 3
+     ```swift
+     5
+     ```
+     - 각 문자는 1번씩만 등장하므로 전체 사용 가능
+
+     ---
+
+     ## ❗️조건
+     - `1 <= s.count <= 10^5`
+     - `1 <= k <= s.count`
+     - `s`는 소문자 알파벳으로만 구성됨
+     */
+    static func longestSubstringWithMaxKRepeats(
+        _ s: String,
+        _ k: Int
+    ) -> Int {
+        var left = 0
+        var maxLength = 0
+        let chars = Array(s)
+        var freqDict: [Character: Int] = [: ]
+        
+        for (right, char) in chars.enumerated() {
+            freqDict[char, default: 0] += 1
+            
+            while freqDict.values.contains(where: { $0 > k }) {
+                let leftChar = chars[left]
+                freqDict[leftChar, default: 0] -= 1
+                if freqDict[leftChar] == 0 {
+                    freqDict.removeValue(forKey: leftChar)
+                }
+                left += 1
+            }
+            
+            maxLength = max(maxLength, right - left + 1)
+        }
+        
+        return maxLength
+    }
+}

@@ -724,9 +724,14 @@
  print(Day21.longestSubarrayWithExactlyKDistinct([1, 2, 1, 2, 3], 2)) // 4
  print(Day21.longestSubarrayWithExactlyKDistinct([1, 2, 1, 3, 4], 3)) // 3
  print(Day21.longestSubarrayWithExactlyKDistinct([1, 1, 1, 1], 1)) // 4
+ 
+ print(Day21.longestSubarrayWithMaxKRepeats([1, 2, 2, 3, 3, 3, 4], 2)) // 5
+ print(Day21.longestSubarrayWithMaxKRepeats([1, 1, 1, 1], 2)) // 2
+ print(Day21.longestSubarrayWithMaxKRepeats([1, 2, 3, 4, 5], 1)) // 5
  */
 
-print(Day21.longestSubarrayWithMaxKRepeats([1, 2, 2, 3, 3, 3, 4], 2)) // 5
-print(Day21.longestSubarrayWithMaxKRepeats([1, 1, 1, 1], 2)) // 2
-print(Day21.longestSubarrayWithMaxKRepeats([1, 2, 3, 4, 5], 1)) // 5
+print(Day21.longestSubstringWithMaxKRepeats("aaabbcc", 2)) // 5
+print(Day21.longestSubstringWithMaxKRepeats("aaaa", 2)) // 2
+print(Day21.longestSubstringWithMaxKRepeats("abcde", 1)) // 5
+
 
