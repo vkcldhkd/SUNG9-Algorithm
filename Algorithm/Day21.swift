@@ -725,3 +725,106 @@ extension Day21 {
         return maxLength
     }
 }
+
+extension Day21 {
+    /*
+     
+     # ✅ 문제: 총 중복 문자의 개수를 k 이하로 만든 가장 긴 부분 문자열
+
+     문자열 `s`와 정수 `k`가 주어질 때,
+     **전체 문자열 내에서 중복 문자(즉, 2번 이상 등장하는 문자)의 개수를 합산하여 총합이 `k`를 넘지 않도록 만든 가장 긴 연속 부분 문자열의 길이**를 구하시오.
+
+     - 단, 중복 문자 1개는 2번째 등장부터 카운트함.
+       - 예: "aaabb"의 경우 → a의 중복 수 = 1, b의 중복 수 = 1 → 총 중복 문자 수 = 2
+
+     ---
+
+     ## ✳️ 입력 예시 1
+     ```swift
+     let s = "aabbcc"
+     let k = 2
+     ```
+
+     ## ✳️ 출력 예시 1
+     ```swift
+     5
+     ```
+     - "aabbc" → 중복된 문자: a(1), b(1), c(0) → 총 2개
+
+     ---
+
+     ## ✳️ 입력 예시 2
+     ```swift
+     let s = "aaabbbcc"
+     let k = 3
+     ```
+
+     ## ✳️ 출력 예시 2
+     ```swift
+     6
+     ```
+     - "aaabbb" → a 중복 2, b 중복 2 → 총합 4 → ❌
+     - "aabbbc" → a 중복 1, b 중복 2, c 중복 0 → 총합 3 → ✅ 길이 6
+
+     ---
+
+     ## ✳️ 입력 예시 3
+     ```swift
+     let s = "abcabcabc"
+     let k = 0
+     ```
+
+     ## ✳️ 출력 예시 3
+     ```swift
+     3
+     ```
+     - "abc" → 중복 없음
+     - 그 이상은 중복 포함됨
+
+     ---
+
+     ## ❗️조건
+     - `1 <= s.count <= 10^5`
+     - `0 <= k <= s.count`
+     - `s`는 영어 소문자 알파벳으로만 구성됨
+     */
+    static func longestSubstringWithTotalRepeatsAtMostK(
+        _ s: String,
+        _ k: Int
+    ) -> Int {
+        var left = 0
+        var maxLength = 0
+        var totalRepeats = 0
+        
+        let chars = Array(s)
+        var freqDict: [Character: Int] = [: ]
+        
+        for (right, char) in chars.enumerated() {
+            freqDict[char, default: 0] += 1
+            
+            if freqDict[char, default: 0] > 1 {
+                totalRepeats += 1
+            }
+            
+            while totalRepeats > k {
+                let leftChar = chars[left]
+                if let count = freqDict[leftChar] {
+                    if count > 1 {
+                        totalRepeats -= 1
+                    }
+                    
+                    freqDict[leftChar, default: 0] = count - 1
+                    
+                    if freqDict[leftChar] == 0 {
+                        freqDict.removeValue(forKey: leftChar)
+                    }
+                }
+                
+                left += 1
+            }
+            maxLength = max(maxLength, right - left + 1)
+        }
+        
+        return maxLength
+    }
+}
