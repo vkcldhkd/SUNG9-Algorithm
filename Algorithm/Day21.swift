@@ -828,3 +828,79 @@ extension Day21 {
         return maxLength
     }
 }
+
+
+extension Day21 {
+    /*
+     
+     # ✅ 문제: 가장 긴 부분 문자열 (각 문자는 최대 1번만 등장 가능)
+
+     문자열 `s`가 주어질 때,
+     **각 문자가 단 한 번만 등장하도록 제한했을 때 만들 수 있는 가장 긴 연속 부분 문자열의 길이**를 구하시오.
+
+     ---
+
+     ## ✳️ 입력 예시 1
+     ```swift
+     let s = "abcabcbb"
+     ```
+
+     ## ✳️ 출력 예시 1
+     ```swift
+     3
+     ```
+     - "abc"가 가장 긴 중복 없는 부분 문자열
+
+     ---
+
+     ## ✳️ 입력 예시 2
+     ```swift
+     let s = "bbbbb"
+     ```
+
+     ## ✳️ 출력 예시 2
+     ```swift
+     1
+     ```
+     - "b" 하나만 중복 없이 가능
+
+     ---
+
+     ## ✳️ 입력 예시 3
+     ```swift
+     let s = "pwwkew"
+     ```
+
+     ## ✳️ 출력 예시 3
+     ```swift
+     3
+     ```
+     - "wke" 또는 "kew"가 가장 길다
+
+     ---
+
+     ## ❗️조건
+     - `1 <= s.count <= 10^5`
+     - `s`는 영어 소문자 알파벳
+     */
+    
+    static func lengthOfLongestSubstringWithoutRepeating(_ s: String) -> Int {
+        var left = 0
+        var maxLength = 0
+        
+        var set = Set<Character>()
+        let chars = Array(s)
+        
+        for (right, char) in chars.enumerated() {
+            while set.contains(char) {
+                set.remove(chars[left])
+                left += 1
+            }
+            
+            set.insert(char)
+            maxLength = max(maxLength, right - left + 1)
+        }
+        
+        return maxLength
+    }
+}

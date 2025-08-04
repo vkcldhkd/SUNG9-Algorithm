@@ -732,8 +732,13 @@
  print(Day21.longestSubstringWithMaxKRepeats("aaabbcc", 2)) // 5
  print(Day21.longestSubstringWithMaxKRepeats("aaaa", 2)) // 2
  print(Day21.longestSubstringWithMaxKRepeats("abcde", 1)) // 5
+ 
+ print(Day21.longestSubstringWithTotalRepeatsAtMostK("aabbcc", 2)) // 5
+ print(Day21.longestSubstringWithTotalRepeatsAtMostK("aaabbbcc", 3)) // 6
+ print(Day21.longestSubstringWithTotalRepeatsAtMostK("abcabcabc", 0)) // 3
  */
 
-print(Day21.longestSubstringWithTotalRepeatsAtMostK("aabbcc", 2)) // 5
-print(Day21.longestSubstringWithTotalRepeatsAtMostK("aaabbbcc", 3)) // 6
-print(Day21.longestSubstringWithTotalRepeatsAtMostK("abcabcabc", 0)) // 3
+
+print(Day21.lengthOfLongestSubstringWithoutRepeating("abcabcbb")) // 3
+print(Day21.lengthOfLongestSubstringWithoutRepeating("bbbbb")) // 1
+print(Day21.lengthOfLongestSubstringWithoutRepeating("pwwkew")) // 3
