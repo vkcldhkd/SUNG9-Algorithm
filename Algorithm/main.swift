@@ -743,7 +743,13 @@
  */
 
 
-print(Day22.longestSubstringWithMaxKRepeatsPerChar("aabbcc", 2)) // 6
-print(Day22.longestSubstringWithMaxKRepeatsPerChar("aaabbcc", 2)) // 6
-print(Day22.longestSubstringWithMaxKRepeatsPerChar("abcabcabc", 1)) // 3
+/*
+ Day22
+ print(Day22.longestSubstringWithMaxKRepeatsPerChar("aabbcc", 2)) // 6
+ print(Day22.longestSubstringWithMaxKRepeatsPerChar("aaabbcc", 2)) // 6
+ print(Day22.longestSubstringWithMaxKRepeatsPerChar("abcabcabc", 1)) // 3
+ */
 
+print(Day22.longestSubstringWithDistanceBetweenSameChars("abcabc", 3)) // 6
+print(Day22.longestSubstringWithDistanceBetweenSameChars("aaabc", 2)) // 3
+print(Day22.longestSubstringWithDistanceBetweenSameChars("abaccc", 2)) // 4
